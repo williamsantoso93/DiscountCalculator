@@ -15,6 +15,8 @@
 		7A87F7832322AA000011C6EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A87F7812322AA000011C6EF /* LaunchScreen.storyboard */; };
 		7A87F78D2322B1F00011C6EF /* InputDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A87F78C2322B1F00011C6EF /* InputDataViewController.swift */; };
 		7A87F7912322B47A0011C6EF /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A87F7902322B47A0011C6EF /* Extension.swift */; };
+		7A87F793232381300011C6EF /* InputDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A87F792232381300011C6EF /* InputDataTableViewCell.swift */; };
+		7A87F7962323860D0011C6EF /* InputDiscountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A87F7952323860D0011C6EF /* InputDiscountViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		7A87F7842322AA000011C6EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A87F78C2322B1F00011C6EF /* InputDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputDataViewController.swift; sourceTree = "<group>"; };
 		7A87F7902322B47A0011C6EF /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		7A87F792232381300011C6EF /* InputDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputDataTableViewCell.swift; sourceTree = "<group>"; };
+		7A87F7952323860D0011C6EF /* InputDiscountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputDiscountViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +64,9 @@
 		7A87F7742322A9FF0011C6EF /* DiscountCalculator */ = {
 			isa = PBXGroup;
 			children = (
-				7A87F78F2322B4620011C6EF /* Extension */,
 				7A87F7752322A9FF0011C6EF /* AppDelegate.swift */,
+				7A87F78F2322B4620011C6EF /* Extension */,
+				7A87F794232381830011C6EF /* TableView */,
 				7A87F78E2322B1FC0011C6EF /* Controller */,
 				7A87F7792322A9FF0011C6EF /* Main.storyboard */,
 				7A87F77F2322AA000011C6EF /* Assets.xcassets */,
@@ -76,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				7A87F7772322A9FF0011C6EF /* ViewController.swift */,
+				7A87F7952323860D0011C6EF /* InputDiscountViewController.swift */,
 				7A87F78C2322B1F00011C6EF /* InputDataViewController.swift */,
 			);
 			path = Controller;
@@ -87,6 +93,14 @@
 				7A87F7902322B47A0011C6EF /* Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		7A87F794232381830011C6EF /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				7A87F792232381300011C6EF /* InputDataTableViewCell.swift */,
+			);
+			path = TableView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,6 +178,8 @@
 				7A87F7782322A9FF0011C6EF /* ViewController.swift in Sources */,
 				7A87F78D2322B1F00011C6EF /* InputDataViewController.swift in Sources */,
 				7A87F7762322A9FF0011C6EF /* AppDelegate.swift in Sources */,
+				7A87F793232381300011C6EF /* InputDataTableViewCell.swift in Sources */,
+				7A87F7962323860D0011C6EF /* InputDiscountViewController.swift in Sources */,
 				7A87F77E2322A9FF0011C6EF /* DiscountCalculator.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

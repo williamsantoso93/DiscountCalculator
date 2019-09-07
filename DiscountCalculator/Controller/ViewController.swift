@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.textField.delegate = self
         // Do any additional setup after loading the view.
         textField.setBottomBorder()
     }
@@ -23,15 +24,22 @@ class ViewController: UIViewController {
         personQty = Int(textField?.text ?? "0") ?? 0
         print(personQty)
         if personQty > 0 {
-            performSegue(withIdentifier: "inputData", sender: nil)
+            performSegue(withIdentifier: "inputDiscount", sender: nil)
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "inputData" {
-            let controller = segue.destination as! InputDataViewController
+        if segue.identifier == "inputDiscount" {
+            let controller = segue.destination as! InputDiscountViewController
             controller.personQty = self.personQty
             
         }
+    }
+}
+
+extension ViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
