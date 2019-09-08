@@ -15,6 +15,9 @@ class InputDiscountViewController: UIViewController {
     var personQty: Int?
     var discount: Double = 0.0
     
+    var names: [String] = []
+    var prices: [Double] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,16 +40,19 @@ class InputDiscountViewController: UIViewController {
         let distString = discountTextField.text
         discount = Double(distString!) ?? 0
         if discount >= 0 {
-            performSegue(withIdentifier: "inputData", sender: nil)
+            performSegue(withIdentifier: "otherData", sender: nil)
         }
     }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "inputData" {
-            let controller = segue.destination as! InputDataViewController
+        if segue.identifier == "otherData" {
+            let controller = segue.destination as! OtherDataViewController
             controller.personQty = self.personQty
             controller.discount =  self.discount
+            
+            controller.names = self.names
+            controller.prices = self.prices
         }
     }
 }

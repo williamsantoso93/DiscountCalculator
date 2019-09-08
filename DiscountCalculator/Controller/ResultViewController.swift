@@ -33,6 +33,8 @@ class ResultViewController: UIViewController {
         
         //append array
         for _ in 1 ... (personQty ?? 1) {
+            pricesDiscount.append(0)
+            pricesPajak.append(0)
             pricesAfterDiscount.append(0)
             pricesAfterDiscountPajakOngkir.append(0)
         }
@@ -61,7 +63,7 @@ class ResultViewController: UIViewController {
         print(priceOngkirPerPerson)
         
         
-        for index in 0 ... (personQty ?? 0) {
+        for index in 0 ... ((personQty ?? 1) - 1) {
             let priceDiscount = prices[index] * persenDiscount
             let priceAfterDiscount = prices[index] - priceDiscount
             
@@ -70,10 +72,10 @@ class ResultViewController: UIViewController {
             
             let priceAfterDiscountPajakOngkir = priceAfterDiscountPajak + priceOngkirPerPerson
             
-            pricesDiscount.insert(priceDiscount, at: index)
-            pricesPajak.insert(pricePajak, at: index)
-            pricesAfterDiscount.insert(priceAfterDiscount, at: index)
-            pricesAfterDiscountPajakOngkir.insert(priceAfterDiscountPajakOngkir, at: index)
+            pricesDiscount[index] = priceDiscount
+            pricesPajak[index] = pricePajak
+            pricesAfterDiscount[index] = priceAfterDiscount
+            pricesAfterDiscountPajakOngkir[index] = priceAfterDiscountPajakOngkir
         }
         
         print("price after diskon")

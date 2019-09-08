@@ -16,7 +16,6 @@ class InputDataViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     
     var personQty: Int?
-    var discount: Double?
     
     var names: [String] = []
     var pricesText: [String] = []
@@ -77,54 +76,28 @@ class InputDataViewController: UIViewController {
 
     
     @IBAction func nextButtonDidTap(_ sender: Any) {
-        //change pricesText to Double
-        let qty: Int = Int(personQty ?? 1) - 1
-        for index in 0 ... qty {
-            let price: Double = Double(pricesText[index]) ?? 0
-            prices.insert(price, at: index)
-        }
+        resignFirstResponder()
         
-        performSegue(withIdentifier: "otherData", sender: nil)
-    }
-    
-//    func countDiscount() {
+        //change pricesText to Double
 //        let qty: Int = Int(personQty ?? 1) - 1
 //        for index in 0 ... qty {
-////            allPrices.append(Double(priceText)!)
-//            let price: Double = Double(allCellsPriceText[index]) ?? 0
+//            let price: Double = Double(pricesText[index]) ?? 0
 //            prices.insert(price, at: index)
 //        }
-//
-//        print(prices)
-//
-//        var totalPrice: Double = 0
-//        for price in prices {
-//            totalPrice += price
-//        }
-//
-//        print(totalPrice)
-//
-//        let persenDiscount = (discount ?? 0)/totalPrice
-//        print(persenDiscount)
-//
-//        for index in 0 ... qty {
-//            let priceDiscount: Double = prices[index] * persenDiscount
-//            let priceAfterDiscount: Double = prices[index] - priceDiscount
-//
-////            pricesDiscount.append(priceDiscount)
-////            pricesAfterDiscount.append(priceAfterDiscount)
-//            pricesDiscount.insert(priceDiscount, at: index)
-//            pricesAfterDiscount.insert(priceAfterDiscount, at: index)
-//        }
-//        print(pricesDiscount)
-//        print(pricesAfterDiscount)
-//    }
+        view.endEditing(true)
+        
+        print("names")
+        print(names)
+        print("prices")
+        print(pricesText)
+        print(prices)
+        performSegue(withIdentifier: "inputDiscount", sender: nil)
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "otherData" {
-            let controller = segue.destination as! OtherDataViewController
+        if segue.identifier == "inputDiscount" {
+            let controller = segue.destination as! InputDiscountViewController
             controller.personQty = self.personQty
-            controller.discount = self.discount ?? 0
             
             controller.names = self.names
             controller.prices = self.prices
@@ -171,6 +144,9 @@ extension InputDataViewController: UITableViewDataSource, UITableViewDelegate, U
                 pricesText.remove(at: indexOf)
             }
             pricesText.insert(textField.text!, at: indexOf)
+            
+            let price: Double = Double(pricesText[indexOf]) ?? 0
+            prices[indexOf] = price
         }
     }
     

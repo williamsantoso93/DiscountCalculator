@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class InputPersonViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
     
     var personQty: Int = 0
@@ -23,22 +23,38 @@ class ViewController: UIViewController {
     @IBAction func nextDidTap(_ sender: Any) {
         personQty = Int(textField?.text ?? "0") ?? 0
         if personQty > 0 {
-            performSegue(withIdentifier: "inputDiscount", sender: nil)
+            performSegue(withIdentifier: "inputData", sender: nil)
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "inputDiscount" {
-            let controller = segue.destination as! InputDiscountViewController
+        if segue.identifier == "inputData" {
+            let controller = segue.destination as! InputDataViewController
             controller.personQty = self.personQty
-            
         }
     }
+    var amount = Double()
 }
 
-extension ViewController: UITextFieldDelegate {
+extension InputPersonViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let digit = Double(string) {
+            amount = amount * 10 + digit
+        }
+        if string == "" {
+            amount = amount/10
+        }
+        
+        let formatter = NumberFormatter()
+        
+        formatter.numberStyle = .decimal
+        
+        textField.text = formatter.string(from: NSNumber(value: amount))
+        return false
     }
 }

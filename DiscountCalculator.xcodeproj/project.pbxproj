@@ -11,7 +11,7 @@
 		7A01AE742324A02D0023A281 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01AE732324A02D0023A281 /* ResultTableViewCell.swift */; };
 		7A01AE762324A2640023A281 /* OtherDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01AE752324A2640023A281 /* OtherDataViewController.swift */; };
 		7A87F7762322A9FF0011C6EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A87F7752322A9FF0011C6EF /* AppDelegate.swift */; };
-		7A87F7782322A9FF0011C6EF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A87F7772322A9FF0011C6EF /* ViewController.swift */; };
+		7A87F7782322A9FF0011C6EF /* InputPersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A87F7772322A9FF0011C6EF /* InputPersonViewController.swift */; };
 		7A87F77B2322A9FF0011C6EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A87F7792322A9FF0011C6EF /* Main.storyboard */; };
 		7A87F77E2322A9FF0011C6EF /* DiscountCalculator.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7A87F77C2322A9FF0011C6EF /* DiscountCalculator.xcdatamodeld */; };
 		7A87F7802322AA000011C6EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A87F77F2322AA000011C6EF /* Assets.xcassets */; };
@@ -28,7 +28,7 @@
 		7A01AE752324A2640023A281 /* OtherDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherDataViewController.swift; sourceTree = "<group>"; };
 		7A87F7722322A9FF0011C6EF /* DiscountCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiscountCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A87F7752322A9FF0011C6EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7A87F7772322A9FF0011C6EF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7A87F7772322A9FF0011C6EF /* InputPersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputPersonViewController.swift; sourceTree = "<group>"; };
 		7A87F77A2322A9FF0011C6EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7A87F77D2322A9FF0011C6EF /* DiscountCalculator.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DiscountCalculator.xcdatamodel; sourceTree = "<group>"; };
 		7A87F77F2322AA000011C6EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -86,9 +86,9 @@
 		7A87F78E2322B1FC0011C6EF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				7A87F7772322A9FF0011C6EF /* ViewController.swift */,
-				7A87F7952323860D0011C6EF /* InputDiscountViewController.swift */,
+				7A87F7772322A9FF0011C6EF /* InputPersonViewController.swift */,
 				7A87F78C2322B1F00011C6EF /* InputDataViewController.swift */,
+				7A87F7952323860D0011C6EF /* InputDiscountViewController.swift */,
 				7A01AE752324A2640023A281 /* OtherDataViewController.swift */,
 				7A01AE7123249F300023A281 /* ResultViewController.swift */,
 			);
@@ -184,7 +184,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A87F7912322B47A0011C6EF /* Extension.swift in Sources */,
-				7A87F7782322A9FF0011C6EF /* ViewController.swift in Sources */,
+				7A87F7782322A9FF0011C6EF /* InputPersonViewController.swift in Sources */,
 				7A87F78D2322B1F00011C6EF /* InputDataViewController.swift in Sources */,
 				7A01AE7223249F300023A281 /* ResultViewController.swift in Sources */,
 				7A87F7762322A9FF0011C6EF /* AppDelegate.swift in Sources */,

@@ -13,7 +13,7 @@
         <!--Jumlah Orang-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DiscountCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="InputPersonViewController" customModule="DiscountCalculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -66,7 +66,7 @@
                     <navigationItem key="navigationItem" title="Jumlah Orang" id="cQY-xq-6Ag"/>
                     <connections>
                         <outlet property="textField" destination="vko-UH-cpZ" id="ynt-EI-TZY"/>
-                        <segue destination="0pc-6e-vxz" kind="show" identifier="inputDiscount" id="04M-gS-oLZ"/>
+                        <segue destination="jve-O1-Gbf" kind="show" identifier="inputData" id="CfB-Ha-b3z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -123,7 +123,7 @@
                                                             </constraints>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                                            <textInputTraits key="textInputTraits"/>
+                                                            <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                                         </textField>
                                                     </subviews>
                                                     <constraints>
@@ -199,12 +199,12 @@
                         <outlet property="scrollView" destination="X8f-Jl-SMR" id="tYf-8C-EYe"/>
                         <outlet property="tableAndButtonView" destination="gLl-VF-wrI" id="A9P-6N-gTG"/>
                         <outlet property="tableView" destination="g5f-EA-XBO" id="t32-cJ-8Kb"/>
-                        <segue destination="96D-uP-lfr" kind="show" identifier="otherData" id="Wk8-iH-IT7"/>
+                        <segue destination="0pc-6e-vxz" kind="show" identifier="inputDiscount" id="9hB-Ta-C0p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ax9-xv-ZMV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3174" y="138"/>
+            <point key="canvasLocation" x="2064" y="138"/>
         </scene>
         <!--Result-->
         <scene sceneID="2E7-7S-UjO">
@@ -300,7 +300,7 @@ Harga :</string>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PPN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5UB-ry-XH3">
                                 <rect key="frame" x="20" y="224" width="374" height="44"/>
@@ -318,7 +318,7 @@ Harga :</string>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I40-QC-5nT">
                                 <rect key="frame" x="20" y="370" width="374" height="44"/>
@@ -422,12 +422,12 @@ Harga :</string>
                     <navigationItem key="navigationItem" title="Discount" id="jXx-Y2-b8w"/>
                     <connections>
                         <outlet property="discountTextField" destination="S2v-ca-rLy" id="8ct-Wz-URL"/>
-                        <segue destination="jve-O1-Gbf" kind="show" identifier="inputData" id="R6n-PT-X6s"/>
+                        <segue destination="96D-uP-lfr" kind="show" identifier="otherData" id="ihQ-Lf-lH4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="63a-hx-m5n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2087" y="138"/>
+            <point key="canvasLocation" x="3126" y="138"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KGI-Tb-4rU">
