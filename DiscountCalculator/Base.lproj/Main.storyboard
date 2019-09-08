@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Jumlah Orang-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DiscountCalculator" customModuleProvider="target" sceneMemberID="viewController">
@@ -28,7 +28,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Jumlah" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="vko-UH-cpZ">
-                                <rect key="frame" x="20" y="172" width="374" height="44"/>
+                                <rect key="frame" x="20" y="170" width="374" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="aWD-Q9-JPS"/>
@@ -38,7 +38,7 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="done"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bUa-u4-YL5">
-                                <rect key="frame" x="20" y="266" width="374" height="44"/>
+                                <rect key="frame" x="20" y="264" width="374" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="rHN-pY-mP1"/>
                                 </constraints>
@@ -55,7 +55,7 @@
                             <constraint firstItem="bUa-u4-YL5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="CKF-YQ-lBz"/>
                             <constraint firstItem="bUa-u4-YL5" firstAttribute="top" secondItem="vko-UH-cpZ" secondAttribute="bottom" constant="50" id="Ix6-Ns-rL2"/>
                             <constraint firstItem="vko-UH-cpZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Wgy-Ve-MHg"/>
-                            <constraint firstItem="vko-UH-cpZ" firstAttribute="top" secondItem="FaL-bA-yOY" secondAttribute="bottom" constant="10" id="Yfr-cL-Yfj"/>
+                            <constraint firstItem="vko-UH-cpZ" firstAttribute="top" secondItem="FaL-bA-yOY" secondAttribute="bottom" constant="8" id="Yfr-cL-Yfj"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FaL-bA-yOY" secondAttribute="trailing" constant="20" id="d0T-mJ-GTm"/>
                             <constraint firstItem="vko-UH-cpZ" firstAttribute="trailing" secondItem="FaL-bA-yOY" secondAttribute="trailing" id="dT7-2b-jBK"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bUa-u4-YL5" secondAttribute="trailing" constant="20" id="vJ1-p2-SzW"/>
@@ -63,7 +63,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="i3X-wI-XHz"/>
+                    <navigationItem key="navigationItem" title="Jumlah Orang" id="cQY-xq-6Ag"/>
                     <connections>
                         <outlet property="textField" destination="vko-UH-cpZ" id="ynt-EI-TZY"/>
                         <segue destination="0pc-6e-vxz" kind="show" identifier="inputDiscount" id="04M-gS-oLZ"/>
@@ -73,7 +73,7 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="137.94642857142856"/>
         </scene>
-        <!--Input Data View Controller-->
+        <!--Input Data-->
         <scene sceneID="FHx-b4-Fbz">
             <objects>
                 <viewController id="jve-O1-Gbf" customClass="InputDataViewController" customModule="DiscountCalculator" customModuleProvider="target" sceneMemberID="viewController">
@@ -193,34 +193,175 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="Input Data" id="Vbb-QB-Ldm"/>
                     <connections>
                         <outlet property="nextButton" destination="cPX-ko-M8I" id="5TL-u3-de2"/>
                         <outlet property="scrollView" destination="X8f-Jl-SMR" id="tYf-8C-EYe"/>
                         <outlet property="tableAndButtonView" destination="gLl-VF-wrI" id="A9P-6N-gTG"/>
                         <outlet property="tableView" destination="g5f-EA-XBO" id="t32-cJ-8Kb"/>
-                        <segue destination="gEk-G3-htY" kind="show" identifier="result" id="cj1-DB-czh"/>
+                        <segue destination="96D-uP-lfr" kind="show" identifier="otherData" id="Wk8-iH-IT7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ax9-xv-ZMV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3174" y="138"/>
         </scene>
-        <!--View Controller-->
+        <!--Result-->
         <scene sceneID="2E7-7S-UjO">
             <objects>
-                <viewController id="gEk-G3-htY" sceneMemberID="viewController">
+                <viewController id="gEk-G3-htY" customClass="ResultViewController" customModule="DiscountCalculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vdi-kE-abM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lhB-Ib-3TH">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="80" id="u3b-rc-tb2" customClass="ResultTableViewCell" customModule="DiscountCalculator" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="u3b-rc-tb2" id="tuQ-va-JDt">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="79.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PgN-AE-tZG">
+                                                    <rect key="frame" x="20" y="8" width="374" height="63.5"/>
+                                                    <string key="text">Nama
+Harga :</string>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="PgN-AE-tZG" firstAttribute="top" secondItem="tuQ-va-JDt" secondAttribute="top" constant="8" id="0df-cP-FQy"/>
+                                                <constraint firstAttribute="bottom" secondItem="PgN-AE-tZG" secondAttribute="bottom" constant="8" id="1hB-fK-tfY"/>
+                                                <constraint firstAttribute="trailing" secondItem="PgN-AE-tZG" secondAttribute="trailing" constant="20" id="3So-oR-gJM"/>
+                                                <constraint firstItem="PgN-AE-tZG" firstAttribute="leading" secondItem="tuQ-va-JDt" secondAttribute="leading" constant="20" id="m5j-20-Cjm"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="namePriceLabel" destination="PgN-AE-tZG" id="Kjk-go-PxT"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="lhB-Ib-3TH" firstAttribute="top" secondItem="ue7-hv-Xob" secondAttribute="top" id="BKh-ki-NFZ"/>
+                            <constraint firstItem="ue7-hv-Xob" firstAttribute="bottom" secondItem="lhB-Ib-3TH" secondAttribute="bottom" id="EID-9w-mVc"/>
+                            <constraint firstItem="lhB-Ib-3TH" firstAttribute="leading" secondItem="ue7-hv-Xob" secondAttribute="leading" id="Gee-wG-C8L"/>
+                            <constraint firstItem="ue7-hv-Xob" firstAttribute="trailing" secondItem="lhB-Ib-3TH" secondAttribute="trailing" id="c5j-D4-lbl"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ue7-hv-Xob"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Result" id="i9K-ua-YTD">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="9G5-ct-eXw">
+                            <connections>
+                                <action selector="doneButtonDidTap:" destination="gEk-G3-htY" id="4t4-x2-v69"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="lhB-Ib-3TH" id="fOg-8e-hNK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9lz-xN-N95" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4299" y="138"/>
+            <point key="canvasLocation" x="5235" y="138"/>
         </scene>
-        <!--Input Discount View Controller-->
+        <!--Other Data-->
+        <scene sceneID="YLW-OX-KHt">
+            <objects>
+                <viewController id="96D-uP-lfr" customClass="OtherDataViewController" customModule="DiscountCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QvK-f4-9kc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ongkir" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQg-mi-bCD">
+                                <rect key="frame" x="20" y="108" width="374" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="8QC-nP-dYw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ongkir" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kVz-5h-4uB">
+                                <rect key="frame" x="20" y="160" width="374" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="xul-4k-z13"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PPN (%)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5UB-ry-XH3">
+                                <rect key="frame" x="20" y="224" width="374" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="HYY-lt-8oW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" placeholder="PPN (%)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4je-7J-eLF">
+                                <rect key="frame" x="20" y="276" width="374" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="2DC-fn-rPj"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I40-QC-5nT">
+                                <rect key="frame" x="20" y="370" width="374" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="3sj-L2-F7d"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="nextButtonDidTap:" destination="96D-uP-lfr" eventType="touchUpInside" id="XCh-0N-mS5"/>
+                                    <action selector="nextButtonDidTap:" destination="3b0-C4-zeM" eventType="touchUpInside" id="ggv-Xj-cXv"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="I40-QC-5nT" firstAttribute="trailing" secondItem="bQg-mi-bCD" secondAttribute="trailing" id="2PG-0X-Qr6"/>
+                            <constraint firstItem="4je-7J-eLF" firstAttribute="trailing" secondItem="5UB-ry-XH3" secondAttribute="trailing" id="3IY-zr-rj4"/>
+                            <constraint firstItem="5UB-ry-XH3" firstAttribute="leading" secondItem="kVz-5h-4uB" secondAttribute="leading" id="AnY-sx-cTU"/>
+                            <constraint firstItem="kVz-5h-4uB" firstAttribute="top" secondItem="bQg-mi-bCD" secondAttribute="bottom" constant="8" id="Eez-3T-ClQ"/>
+                            <constraint firstItem="5UB-ry-XH3" firstAttribute="top" secondItem="kVz-5h-4uB" secondAttribute="bottom" constant="20" id="G44-Mn-UhK"/>
+                            <constraint firstItem="I40-QC-5nT" firstAttribute="top" secondItem="4je-7J-eLF" secondAttribute="bottom" constant="50" id="KoO-G2-gDh"/>
+                            <constraint firstItem="bQg-mi-bCD" firstAttribute="leading" secondItem="Q9l-Dz-sTU" secondAttribute="leading" constant="20" id="L56-CR-bzM"/>
+                            <constraint firstItem="5UB-ry-XH3" firstAttribute="trailing" secondItem="kVz-5h-4uB" secondAttribute="trailing" id="PXI-V5-13l"/>
+                            <constraint firstItem="Q9l-Dz-sTU" firstAttribute="trailing" secondItem="bQg-mi-bCD" secondAttribute="trailing" constant="20" id="WCl-IY-D27"/>
+                            <constraint firstItem="bQg-mi-bCD" firstAttribute="top" secondItem="Q9l-Dz-sTU" secondAttribute="top" constant="20" id="Ypv-Gj-kN6"/>
+                            <constraint firstItem="4je-7J-eLF" firstAttribute="leading" secondItem="5UB-ry-XH3" secondAttribute="leading" id="aTr-ea-gkK"/>
+                            <constraint firstItem="kVz-5h-4uB" firstAttribute="leading" secondItem="bQg-mi-bCD" secondAttribute="leading" id="bbN-9B-qc3"/>
+                            <constraint firstItem="kVz-5h-4uB" firstAttribute="trailing" secondItem="bQg-mi-bCD" secondAttribute="trailing" id="eg7-GH-QQp"/>
+                            <constraint firstItem="4je-7J-eLF" firstAttribute="top" secondItem="5UB-ry-XH3" secondAttribute="bottom" constant="8" id="tLM-CA-N6p"/>
+                            <constraint firstItem="I40-QC-5nT" firstAttribute="leading" secondItem="bQg-mi-bCD" secondAttribute="leading" id="tkZ-zZ-1pW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Q9l-Dz-sTU"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Other Data" id="9Tv-79-GKA"/>
+                    <connections>
+                        <outlet property="ongkirTextField" destination="kVz-5h-4uB" id="0kp-kc-m4h"/>
+                        <outlet property="pajakTextField" destination="4je-7J-eLF" id="eIc-Hw-GWX"/>
+                        <segue destination="gEk-G3-htY" kind="show" identifier="result" id="fn5-PF-Z8U"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZmR-kZ-abY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="3b0-C4-zeM" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="4215.9420289855079" y="137.94642857142856"/>
+        </scene>
+        <!--Discount-->
         <scene sceneID="cc2-NE-9Dm">
             <objects>
                 <viewController id="0pc-6e-vxz" customClass="InputDiscountViewController" customModule="DiscountCalculator" customModuleProvider="target" sceneMemberID="viewController">
@@ -238,7 +379,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Jumlah" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="S2v-ca-rLy">
-                                <rect key="frame" x="20" y="172" width="374" height="44"/>
+                                <rect key="frame" x="20" y="170" width="374" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="JbI-zk-X5p"/>
@@ -248,7 +389,7 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="done"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dLT-C1-ZUC">
-                                <rect key="frame" x="20" y="266" width="374" height="44"/>
+                                <rect key="frame" x="20" y="264" width="374" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="V7A-zN-5nd"/>
                                 </constraints>
@@ -264,7 +405,7 @@
                         <constraints>
                             <constraint firstItem="ea5-wH-9zD" firstAttribute="top" secondItem="lDa-Fg-tZj" secondAttribute="top" constant="30" id="590-qp-MD2"/>
                             <constraint firstItem="S2v-ca-rLy" firstAttribute="trailing" secondItem="ea5-wH-9zD" secondAttribute="trailing" id="CmF-hz-MUs"/>
-                            <constraint firstItem="S2v-ca-rLy" firstAttribute="top" secondItem="ea5-wH-9zD" secondAttribute="bottom" constant="10" id="FDk-A6-POK"/>
+                            <constraint firstItem="S2v-ca-rLy" firstAttribute="top" secondItem="ea5-wH-9zD" secondAttribute="bottom" constant="8" id="FDk-A6-POK"/>
                             <constraint firstItem="S2v-ca-rLy" firstAttribute="leading" secondItem="ea5-wH-9zD" secondAttribute="leading" id="PWD-Uy-hBa"/>
                             <constraint firstItem="dLT-C1-ZUC" firstAttribute="top" secondItem="S2v-ca-rLy" secondAttribute="bottom" constant="50" id="XDu-J9-TPu"/>
                             <constraint firstItem="ea5-wH-9zD" firstAttribute="leading" secondItem="jRv-29-jNK" secondAttribute="leading" constant="20" id="Z0Y-2e-k2q"/>
@@ -274,6 +415,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lDa-Fg-tZj"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Discount" id="jXx-Y2-b8w"/>
                     <connections>
                         <outlet property="discountTextField" destination="S2v-ca-rLy" id="8ct-Wz-URL"/>
                         <segue destination="jve-O1-Gbf" kind="show" identifier="inputData" id="R6n-PT-X6s"/>

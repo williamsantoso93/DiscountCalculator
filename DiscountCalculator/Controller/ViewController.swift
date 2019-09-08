@@ -22,7 +22,6 @@ class ViewController: UIViewController {
     
     @IBAction func nextDidTap(_ sender: Any) {
         personQty = Int(textField?.text ?? "0") ?? 0
-        print(personQty)
         if personQty > 0 {
             performSegue(withIdentifier: "inputDiscount", sender: nil)
         }

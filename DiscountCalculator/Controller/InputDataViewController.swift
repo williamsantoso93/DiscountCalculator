@@ -17,13 +17,25 @@ class InputDataViewController: UIViewController {
     
     var personQty: Int?
     var discount: Double?
+    
+    var allCellsPriceText = [String]()
+    var allCellsNameText = [String]()
+    
+    
+    var allPrices: [Double] = []
+    var pricesAfterDiscount: [Double] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         tableView.tableFooterView = UIView.init(frame: .zero)
-//        createLabelAndTextField()
+        
+        //append array
+        for index in 1 ... (personQty ?? 1) {
+            allCellsNameText.append("No Name \(index)")
+            allCellsPriceText.append("0")
+        }
         
         //move view when keyboard apprear
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -37,7 +49,7 @@ class InputDataViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         
     }
-    var prevNextButtonOriginY = CGFloat()
+    var prevNextButtonOriginY = CGRect()
     
     @objc func keyboardWillChange(notification: Notification) {
         
@@ -48,11 +60,11 @@ class InputDataViewController: UIViewController {
         if notification.name == UIResponder.keyboardWillShowNotification {
 ////            tableAndButtonView.frame.origin.y = -keyboardRect.height
 //            tableView.frame.size = CGSize(height: -keyboardRect.height)
-//            prevNextButtonOriginY = nextButton.frame.origin.y
+            prevNextButtonOriginY = nextButton.frame
 //            print("test")
 //            print(prevNextButtonOriginY)
 //            print(nextButton.frame.origin.y)
-//            nextButton.frame.origin.y = -keyboardRect.height
+            nextButton.frame.origin.y = -keyboardRect.height
 //            print(keyboardRect.height)
 //            print(nextButton.frame.origin.y)
             
@@ -61,69 +73,13 @@ class InputDataViewController: UIViewController {
 //            let navBarHeight = self.navigationController?.navigationBar.frame.height
 //
 //            tableAndButtonView.frame.origin.y = statusBarHeight + (navBarHeight ?? 0)
-//            nextButton.frame.origin.y = prevNextButtonOriginY
+            nextButton.frame = prevNextButtonOriginY
         }
     }
 
     
-    //MARK:- manage label and text field
-    func createLabelAndTextField() {
-        for qty in 1...personQty! {
-            let addTextField = UITextField()
-            
-            addTextField.setBottomBorder()
-            
-            addTextField.placeholder = "Jumlah"
-            let y = 30 + (44 + 10) * (qty - 1)
-            let width = scrollView.frame.width - 40
-            print(y)
-            addTextField.frame =  CGRect(x: 20, y: y, width: Int(width), height: 44)
-            addTextField.font = .preferredFont(forTextStyle: .title1)
-            addTextField.backgroundColor = .white
-            
-            
-//            NSLayoutConstraint.activate([
-//                addTextField.topAnchor.constraint(equalTo: confirmationInfoView.topAnchor),
-//                addTextField.bottomAnchor.constraint(equalTo: confirmationInfoView.bottomAnchor),
-//                addTextField.leadingAnchor.constraint(equalTo: confirmationInfoView.leadingAnchor),
-//                addTextField.trailingAnchor.constraint(equalTo: confirmationInfoView.trailingAnchor)
-//                ])
-            
-//            addButton.backgroundColor = randomColor()
-//            
-//            addButton.frame = randomCoor(backView: view)
-//            addButton.layer.cornerRadius = addButton.frame.width / 2
-//            
-            addTextField.addTarget(self, action: #selector(labelAndTextFieldDidTap), for: .touchUpInside)
-//
-//            addButton.alpha = 0
-            
-            self.scrollView.addSubview(addTextField)
-            let w  = scrollView.frame.width
-            scrollView.frame = CGRect(x: 0, y: 0, width: Int(w), height: y + 100)
-        }
-        print(scrollView.frame.height)
-    }
-    
-    
-    
-//    func incorrectAnimation() {
-//        for view in self.tableView as [UIView] {
-//            if let btn = view as? UIButton {
-//                UIView.animate(withDuration: 0.2) {
-//                    btn.frame = self.randomCoor(backView: self.view)
-//                    btn.layer.cornerRadius = btn.frame.width / 2
-//                    if btn.tag != 1 {
-//                        btn.backgroundColor = self.randomColor()
-//                    }
-//                }
-//            }
-//        }
-//        self.view.sendSubviewToBack(meButton)
-//    }
     @IBAction func nextButtonDidTap(_ sender: Any) {
         
-//        performSegue(withIdentifier: "result", sender: nil)
         for priceText in allCellsPriceText {
             allPrices.append(Double(priceText)!)
         }
@@ -150,25 +106,22 @@ class InputDataViewController: UIViewController {
         
         print(pricesAfterDiscount)
 
+//        performSegue(withIdentifier: "otherData", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "result" {
-//            let controller = segue.destination as! InputDiscountViewController
-//            controller.personQty = self.personQty
-//
-//        }
+        if segue.identifier == "otherData" {
+            let controller = segue.destination as! OtherDataViewController
+            controller.discount = self.discount ?? 0
+            controller.allPrices = self.allPrices
+            controller.pricesAfterDiscount = self.pricesAfterDiscount
+            controller.names = allCellsNameText
+        }
     }
     
     @objc func labelAndTextFieldDidTap(sender: UITextField!) {
         sender.resignFirstResponder()
     }
-    var allCellsPriceText = [String]()
-    var allCellsNameText = [String]()
-    
-    
-    var allPrices: [Double] = []
-    var pricesAfterDiscount: [Double] = []
 }
 
 
@@ -190,8 +143,6 @@ extension InputDataViewController: UITableViewDataSource, UITableViewDelegate, U
         cell.priceTextField.placeholder = "Jumlah"
         cell.priceTextField.setBottomBorder()
         
-        allCellsNameText.append("No Name \(cell.nameTexfField.tag + 1)")
-        allCellsPriceText.append("0")
         return cell
     }
     
