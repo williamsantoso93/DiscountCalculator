@@ -96,19 +96,25 @@ extension ResultViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ResultTableViewCell
+        let price: String = String(format: "%.0f", prices[indexPath.row])
+        let priceDiscount: String = String(format: "%.0f", pricesDiscount[indexPath.row])
+        let pricePajak: String = String(format: "%.0f", pricesPajak[indexPath.row])
+        let priceOngkirPerPersonText: String = String(format: "%.0f", priceOngkirPerPerson)
+        let priceAfterDiscountPajakOngkir: String = String(format: "%.0f", pricesAfterDiscountPajakOngkir[indexPath.row])
+        
         cell.namePriceLabel.text = """
         Nama :
         \(names[indexPath.row])
         Harga :
-        \(prices[indexPath.row])
+        \(price)
         Harga Discount :
-        - \(pricesDiscount[indexPath.row])
+        - \(priceDiscount)
         Harga pajak :
-        \(pricesPajak[indexPath.row])
+        \(pricePajak)
         Harga Ongkir :
-        \(priceOngkirPerPerson)
+        \(priceOngkirPerPersonText)
         Harga setelah Discount + Pajak + Ongkir :
-        \(pricesAfterDiscountPajakOngkir[indexPath.row])
+        \(priceAfterDiscountPajakOngkir)
         """
         return cell
     }

@@ -26,16 +26,6 @@ class InputDiscountViewController: UIViewController {
 //        discountTextField.setBottomBorder()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     @IBAction func nextButtonDidTap(_ sender: Any) {
         let distString = discountTextField.text
         discount = Double(distString!) ?? 0
@@ -43,7 +33,6 @@ class InputDiscountViewController: UIViewController {
             performSegue(withIdentifier: "otherData", sender: nil)
         }
     }
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "otherData" {
