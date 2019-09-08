@@ -99,7 +99,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="okj-b1-0sh">
-                                                            <rect key="frame" x="20" y="8" width="374" height="44"/>
+                                                            <rect key="frame" x="20" y="8" width="335" height="44"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="44" id="8lh-oK-ZVA"/>
                                                             </constraints>
@@ -108,7 +108,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nama" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mMg-J8-OJo">
-                                                            <rect key="frame" x="20" y="60" width="374" height="44"/>
+                                                            <rect key="frame" x="20" y="60" width="335" height="44"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="44" id="ggB-Pn-TOC"/>
                                                             </constraints>
@@ -117,7 +117,7 @@
                                                             <textInputTraits key="textInputTraits"/>
                                                         </textField>
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Jumlah" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4fO-yC-vPs">
-                                                            <rect key="frame" x="20" y="112" width="374" height="44"/>
+                                                            <rect key="frame" x="20" y="112" width="335" height="44"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="44" id="PC4-Xs-msH"/>
                                                             </constraints>
@@ -217,6 +217,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lhB-Ib-3TH">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="scrollIndicatorInsets" minX="0.0" minY="12" maxX="0.0" maxY="20"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="182" id="u3b-rc-tb2" customClass="ResultTableViewCell" customModule="DiscountCalculator" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="182"/>
@@ -226,7 +227,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PgN-AE-tZG">
-                                                    <rect key="frame" x="20" y="8" width="374" height="165.5"/>
+                                                    <rect key="frame" x="20" y="8" width="335" height="165.5"/>
                                                     <string key="text">Nama
 Harga :</string>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>

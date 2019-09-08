@@ -21,6 +21,9 @@ class InputDataViewController: UIViewController {
     var pricesText: [String] = []
     var prices: [Double] = []
 
+    var originTableViewSize = CGSize()
+    var originNextButton = CGRect()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,6 +37,11 @@ class InputDataViewController: UIViewController {
             prices.append(0)
         }
         
+        originTableViewSize = tableView.frame.size
+        originNextButton = nextButton.frame
+//        print(tableView.frame.size)
+//        print(nextButton.frame)
+        
         //move view when keyboard apprear
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -46,7 +54,6 @@ class InputDataViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         
     }
-    var prevNextButtonOriginY = CGRect()
     
     @objc func keyboardWillChange(notification: Notification) {
         
@@ -55,42 +62,29 @@ class InputDataViewController: UIViewController {
         }
         
         if notification.name == UIResponder.keyboardWillShowNotification {
-////            tableAndButtonView.frame.origin.y = -keyboardRect.height
-//            tableView.frame.size = CGSize(height: -keyboardRect.height)
-//            prevNextButtonOriginY = nextButton.frame
-//            print("test")
-//            print(prevNextButtonOriginY)
-//            print(nextButton.frame.origin.y)
-//            nextButton.frame.origin.y = -keyboardRect.height
-//            print(keyboardRect.height)
-//            print(nextButton.frame.origin.y)
             
+            tableView.frame.size = CGSize(width: originTableViewSize.width, height: (originTableViewSize.height - keyboardRect.height))
+            nextButton.frame = CGRect(x: originNextButton.minX, y: (originNextButton.minY - keyboardRect.height), width: originNextButton.width, height: originNextButton.height)
+//            print(tableView.frame.size)
+//            print(nextButton.frame)
         } else {
-//            let statusBarHeight = UIApplication.shared.statusBarFrame.height
-//            let navBarHeight = self.navigationController?.navigationBar.frame.height
-//
-//            tableAndButtonView.frame.origin.y = statusBarHeight + (navBarHeight ?? 0)
-//            nextButton.frame = prevNextButtonOriginY
+            tableView.frame.size = originTableViewSize
+            nextButton.frame = originNextButton
+//            print(tableView.frame.size)
+//            print(nextButton.frame)
         }
     }
 
     
     @IBAction func nextButtonDidTap(_ sender: Any) {
         resignFirstResponder()
-        
-        //change pricesText to Double
-//        let qty: Int = Int(personQty ?? 1) - 1
-//        for index in 0 ... qty {
-//            let price: Double = Double(pricesText[index]) ?? 0
-//            prices.insert(price, at: index)
-//        }
         view.endEditing(true)
         
-        print("names")
-        print(names)
-        print("prices")
-        print(pricesText)
-        print(prices)
+//        print("names")
+//        print(names)
+//        print("prices")
+//        print(pricesText)
+//        print(prices)
         performSegue(withIdentifier: "inputDiscount", sender: nil)
     }
     

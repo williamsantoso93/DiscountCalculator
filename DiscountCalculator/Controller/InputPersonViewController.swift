@@ -33,28 +33,11 @@ class InputPersonViewController: UIViewController {
             controller.personQty = self.personQty
         }
     }
-    var amount = Double()
 }
 
 extension InputPersonViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
-    }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if let digit = Double(string) {
-            amount = amount * 10 + digit
-        }
-        if string == "" {
-            amount = amount/10
-        }
-        
-        let formatter = NumberFormatter()
-        
-        formatter.numberStyle = .decimal
-        
-        textField.text = formatter.string(from: NSNumber(value: amount))
-        return false
     }
 }
