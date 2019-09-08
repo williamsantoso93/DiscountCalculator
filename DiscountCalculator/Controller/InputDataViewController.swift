@@ -18,13 +18,9 @@ class InputDataViewController: UIViewController {
     var personQty: Int?
     var discount: Double?
     
-    var allCellsPriceText = [String]()
-    var allCellsNameText = [String]()
-    
     var names: [String] = []
+    var pricesText: [String] = []
     var prices: [Double] = []
-    var pricesDiscount: [Double] = []
-    var pricesAfterDiscount: [Double] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,12 +30,9 @@ class InputDataViewController: UIViewController {
         
         //append array
         for index in 1 ... (personQty ?? 1) {
-            allCellsNameText.append("No Name \(index)")
-            allCellsPriceText.append("0")
             names.append("No Name \(index)")
+            pricesText.append("0")
             prices.append(0)
-            pricesDiscount.append(0)
-            pricesAfterDiscount.append(0)
         }
         
         //move view when keyboard apprear
@@ -84,13 +77,13 @@ class InputDataViewController: UIViewController {
 
     
     @IBAction func nextButtonDidTap(_ sender: Any) {
+        //change pricesText to Double
         let qty: Int = Int(personQty ?? 1) - 1
         for index in 0 ... qty {
-            let price: Double = Double(allCellsPriceText[index]) ?? 0
+            let price: Double = Double(pricesText[index]) ?? 0
             prices.insert(price, at: index)
         }
         
-//        countDiscount()
         performSegue(withIdentifier: "otherData", sender: nil)
     }
     
@@ -133,11 +126,8 @@ class InputDataViewController: UIViewController {
             controller.personQty = self.personQty
             controller.discount = self.discount ?? 0
             
-            controller.names = self.allCellsNameText
-            
+            controller.names = self.names
             controller.prices = self.prices
-            controller.pricesDiscount = self.pricesDiscount
-            controller.pricesAfterDiscount = self.pricesAfterDiscount
         }
     }
     
@@ -170,21 +160,17 @@ extension InputDataViewController: UITableViewDataSource, UITableViewDelegate, U
     
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
         if textField.placeholder == "Nama" {
-            print("Nama")
             let indexOf = textField.tag
-            if (indexOf <= (allCellsNameText.count - 1)) {
-                allCellsNameText.remove(at: indexOf)
+            if (indexOf <= (names.count - 1)) {
+                names.remove(at: indexOf)
             }
-            allCellsNameText.insert(textField.text!, at: indexOf)
-            print(allCellsNameText)
+            names.insert(textField.text!, at: indexOf)
         } else if textField.placeholder == "Jumlah" {
-            print("jumlah")
             let indexOf = textField.tag
-            if (indexOf <= (allCellsPriceText.count - 1)) {
-                allCellsPriceText.remove(at: indexOf)
+            if (indexOf <= (pricesText.count - 1)) {
+                pricesText.remove(at: indexOf)
             }
-            allCellsPriceText.insert(textField.text!, at: indexOf)
-            print(allCellsPriceText)
+            pricesText.insert(textField.text!, at: indexOf)
         }
     }
     

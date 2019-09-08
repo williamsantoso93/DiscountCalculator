@@ -15,27 +15,81 @@ class ResultViewController: UIViewController {
     var personQty: Int?
     var discount: Double?
     var names: [String] = []
-    var allPrices: [Double] = []
+    var prices: [Double] = []
     var ongkir = Double()
     var pajak = Double()
     
+    var priceOngkirPerPerson = Double()
+    var pricesDiscount: [Double] = []
+    var pricesPajak: [Double] = []
     var pricesAfterDiscount: [Double] = []
-    var pricesAfterDiscountOngkirPajak: [Double] = []
+    var pricesAfterDiscountPajakOngkir: [Double] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        tableView.tableFooterView = UIView.init(frame: .zero)
+        
+        //append array
+        for _ in 1 ... (personQty ?? 1) {
+            pricesAfterDiscount.append(0)
+            pricesAfterDiscountPajakOngkir.append(0)
+        }
+        
+        countDiscount()
     }
     
+    func countDiscount() {
+        var totalPrice: Double = 0
+        for price in prices {
+            totalPrice += price
+        }
+        print("total")
+        print(totalPrice)
+        
+        let persenDiscount = (discount ?? 0) / totalPrice
+        print("persen diskon")
+        print(persenDiscount)
+        
+        let persenPajak = (pajak) / totalPrice
+        print("persen pajak")
+        print(persenPajak)
+        
+        priceOngkirPerPerson = ongkir / Double(personQty ?? 1)
+        print("ongkir per orang")
+        print(priceOngkirPerPerson)
+        
+        
+        for index in 0 ... (personQty ?? 0) {
+            let priceDiscount = prices[index] * persenDiscount
+            let priceAfterDiscount = prices[index] - priceDiscount
+            
+            let pricePajak = prices[index] * persenPajak
+            let priceAfterDiscountPajak = priceAfterDiscount + pricePajak
+            
+            let priceAfterDiscountPajakOngkir = priceAfterDiscountPajak + priceOngkirPerPerson
+            
+            pricesDiscount.insert(priceDiscount, at: index)
+            pricesPajak.insert(pricePajak, at: index)
+            pricesAfterDiscount.insert(priceAfterDiscount, at: index)
+            pricesAfterDiscountPajakOngkir.insert(priceAfterDiscountPajakOngkir, at: index)
+        }
+        
+        print("price after diskon")
+        print(pricesAfterDiscount)
+        print("price after diskon pajak ongkir")
+        print(pricesAfterDiscountPajakOngkir)
+    }
     
-    @IBAction func doneButtonDidTap(_ sender: Any) { self.navigationController?.popToRootViewController(animated: true)
+    @IBAction func doneButtonDidTap(_ sender: Any) {
+        self.navigationController?.popToRootViewController(animated: true)
     }
 }
 
 extension ResultViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return allPrices.count
+        return personQty ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -44,11 +98,15 @@ extension ResultViewController: UITableViewDataSource, UITableViewDelegate {
         Nama :
         \(names[indexPath.row])
         Harga :
-        \(allPrices[indexPath.row])
-        Harga setelah Discount :
-        \(pricesAfterDiscount[indexPath.row])
-        Harga setelah Discount + Pajak :
-        \(pricesAfterDiscountOngkirPajak[indexPath.row])
+        \(prices[indexPath.row])
+        Harga Discount :
+        - \(pricesDiscount[indexPath.row])
+        Harga pajak :
+        \(pricesPajak[indexPath.row])
+        Harga Ongkir :
+        \(priceOngkirPerPerson)
+        Harga setelah Discount + Pajak + Ongkir :
+        \(pricesAfterDiscountPajakOngkir[indexPath.row])
         """
         return cell
     }
