@@ -21,8 +21,9 @@ class InputDataViewController: UIViewController {
     var allCellsPriceText = [String]()
     var allCellsNameText = [String]()
     
-    
-    var allPrices: [Double] = []
+    var names: [String] = []
+    var prices: [Double] = []
+    var pricesDiscount: [Double] = []
     var pricesAfterDiscount: [Double] = []
 
     override func viewDidLoad() {
@@ -35,6 +36,10 @@ class InputDataViewController: UIViewController {
         for index in 1 ... (personQty ?? 1) {
             allCellsNameText.append("No Name \(index)")
             allCellsPriceText.append("0")
+            names.append("No Name \(index)")
+            prices.append(0)
+            pricesDiscount.append(0)
+            pricesAfterDiscount.append(0)
         }
         
         //move view when keyboard apprear
@@ -60,11 +65,11 @@ class InputDataViewController: UIViewController {
         if notification.name == UIResponder.keyboardWillShowNotification {
 ////            tableAndButtonView.frame.origin.y = -keyboardRect.height
 //            tableView.frame.size = CGSize(height: -keyboardRect.height)
-            prevNextButtonOriginY = nextButton.frame
+//            prevNextButtonOriginY = nextButton.frame
 //            print("test")
 //            print(prevNextButtonOriginY)
 //            print(nextButton.frame.origin.y)
-            nextButton.frame.origin.y = -keyboardRect.height
+//            nextButton.frame.origin.y = -keyboardRect.height
 //            print(keyboardRect.height)
 //            print(nextButton.frame.origin.y)
             
@@ -73,49 +78,66 @@ class InputDataViewController: UIViewController {
 //            let navBarHeight = self.navigationController?.navigationBar.frame.height
 //
 //            tableAndButtonView.frame.origin.y = statusBarHeight + (navBarHeight ?? 0)
-            nextButton.frame = prevNextButtonOriginY
+//            nextButton.frame = prevNextButtonOriginY
         }
     }
 
     
     @IBAction func nextButtonDidTap(_ sender: Any) {
-        
-        for priceText in allCellsPriceText {
-            allPrices.append(Double(priceText)!)
+        let qty: Int = Int(personQty ?? 1) - 1
+        for index in 0 ... qty {
+            let price: Double = Double(allCellsPriceText[index]) ?? 0
+            prices.insert(price, at: index)
         }
         
-        print(allPrices)
-        
-        var totalPrice: Double = 0
-        for price in allPrices {
-            totalPrice += price
-        }
-
-        print(totalPrice)
-        
-        let persenDiscount = (discount ?? 0)/totalPrice
-        print(persenDiscount)
-        
-        
-        for price in allPrices {
-            let priceAfterDiscount: Double = price * (1 - persenDiscount)
-            
-            pricesAfterDiscount.append(priceAfterDiscount)
-        }
-        
-        
-        print(pricesAfterDiscount)
-
-//        performSegue(withIdentifier: "otherData", sender: nil)
+//        countDiscount()
+        performSegue(withIdentifier: "otherData", sender: nil)
     }
+    
+//    func countDiscount() {
+//        let qty: Int = Int(personQty ?? 1) - 1
+//        for index in 0 ... qty {
+////            allPrices.append(Double(priceText)!)
+//            let price: Double = Double(allCellsPriceText[index]) ?? 0
+//            prices.insert(price, at: index)
+//        }
+//
+//        print(prices)
+//
+//        var totalPrice: Double = 0
+//        for price in prices {
+//            totalPrice += price
+//        }
+//
+//        print(totalPrice)
+//
+//        let persenDiscount = (discount ?? 0)/totalPrice
+//        print(persenDiscount)
+//
+//        for index in 0 ... qty {
+//            let priceDiscount: Double = prices[index] * persenDiscount
+//            let priceAfterDiscount: Double = prices[index] - priceDiscount
+//
+////            pricesDiscount.append(priceDiscount)
+////            pricesAfterDiscount.append(priceAfterDiscount)
+//            pricesDiscount.insert(priceDiscount, at: index)
+//            pricesAfterDiscount.insert(priceAfterDiscount, at: index)
+//        }
+//        print(pricesDiscount)
+//        print(pricesAfterDiscount)
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "otherData" {
             let controller = segue.destination as! OtherDataViewController
+            controller.personQty = self.personQty
             controller.discount = self.discount ?? 0
-            controller.allPrices = self.allPrices
+            
+            controller.names = self.allCellsNameText
+            
+            controller.prices = self.prices
+            controller.pricesDiscount = self.pricesDiscount
             controller.pricesAfterDiscount = self.pricesAfterDiscount
-            controller.names = allCellsNameText
         }
     }
     
@@ -164,5 +186,10 @@ extension InputDataViewController: UITableViewDataSource, UITableViewDelegate, U
             allCellsPriceText.insert(textField.text!, at: indexOf)
             print(allCellsPriceText)
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

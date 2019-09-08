@@ -35,8 +35,8 @@ class InputDiscountViewController: UIViewController {
     */
     @IBAction func nextButtonDidTap(_ sender: Any) {
         let distString = discountTextField.text
-        discount = Double(Int(distString!) ?? 0)
-        if discount > 0 {
+        discount = Double(distString!) ?? 0
+        if discount >= 0 {
             performSegue(withIdentifier: "inputData", sender: nil)
         }
     }

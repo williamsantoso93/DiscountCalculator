@@ -12,8 +12,13 @@ class ResultViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
+    var personQty: Int?
+    var discount: Double?
     var names: [String] = []
     var allPrices: [Double] = []
+    var ongkir = Double()
+    var pajak = Double()
+    
     var pricesAfterDiscount: [Double] = []
     var pricesAfterDiscountOngkirPajak: [Double] = []
     
