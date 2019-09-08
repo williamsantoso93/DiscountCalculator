@@ -17,7 +17,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.textField.delegate = self
         // Do any additional setup after loading the view.
-        textField.setBottomBorder()
+//        textField.setBottomBorder()
     }
     
     @IBAction func nextDidTap(_ sender: Any) {

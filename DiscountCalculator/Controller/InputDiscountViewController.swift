@@ -20,7 +20,7 @@ class InputDiscountViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         self.discountTextField.delegate = self
-        discountTextField.setBottomBorder()
+//        discountTextField.setBottomBorder()
     }
     
 
