@@ -11,6 +11,7 @@ import UIKit
 class ResultViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var resultLabel: UILabel!
     
     var personQty: Int?
     var discount: Double?
@@ -24,6 +25,8 @@ class ResultViewController: UIViewController {
     var pricesPajak: [Double] = []
     var pricesAfterDiscount: [Double] = []
     var pricesAfterDiscountPajakOngkir: [Double] = []
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +43,22 @@ class ResultViewController: UIViewController {
         }
         
         countDiscount()
+        
+        
+        var totalPrice: Double = 0
+        for price in prices {
+            totalPrice += price
+        }
+        
+        let persenDiscount = ((discount ?? 0) / totalPrice) * 100
+        
+        let persenPajak = ((pajak) / totalPrice) * 100
+        
+        resultLabel.text = """
+        Total Price = \(String(format: "%.0f", totalPrice))
+        Discount = \(String(format: "%.0f", persenDiscount)) %
+        Tax = \(String(format: "%.0f", persenPajak)) %
+        """
     }
     
     func countDiscount() {
@@ -47,20 +66,12 @@ class ResultViewController: UIViewController {
         for price in prices {
             totalPrice += price
         }
-        print("total")
-        print(totalPrice)
         
         let persenDiscount = (discount ?? 0) / totalPrice
-        print("persen diskon")
-        print(persenDiscount)
         
         let persenPajak = (pajak) / totalPrice
-        print("persen pajak")
-        print(persenPajak)
         
         priceOngkirPerPerson = ongkir / Double(personQty ?? 1)
-        print("ongkir per orang")
-        print(priceOngkirPerPerson)
         
         
         for index in 0 ... ((personQty ?? 1) - 1) {
@@ -77,11 +88,6 @@ class ResultViewController: UIViewController {
             pricesAfterDiscount[index] = priceAfterDiscount
             pricesAfterDiscountPajakOngkir[index] = priceAfterDiscountPajakOngkir
         }
-        
-        print("price after diskon")
-        print(pricesAfterDiscount)
-        print("price after diskon pajak ongkir")
-        print(pricesAfterDiscountPajakOngkir)
     }
     
     @IBAction func doneButtonDidTap(_ sender: Any) {
@@ -105,15 +111,15 @@ extension ResultViewController: UITableViewDataSource, UITableViewDelegate {
         cell.namePriceLabel.text = """
         Nama :
         \(names[indexPath.row])
-        Harga :
+        Price :
         \(price)
-        Harga Discount :
+        Price Discount :
         - \(priceDiscount)
-        Harga pajak :
+        Price Tax :
         \(pricePajak)
-        Harga Ongkir :
+        Price Delivery Fee :
         \(priceOngkirPerPersonText)
-        Harga setelah Discount + Pajak + Ongkir :
+        Price after Discount + Tax + Delivery Fee :
         \(priceAfterDiscountPajakOngkir)
         """
         return cell

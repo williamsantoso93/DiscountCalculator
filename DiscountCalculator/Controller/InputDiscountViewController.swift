@@ -11,12 +11,16 @@ import UIKit
 class InputDiscountViewController: UIViewController {
 
     @IBOutlet weak var discountTextField: UITextField!
+    @IBOutlet weak var ongkirTextField: UITextField!
+    @IBOutlet weak var pajakTextField: UITextField!
     
     var personQty: Int?
     var discount: Double = 0.0
     
     var names: [String] = []
     var prices: [Double] = []
+    var ongkir = Double()
+    var pajak = Double()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,19 +33,29 @@ class InputDiscountViewController: UIViewController {
     @IBAction func nextButtonDidTap(_ sender: Any) {
         let distString = discountTextField.text
         discount = Double(distString!) ?? 0
-        if discount >= 0 {
-            performSegue(withIdentifier: "otherData", sender: nil)
+        
+        let ongkirString = ongkirTextField.text
+        ongkir = Double(ongkirString!) ?? 0
+        
+        let pajakString = pajakTextField.text
+        pajak = Double(pajakString!) ?? 0
+        
+        if (ongkir >= 0) && (pajak >= 0) && (discount >= 0) {
+            performSegue(withIdentifier: "result", sender: nil)
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "otherData" {
-            let controller = segue.destination as! OtherDataViewController
+        if segue.identifier == "result" {
+            let controller = segue.destination as! ResultViewController
             controller.personQty = self.personQty
             controller.discount =  self.discount
             
             controller.names = self.names
             controller.prices = self.prices
+            
+            controller.ongkir = self.ongkir
+            controller.pajak = self.pajak
         }
     }
 }

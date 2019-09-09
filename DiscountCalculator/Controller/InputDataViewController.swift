@@ -114,25 +114,25 @@ extension InputDataViewController: UITableViewDataSource, UITableViewDelegate, U
         cell.label.text = "\(indexPath.row + 1)"
         cell.nameTexfField.delegate =  self
         cell.nameTexfField.tag = indexPath.row
-        cell.nameTexfField.placeholder = "Nama"
+        cell.nameTexfField.placeholder = "Name"
         cell.nameTexfField.setBottomBorder()
         
         cell.priceTextField.delegate =  self
         cell.priceTextField.tag = indexPath.row
-        cell.priceTextField.placeholder = "Jumlah"
+        cell.priceTextField.placeholder = "Price"
         cell.priceTextField.setBottomBorder()
         
         return cell
     }
     
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-        if textField.placeholder == "Nama" {
+        if textField.placeholder == "Name" {
             let indexOf = textField.tag
             if (indexOf <= (names.count - 1)) {
                 names.remove(at: indexOf)
             }
             names.insert(textField.text!, at: indexOf)
-        } else if textField.placeholder == "Jumlah" {
+        } else if textField.placeholder == "Price" {
             let indexOf = textField.tag
             if (indexOf <= (pricesText.count - 1)) {
                 pricesText.remove(at: indexOf)
