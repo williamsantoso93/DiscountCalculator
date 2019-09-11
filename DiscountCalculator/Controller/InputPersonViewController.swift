@@ -18,6 +18,12 @@ class InputPersonViewController: UIViewController {
         self.textField.delegate = self
         // Do any additional setup after loading the view.
 //        textField.setBottomBorder()
+        textField.addDoneButtonOnKeyboard()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        textField.text = ""
     }
     
     @IBAction func nextDidTap(_ sender: Any) {

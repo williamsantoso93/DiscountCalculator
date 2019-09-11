@@ -115,12 +115,14 @@ extension InputDataViewController: UITableViewDataSource, UITableViewDelegate, U
         cell.nameTexfField.delegate =  self
         cell.nameTexfField.tag = indexPath.row
         cell.nameTexfField.placeholder = "Name"
-        cell.nameTexfField.setBottomBorder()
+//        cell.nameTexfField.setBottomBorder()
+        cell.nameTexfField.addDoneButtonOnKeyboard()
         
         cell.priceTextField.delegate =  self
         cell.priceTextField.tag = indexPath.row
         cell.priceTextField.placeholder = "Price"
-        cell.priceTextField.setBottomBorder()
+//        cell.priceTextField.setBottomBorder()
+        cell.priceTextField.addDoneButtonOnKeyboard()
         
         return cell
     }

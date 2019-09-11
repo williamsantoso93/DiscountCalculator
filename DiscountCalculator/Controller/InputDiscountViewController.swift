@@ -28,6 +28,9 @@ class InputDiscountViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.discountTextField.delegate = self
 //        discountTextField.setBottomBorder()
+        discountTextField.addDoneButtonOnKeyboard()
+        ongkirTextField.addDoneButtonOnKeyboard()
+        pajakTextField.addDoneButtonOnKeyboard()
     }
     
     @IBAction func nextButtonDidTap(_ sender: Any) {

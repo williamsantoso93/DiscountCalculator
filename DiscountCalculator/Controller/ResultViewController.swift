@@ -109,7 +109,7 @@ extension ResultViewController: UITableViewDataSource, UITableViewDelegate {
         let priceAfterDiscountPajakOngkir: String = String(format: "%.0f", pricesAfterDiscountPajakOngkir[indexPath.row])
         
         cell.namePriceLabel.text = """
-        Nama :
+        Name :
         \(names[indexPath.row])
         Price :
         \(price)
