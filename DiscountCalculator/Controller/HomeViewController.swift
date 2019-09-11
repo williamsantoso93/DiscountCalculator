@@ -9,24 +9,49 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-
-    var debtsData = [DebtData]()
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    var debtsData = [DebtData](){ // Keranjang Data Buku dari Server
+        didSet{
+            DispatchQueue.main.async {
+                self.tableViewParticipant.reloadData()
+            }
+        }
+    }
+    
+    @IBOutlet weak var heightTableViewParticipant: NSLayoutConstraint!
+    
+    @IBOutlet weak var heightTableViewAdditionalPrice: NSLayoutConstraint!
     var discount: Double?
     var ongkir: Double?
     var pajak: Double?
     var priceOngkirPerPerson = Double()
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableViewParticipant: UITableView!
+    @IBOutlet weak var tableViewAdditionalPrice: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UINib.init(nibName: "CreditTableViewCell", bundle: nil), forCellReuseIdentifier: "CreditTableViewCell")
-
+        tableViewParticipant.register(UINib.init(nibName: "CreditTableViewCell", bundle: nil), forCellReuseIdentifier: "CreditTableViewCell")
+//        heightTableViewParticipant.constant = tableViewParticipant.contentSize.height
+        heightTableViewAdditionalPrice.constant = tableViewParticipant.contentSize.height
+        let testData = DebtData()
+        testData.name = "Aji"
+        testData.price = "10000"
+        debtsData = [testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData]
+        
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillLayoutSubviews() {
+        super.updateViewConstraints()
+        self.heightTableViewParticipant?.constant = self.tableViewParticipant.contentSize.height
+    }
+    
     @IBAction func addDebts(_ sender: Any) {
-        performSegue(withIdentifier: "AddPriceSegue", sender: self)
+        scrollView.contentOffset.y =  scrollView.contentOffset.y  + 10
+//        performSegue(withIdentifier: "AddPriceSegue", sender: self)
     }
     
     @IBAction func processDebts(_ sender: Any) {
@@ -78,7 +103,7 @@ extension HomeViewController:AddPriceViewControllerDelegate{
         data.name = name
         data.price = price
         debtsData.append(data)
-        tableView.reloadData()
+        tableViewParticipant.reloadData()
     }
 }
 
