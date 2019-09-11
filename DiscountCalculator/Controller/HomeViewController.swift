@@ -16,6 +16,8 @@ class HomeViewController: UIViewController {
         didSet{
             DispatchQueue.main.async {
                 self.tableViewParticipant.reloadData()
+                super.updateViewConstraints()
+                self.heightTableViewParticipant?.constant = self.tableViewParticipant.contentSize.height
             }
         }
     }
@@ -36,10 +38,6 @@ class HomeViewController: UIViewController {
         tableViewParticipant.register(UINib.init(nibName: "CreditTableViewCell", bundle: nil), forCellReuseIdentifier: "CreditTableViewCell")
 //        heightTableViewParticipant.constant = tableViewParticipant.contentSize.height
         heightTableViewAdditionalPrice.constant = tableViewParticipant.contentSize.height
-        let testData = DebtData()
-        testData.name = "Aji"
-        testData.price = "10000"
-        debtsData = [testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData, testData]
         
         // Do any additional setup after loading the view.
     }
@@ -58,6 +56,12 @@ class HomeViewController: UIViewController {
         performSegue(withIdentifier: "DetailPriceSegue", sender: self)
     }
     
+    @IBAction func addCredit(_ sender: Any) {
+        let testData = DebtData()
+        testData.name = "Aji"
+        testData.price = "10000"
+        debtsData.append(testData)
+    }
     
     // MARK: - Navigation
 
@@ -90,9 +94,9 @@ extension HomeViewController:UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CreditTableViewCell", for: indexPath) as! CreditTableViewCell
-        let debts = debtsData[indexPath.row]
-        cell.nameLabel.text = debts.name
-        cell.priceLabel.text = debts.price
+//        let debts = debtsData[indexPath.row]
+//        cell.nameLabel.text = debts.name
+//        cell.priceLabel.text = debts.price
         return cell
     }
 }
