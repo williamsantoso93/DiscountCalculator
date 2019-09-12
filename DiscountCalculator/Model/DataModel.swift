@@ -16,3 +16,19 @@ class DebtData {
     var priceAfterDiscount : Double = 0
     var priceAfterDiscountPajakOngkir : Double = 0
 }
+
+
+class PeopleData {
+    var name: String?
+    var price: Double = 0
+}
+
+class ReceiptData {
+    var title: String?
+    var date: String?
+    var peopleData: PeopleData?
+    var priceTotal: Double = 0
+    var priceDiscount: Double = 0
+    var pricePajak: Double = 0
+    var priceOngkir: Double = 0
+}

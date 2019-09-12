@@ -408,6 +408,39 @@
             </objects>
             <point key="canvasLocation" x="1925" y="1553"/>
         </scene>
+        <!--Title-->
+        <scene sceneID="bb5-TX-EWg">
+            <objects>
+                <viewController id="QJ8-Wm-Ebo" customClass="Home2ViewController" customModule="DiscountCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kTh-Yp-Lv7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QRb-sj-LXv">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="QRb-sj-LXv" firstAttribute="leading" secondItem="kTh-Yp-Lv7" secondAttribute="leading" id="Bav-rC-gQO"/>
+                            <constraint firstItem="bRk-5i-2Eq" firstAttribute="trailing" secondItem="QRb-sj-LXv" secondAttribute="trailing" id="C6F-EC-seh"/>
+                            <constraint firstItem="bRk-5i-2Eq" firstAttribute="bottom" secondItem="QRb-sj-LXv" secondAttribute="bottom" id="u69-kY-bKu"/>
+                            <constraint firstItem="QRb-sj-LXv" firstAttribute="top" secondItem="bRk-5i-2Eq" secondAttribute="top" id="xlv-S3-86u"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bRk-5i-2Eq"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="bK7-Me-FX5">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="d0d-BT-S3s"/>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="MYd-22-vk6" kind="show" identifier="List" id="HTa-1D-Kab"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RbT-N9-zsw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="29" y="818"/>
+        </scene>
         <!--Input Data-->
         <scene sceneID="FHx-b4-Fbz">
             <objects>
@@ -765,12 +798,12 @@ Harga :</string>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="MYd-22-vk6" kind="relationship" relationship="rootViewController" id="nYc-Uz-N77"/>
+                        <segue destination="QJ8-Wm-Ebo" kind="relationship" relationship="rootViewController" id="39y-0a-pN2"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gN6-fU-3Wt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="29" y="818"/>
+            <point key="canvasLocation" x="-1039" y="818"/>
         </scene>
         <!--Result-->
         <scene sceneID="QSD-uZ-cQq">
