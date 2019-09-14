@@ -32,6 +32,7 @@ class ReceiptViewController: UIViewController {
     
     @IBOutlet weak var tableViewParticipant: UITableView!
     @IBOutlet weak var tableViewAdditionalPrice: UITableView!
+    @IBOutlet weak var dateTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +41,32 @@ class ReceiptViewController: UIViewController {
         heightTableViewAdditionalPrice.constant = tableViewParticipant.contentSize.height
         
         // Do any additional setup after loading the view.
+        
+        dateTextField.text = dateToString(date: Date())
+        
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = .date
+        datePicker.locale = NSLocale(localeIdentifier: "en_UK") as Locale
+        datePicker.addTarget(self, action: #selector(ReceiptViewController.datePickerValueChange(sender:)), for: .valueChanged)
+        dateTextField.inputView = datePicker
+        dateTextField.addDoneButtonOnKeyboard()
+    }
+    
+    func dateToString(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .none
+        formatter.dateFormat = "dd/MM/yyyy"
+        let dateString: String = formatter.string(from: date)
+        return dateString
+    }
+    
+    @objc func datePickerValueChange(sender: UIDatePicker) {
+        dateTextField.text = dateToString(date: sender.date)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
     
     override func viewWillLayoutSubviews() {
@@ -144,3 +171,4 @@ extension ReceiptViewController:DebtsProcessViewControllerDelegate {
         }
     }
 }
+
