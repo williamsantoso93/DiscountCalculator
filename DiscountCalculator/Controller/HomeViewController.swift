@@ -1,146 +1,68 @@
 //
-//  HomeViewController.swift
+//  Home2ViewController.swift
 //  DiscountCalculator
 //
-//  Created by William Santoso on 11/09/19.
+//  Created by William Santoso on 12/09/19.
 //  Copyright © 2019 William Santoso. All rights reserved.
 //
 
 import UIKit
 
 class HomeViewController: UIViewController {
+
+    @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var scrollView: UIScrollView!
-    
-    var debtsData = [DebtData](){ // Keranjang Data Buku dari Server
-        didSet{
-            DispatchQueue.main.async {
-                self.tableViewParticipant.reloadData()
-                super.updateViewConstraints()
-                self.heightTableViewParticipant?.constant = self.tableViewParticipant.contentSize.height
-            }
-        }
-    }
-    
-    @IBOutlet weak var heightTableViewParticipant: NSLayoutConstraint!
-    
-    @IBOutlet weak var heightTableViewAdditionalPrice: NSLayoutConstraint!
-    var discount: Double?
-    var ongkir: Double?
-    var pajak: Double?
-    var priceOngkirPerPerson = Double()
-    
-    @IBOutlet weak var tableViewParticipant: UITableView!
-    @IBOutlet weak var tableViewAdditionalPrice: UITableView!
+    var receipt: [Receipt] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableViewParticipant.register(UINib.init(nibName: "CreditTableViewCell", bundle: nil), forCellReuseIdentifier: "CreditTableViewCell")
-//        heightTableViewParticipant.constant = tableViewParticipant.contentSize.height
-        heightTableViewAdditionalPrice.constant = tableViewParticipant.contentSize.height
         
+        tableView.register(UINib.init(nibName: "ListReceiptTableViewCell", bundle: nil), forCellReuseIdentifier: "ListReceiptTableViewCell")
         // Do any additional setup after loading the view.
+        tableView.tableFooterView = UIView.init(frame: .zero)
     }
     
-    override func viewWillLayoutSubviews() {
-        super.updateViewConstraints()
-        self.heightTableViewParticipant?.constant = self.tableViewParticipant.contentSize.height
-    }
-    
-    @IBAction func addDebts(_ sender: Any) {
-        scrollView.contentOffset.y =  scrollView.contentOffset.y  + 10
-//        performSegue(withIdentifier: "AddPriceSegue", sender: self)
-    }
-    
-    @IBAction func processDebts(_ sender: Any) {
-        performSegue(withIdentifier: "DetailPriceSegue", sender: self)
-    }
-    
-    @IBAction func addCredit(_ sender: Any) {
-        let testData = DebtData()
-        testData.name = "Aji"
-        testData.price = "10000"
-        debtsData.append(testData)
-    }
-    
+
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "AddPriceSegue" {
-            let controller = segue.destination as! AddPriceViewController
-            controller.delegate = self
-        }
-        if segue.identifier == "ResultPriceSegue" {
-            let controller = segue.destination as! ResultPriceViewController
-            controller.debtsData = self.debtsData
-            controller.priceOngkirPerPerson = self.priceOngkirPerPerson
-        }
-        
-        if segue.identifier == "DetailPriceSegue" {
-            let controller = segue.destination as! DebtsProcessViewController
-            controller.delegate = self
-        }
     }
+    */
 
+    
+    @IBAction func addList(_ sender: Any) {
+        performSegue(withIdentifier: "List", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "DetailPriceSegue" {
+//            let controller = segue.destination as! DebtsProcessViewController
+//        }
+    }
 }
 
-extension HomeViewController:UITableViewDataSource {
+extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return debtsData.count
+        if self.receipt.count == 0 {
+            let emptyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height))
+            emptyLabel.text = "No Data"
+            emptyLabel.textAlignment = NSTextAlignment.center
+            self.tableView.backgroundView = emptyLabel
+            self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+            return 0
+        } else {
+            return self.receipt.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CreditTableViewCell", for: indexPath) as! CreditTableViewCell
-//        let debts = debtsData[indexPath.row]
-//        cell.nameLabel.text = debts.name
-//        cell.priceLabel.text = debts.price
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ListReceiptTableViewCell", for: indexPath) as! ListReceiptTableViewCell
         return cell
     }
-}
-
-extension HomeViewController:AddPriceViewControllerDelegate{
-    func addValue(name: String, price: String) {
-        var data = DebtData.init()
-        data.name = name
-        data.price = price
-        debtsData.append(data)
-        tableViewParticipant.reloadData()
-    }
-}
-
-extension HomeViewController:DebtsProcessViewControllerDelegate {
-    func processDebts(deliveryFee: String?, discount: String?, tax: String?) {
-        self.discount = Double(discount!)
-        self.ongkir = Double(deliveryFee!)
-        self.pajak = Double(tax!)
-        countDiscount()
-        performSegue(withIdentifier: "ResultPriceSegue", sender: self)
-    }
     
-    func countDiscount() {
-        var totalPrice: Double = 0
-        for data in debtsData {
-            totalPrice += Double(data.price!)!
-        }
-        
-        let persenDiscount = (discount ?? 0) / totalPrice
-        let persenPajak = (pajak!) / totalPrice
-        priceOngkirPerPerson = ongkir! / Double(debtsData.count)
-        
-        for var data in debtsData {
-            let priceDiscount = Double(data.price!)! * persenDiscount
-            let priceAfterDiscount = Double(data.price!)! - priceDiscount
-            let pricePajak = Double(data.price!)! * persenPajak
-            let priceAfterDiscountPajak = priceAfterDiscount + pricePajak
-            let priceAfterDiscountPajakOngkir = priceAfterDiscountPajak + priceOngkirPerPerson
-            
-            data.priceDiscount = priceDiscount
-            data.priceAfterDiscount = priceAfterDiscount
-            data.pricePajak = pricePajak
-            data.priceAfterDiscountPajakOngkir = priceAfterDiscountPajakOngkir
-        }
-    }
+    
 }

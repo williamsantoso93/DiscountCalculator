@@ -18,17 +18,21 @@ class DebtData {
 }
 
 
-class PeopleData {
+class People {
     var name: String?
     var price: Double = 0
 }
 
-class ReceiptData {
-    var title: String?
-    var date: String?
-    var peopleData: PeopleData?
-    var priceTotal: Double = 0
+class AdditonalPrice {
     var priceDiscount: Double = 0
     var pricePajak: Double = 0
     var priceOngkir: Double = 0
+}
+
+class Receipt {
+    var title: String?
+    var date: String?
+    var peopleData: [People?] = []
+    var additionalPrice: [AdditonalPrice?] = []
+    var priceTotal: Double = 0
 }

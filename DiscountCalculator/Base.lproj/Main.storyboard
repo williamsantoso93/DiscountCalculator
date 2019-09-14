@@ -73,10 +73,10 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="137.94642857142856"/>
         </scene>
-        <!--Home View Controller-->
+        <!--Receipt View Controller-->
         <scene sceneID="aPF-Oj-L8X">
             <objects>
-                <viewController id="MYd-22-vk6" customClass="HomeViewController" customModule="DiscountCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="MYd-22-vk6" customClass="ReceiptViewController" customModule="DiscountCalculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AWb-S9-GL8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -203,7 +203,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="UBC-OG-JF5"/>
                     </view>
-                    <navigationItem key="navigationItem" id="OkN-6O-aO0">
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="OkN-6O-aO0">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="Zdd-9u-Xld">
                             <connections>
                                 <action selector="addDebts:" destination="MYd-22-vk6" id="Jy2-F5-cFs"/>
@@ -411,14 +411,18 @@
         <!--Title-->
         <scene sceneID="bb5-TX-EWg">
             <objects>
-                <viewController id="QJ8-Wm-Ebo" customClass="Home2ViewController" customModule="DiscountCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="QJ8-Wm-Ebo" customClass="HomeViewController" customModule="DiscountCalculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kTh-Yp-Lv7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QRb-sj-LXv">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="722"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="QJ8-Wm-Ebo" id="RcO-lK-tzg"/>
+                                    <outlet property="delegate" destination="QJ8-Wm-Ebo" id="YeR-eS-Ym8"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -430,10 +434,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bRk-5i-2Eq"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="bK7-Me-FX5">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="d0d-BT-S3s"/>
+                    <navigationItem key="navigationItem" title="Title" largeTitleDisplayMode="always" id="bK7-Me-FX5">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="d0d-BT-S3s">
+                            <connections>
+                                <action selector="addList:" destination="QJ8-Wm-Ebo" id="HoQ-gE-TXy"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="tableView" destination="QRb-sj-LXv" id="Z8N-lg-nrM"/>
                         <segue destination="MYd-22-vk6" kind="show" identifier="List" id="HTa-1D-Kab"/>
                     </connections>
                 </viewController>
@@ -792,8 +801,8 @@ Harga :</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9xN-Ik-hgx" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="G2d-Df-Lht">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="G2d-Df-Lht">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

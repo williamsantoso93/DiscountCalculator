@@ -12,12 +12,12 @@
 		7A01AE762324A2640023A281 /* OtherDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01AE752324A2640023A281 /* OtherDataViewController.swift */; };
 		7A203BC22328C84F0090AD3D /* CreditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A203BC02328C84F0090AD3D /* CreditTableViewCell.swift */; };
 		7A203BC32328C84F0090AD3D /* CreditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A203BC12328C84F0090AD3D /* CreditTableViewCell.xib */; };
-		7A203BC52328C8660090AD3D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A203BC42328C8660090AD3D /* HomeViewController.swift */; };
+		7A203BC52328C8660090AD3D /* ReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A203BC42328C8660090AD3D /* ReceiptViewController.swift */; };
 		7A203BC82328C8E60090AD3D /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A203BC72328C8E60090AD3D /* DataModel.swift */; };
 		7A203BCA2328CA5D0090AD3D /* AddPriceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A203BC92328CA5D0090AD3D /* AddPriceViewController.swift */; };
 		7A203BCC2328CA6C0090AD3D /* DebtsProcessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A203BCB2328CA6C0090AD3D /* DebtsProcessViewController.swift */; };
 		7A203BCE2328CFD60090AD3D /* ResultPriceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A203BCD2328CFD60090AD3D /* ResultPriceViewController.swift */; };
-		7A203BD0232A5D000090AD3D /* Home2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A203BCF232A5D000090AD3D /* Home2ViewController.swift */; };
+		7A203BD0232A5D000090AD3D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A203BCF232A5D000090AD3D /* HomeViewController.swift */; };
 		7A87F7762322A9FF0011C6EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A87F7752322A9FF0011C6EF /* AppDelegate.swift */; };
 		7A87F7782322A9FF0011C6EF /* InputPersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A87F7772322A9FF0011C6EF /* InputPersonViewController.swift */; };
 		7A87F77B2322A9FF0011C6EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A87F7792322A9FF0011C6EF /* Main.storyboard */; };
@@ -28,6 +28,9 @@
 		7A87F7912322B47A0011C6EF /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A87F7902322B47A0011C6EF /* Extension.swift */; };
 		7A87F793232381300011C6EF /* InputDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A87F792232381300011C6EF /* InputDataTableViewCell.swift */; };
 		7A87F7962323860D0011C6EF /* InputDiscountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A87F7952323860D0011C6EF /* InputDiscountViewController.swift */; };
+		7AC2641D232B73A70037989D /* ListReceiptTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2641B232B73A70037989D /* ListReceiptTableViewCell.swift */; };
+		7AC2641E232B73A70037989D /* ListReceiptTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AC2641C232B73A70037989D /* ListReceiptTableViewCell.xib */; };
+		7AC26420232B75000037989D /* ResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AC2641F232B75000037989D /* ResultTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,12 +39,12 @@
 		7A01AE752324A2640023A281 /* OtherDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherDataViewController.swift; sourceTree = "<group>"; };
 		7A203BC02328C84F0090AD3D /* CreditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditTableViewCell.swift; sourceTree = "<group>"; };
 		7A203BC12328C84F0090AD3D /* CreditTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditTableViewCell.xib; sourceTree = "<group>"; };
-		7A203BC42328C8660090AD3D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		7A203BC42328C8660090AD3D /* ReceiptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptViewController.swift; sourceTree = "<group>"; };
 		7A203BC72328C8E60090AD3D /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		7A203BC92328CA5D0090AD3D /* AddPriceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPriceViewController.swift; sourceTree = "<group>"; };
 		7A203BCB2328CA6C0090AD3D /* DebtsProcessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtsProcessViewController.swift; sourceTree = "<group>"; };
 		7A203BCD2328CFD60090AD3D /* ResultPriceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultPriceViewController.swift; sourceTree = "<group>"; };
-		7A203BCF232A5D000090AD3D /* Home2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home2ViewController.swift; sourceTree = "<group>"; };
+		7A203BCF232A5D000090AD3D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		7A87F7722322A9FF0011C6EF /* DiscountCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiscountCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A87F7752322A9FF0011C6EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A87F7772322A9FF0011C6EF /* InputPersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputPersonViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +57,9 @@
 		7A87F7902322B47A0011C6EF /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		7A87F792232381300011C6EF /* InputDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputDataTableViewCell.swift; sourceTree = "<group>"; };
 		7A87F7952323860D0011C6EF /* InputDiscountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputDiscountViewController.swift; sourceTree = "<group>"; };
+		7AC2641B232B73A70037989D /* ListReceiptTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListReceiptTableViewCell.swift; sourceTree = "<group>"; };
+		7AC2641C232B73A70037989D /* ListReceiptTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListReceiptTableViewCell.xib; sourceTree = "<group>"; };
+		7AC2641F232B75000037989D /* ResultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,11 +122,11 @@
 				7A87F7952323860D0011C6EF /* InputDiscountViewController.swift */,
 				7A01AE752324A2640023A281 /* OtherDataViewController.swift */,
 				7A01AE7123249F300023A281 /* ResultViewController.swift */,
-				7A203BC42328C8660090AD3D /* HomeViewController.swift */,
+				7A203BC42328C8660090AD3D /* ReceiptViewController.swift */,
 				7A203BC92328CA5D0090AD3D /* AddPriceViewController.swift */,
 				7A203BCB2328CA6C0090AD3D /* DebtsProcessViewController.swift */,
 				7A203BCD2328CFD60090AD3D /* ResultPriceViewController.swift */,
-				7A203BCF232A5D000090AD3D /* Home2ViewController.swift */,
+				7A203BCF232A5D000090AD3D /* HomeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -138,8 +144,11 @@
 			children = (
 				7A87F792232381300011C6EF /* InputDataTableViewCell.swift */,
 				7A01AE732324A02D0023A281 /* ResultTableViewCell.swift */,
+				7AC2641F232B75000037989D /* ResultTableViewCell.xib */,
 				7A203BC02328C84F0090AD3D /* CreditTableViewCell.swift */,
 				7A203BC12328C84F0090AD3D /* CreditTableViewCell.xib */,
+				7AC2641B232B73A70037989D /* ListReceiptTableViewCell.swift */,
+				7AC2641C232B73A70037989D /* ListReceiptTableViewCell.xib */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -204,7 +213,9 @@
 			files = (
 				7A87F7832322AA000011C6EF /* LaunchScreen.storyboard in Resources */,
 				7A87F7802322AA000011C6EF /* Assets.xcassets in Resources */,
+				7AC26420232B75000037989D /* ResultTableViewCell.xib in Resources */,
 				7A203BC32328C84F0090AD3D /* CreditTableViewCell.xib in Resources */,
+				7AC2641E232B73A70037989D /* ListReceiptTableViewCell.xib in Resources */,
 				7A87F77B2322A9FF0011C6EF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -217,7 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A87F7912322B47A0011C6EF /* Extension.swift in Sources */,
-				7A203BD0232A5D000090AD3D /* Home2ViewController.swift in Sources */,
+				7A203BD0232A5D000090AD3D /* HomeViewController.swift in Sources */,
 				7A87F7782322A9FF0011C6EF /* InputPersonViewController.swift in Sources */,
 				7A203BCA2328CA5D0090AD3D /* AddPriceViewController.swift in Sources */,
 				7A203BCC2328CA6C0090AD3D /* DebtsProcessViewController.swift in Sources */,
@@ -232,7 +243,8 @@
 				7A87F77E2322A9FF0011C6EF /* DiscountCalculator.xcdatamodeld in Sources */,
 				7A203BC22328C84F0090AD3D /* CreditTableViewCell.swift in Sources */,
 				7A01AE762324A2640023A281 /* OtherDataViewController.swift in Sources */,
-				7A203BC52328C8660090AD3D /* HomeViewController.swift in Sources */,
+				7AC2641D232B73A70037989D /* ListReceiptTableViewCell.swift in Sources */,
+				7A203BC52328C8660090AD3D /* ReceiptViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
