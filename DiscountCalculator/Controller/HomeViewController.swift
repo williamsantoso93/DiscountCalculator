@@ -24,20 +24,10 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         tableView.register(UINib.init(nibName: "ListReceiptTableViewCell", bundle: nil), forCellReuseIdentifier: "ListReceiptTableViewCell")
-        // Do any additional setup after loading the view.
         tableView.tableFooterView = UIView.init(frame: .zero)
+        
+        // Do any additional setup after loading the view.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     
     @IBAction func addList(_ sender: Any) {
@@ -49,7 +39,6 @@ class HomeViewController: UIViewController {
         receipt.paidBy = "me"
         receipt.totalPrice = 1000000
         receipts.append(receipt)
-//        tableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -66,13 +55,9 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
             emptyLabel.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height)
             emptyLabel.text = "No Data"
             emptyLabel.textAlignment = NSTextAlignment.center
-//            self.tableView.addSubview(emptyLabel)
             self.tableView.backgroundView = emptyLabel
-//            self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         } else {
-//            tableView.willRemoveSubview(emptyLabel)
             self.tableView.backgroundView = nil
-//            emptyLabel.removeFromSuperview()
         }
         return self.receipts.count
     }
@@ -92,7 +77,6 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             receipts.remove(at: indexPath.row)
-//            tableView.reloadData()
         }
     }
 }

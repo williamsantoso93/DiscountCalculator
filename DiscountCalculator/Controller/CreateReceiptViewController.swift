@@ -25,6 +25,7 @@ class CreateReceiptViewController: UIViewController {
     @IBOutlet weak var heightTableViewParticipant: NSLayoutConstraint!
     
     @IBOutlet weak var heightTableViewAdditionalPrice: NSLayoutConstraint!
+    
     var discount: Double?
     var ongkir: Double?
     var pajak: Double?
@@ -52,15 +53,6 @@ class CreateReceiptViewController: UIViewController {
         dateTextField.addDoneButtonOnKeyboard()
     }
     
-//    func dateToString(date: Date) -> String {
-//        let formatter = DateFormatter()
-//        formatter.dateStyle = .short
-//        formatter.timeStyle = .none
-//        formatter.dateFormat = "dd/MM/yyyy"
-//        let dateString: String = formatter.string(from: date)
-//        return dateString
-//    }
-//
     @objc func datePickerValueChange(sender: UIDatePicker) {
         dateTextField.text = dateToString(date: sender.date)
     }
@@ -128,7 +120,7 @@ extension CreateReceiptViewController:UITableViewDataSource {
     }
 }
 
-extension CreateReceiptViewController:AddPriceViewControllerDelegate{
+extension CreateReceiptViewController: AddPriceViewControllerDelegate{
     func addValue(name: String, price: String) {
         var data = DebtData.init()
         data.name = name
@@ -138,7 +130,7 @@ extension CreateReceiptViewController:AddPriceViewControllerDelegate{
     }
 }
 
-extension CreateReceiptViewController:DebtsProcessViewControllerDelegate {
+extension CreateReceiptViewController: DebtsProcessViewControllerDelegate {
     func processDebts(deliveryFee: String?, discount: String?, tax: String?) {
         self.discount = Double(discount!)
         self.ongkir = Double(deliveryFee!)

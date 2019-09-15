@@ -197,6 +197,7 @@
                     <connections>
                         <outlet property="tableView" destination="QRb-sj-LXv" id="Z8N-lg-nrM"/>
                         <segue destination="MYd-22-vk6" kind="show" identifier="CreateReceipt" id="HTa-1D-Kab"/>
+                        <segue destination="Ref-sl-7Au" kind="show" identifier="ResultPrice" id="IRu-aN-tTu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RbT-N9-zsw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -239,35 +240,6 @@
                                 <rect key="frame" x="0.0" y="136.5" width="414" height="725.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="12" maxX="0.0" maxY="20"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="182" id="00Q-J8-URs" customClass="ResultTableViewCell" customModule="DiscountCalculator" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="182"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="00Q-J8-URs" id="1Ud-t1-Qzn">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="181.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zuu-eG-e4U">
-                                                    <rect key="frame" x="20" y="8" width="374" height="165.5"/>
-                                                    <string key="text">Nama
-Harga :</string>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="zuu-eG-e4U" secondAttribute="trailing" constant="20" id="7V0-b3-DGT"/>
-                                                <constraint firstItem="zuu-eG-e4U" firstAttribute="top" secondItem="1Ud-t1-Qzn" secondAttribute="top" constant="8" id="Pva-8T-8oo"/>
-                                                <constraint firstAttribute="bottom" secondItem="zuu-eG-e4U" secondAttribute="bottom" constant="8" id="Zao-WU-Pqm"/>
-                                                <constraint firstItem="zuu-eG-e4U" firstAttribute="leading" secondItem="1Ud-t1-Qzn" secondAttribute="leading" constant="20" id="fis-7k-wbi"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="namePriceLabel" destination="zuu-eG-e4U" id="Hhg-st-ztm"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="Ref-sl-7Au" id="1ee-b8-qWx"/>
                                     <outlet property="delegate" destination="Ref-sl-7Au" id="bz0-b5-2NI"/>
@@ -291,11 +263,31 @@ Harga :</string>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="KuU-Ni-JSs" id="YXl-eW-9vf"/>
+                        <segue destination="0Lt-ds-FqQ" kind="show" id="THF-OJ-g6f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kn6-Ct-kiq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3132" y="1418"/>
+            <point key="canvasLocation" x="2116" y="2140"/>
+        </scene>
+        <!--Detail-->
+        <scene sceneID="dr7-7h-hlZ">
+            <objects>
+                <viewController id="0Lt-ds-FqQ" customClass="DetailResultViewController" customModule="DiscountCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="77x-03-OOC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Xps-TH-LXU"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Detail" id="QSu-VA-mme"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CVJ-dn-D1l" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3052" y="2140"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="PjF-t2-5C5"/>
+    </inferredMetricsTieBreakers>
 </document>
