@@ -9,7 +9,9 @@
 import UIKit
 
 class DetailResultTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

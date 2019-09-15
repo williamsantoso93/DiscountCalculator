@@ -10,10 +10,30 @@ import UIKit
 
 class DetailResultViewController: UIViewController {
 
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var paidByLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var totalPriceLabel: UILabel!
+    
+    var receipt = Receipt()
+    var indexOf = Int()
+    var people = People()
+    var additonalPrices: [AdditonalPrice] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        tableView.register(UINib.init(nibName: "DetailResultTableViewCell", bundle: nil), forCellReuseIdentifier: "DetailResultTableViewCell")
+        tableView.tableFooterView = UIView.init(frame: .zero)
+        
         // Do any additional setup after loading the view.
+        
+        titleLabel.text = receipt.title
+        dateLabel.text = dateToString(date: receipt.date)
+        paidByLabel.text = receipt.paidBy
+        people = receipt.peoples[indexOf]
+        additonalPrices = receipt.additionalPrices
     }
     
     var text: String = "Hello World"
@@ -46,4 +66,31 @@ class DetailResultViewController: UIViewController {
             print("presented")
         }
     }
+}
+
+
+extension DetailResultViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return (additonalPrices.count + 1)
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DetailResultTableViewCell", for: indexPath) as! DetailResultTableViewCell
+        
+        if indexPath.row == 0 {
+            let priceText: String = String(format: "%.0f", people.price)
+            
+            cell.typeLabel.text = people.name
+            cell.priceLabel.text = priceText
+        } else {
+            let priceText: String = String(format: "%.0f", additonalPrices[indexPath.row].price)
+            
+            cell.typeLabel.text = additonalPrices[indexPath.row].type
+            cell.priceLabel.text = priceText
+        }
+        
+        return cell
+    }
+    
+    
 }

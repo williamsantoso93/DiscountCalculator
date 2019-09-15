@@ -19,11 +19,22 @@ class ResultPriceViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var label: UILabel!
+    
+    var receipt = Receipt()
+    var indexOf = Int()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib.init(nibName: "ResultTableViewCell", bundle: nil), forCellReuseIdentifier: "ResultTableViewCell")
         tableView.tableFooterView = UIView.init(frame: .zero)
         // Do any additional setup after loading the view.
+        
+        label.text = """
+        \(receipt.title)
+        \(dateToString(date: receipt.date))
+        Paid by : \(receipt.paidBy)
+        """
     }
     
     /*
@@ -37,14 +48,25 @@ class ResultPriceViewController: UIViewController {
     */
 
     @IBAction func doneButtonDidTap(_ sender: Any) {
-        performSegue(withIdentifier: "Detail", sender: self)
+//        performSegue(withIdentifier: "Detail", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //        if segue.identifier == "DetailPriceSegue" {
+        //            let controller = segue.destination as! DebtsProcessViewController
+        //        }
+        if segue.identifier == "Detail" {
+            let controller = segue.destination as! DetailResultViewController
+            controller.receipt = self.receipt
+            controller.indexOf = self.indexOf
+        }
     }
 }
 
 extension ResultPriceViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        return debtsData.count
-        return 5
+        return receipt.peoples.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -55,8 +77,10 @@ extension ResultPriceViewController: UITableViewDataSource, UITableViewDelegate{
 //        let pricePajak: String = String(format: "%.0f", data.pricePajak)
 //        let priceOngkirPerPersonText: String = String(format: "%.0f", priceOngkirPerPerson)
 //        let priceAfterDiscountPajakOngkir: String = String(format: "%.0f", data.priceAfterDiscountPajakOngkir)
-        cell.nameLabel.text = "name"
-        cell.priceLabel.text = "10000"
+        let priceText: String = String(format: "%.0f", receipt.peoples[indexPath.row].price)
+        
+        cell.nameLabel.text = receipt.peoples[indexPath.row].name
+        cell.priceLabel.text = priceText
         cell.delegate = self
 //        cell.accessoryType = .detailButton
 //        cell.namePriceLabel.text = """
@@ -74,6 +98,12 @@ extension ResultPriceViewController: UITableViewDataSource, UITableViewDelegate{
 //        \(priceAfterDiscountPajakOngkir)
 //        """
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        indexOf = indexPath.row
+        tableView.deselectRow(at: indexPath, animated: false)
+        performSegue(withIdentifier: "Detail", sender: self)
     }
 }
 
@@ -98,14 +128,10 @@ extension ResultPriceViewController: ResultTableViewCellDelegate {
                     print("cancled")
                 }
             }
-            self.present(activityController, animated: true) {
-                print("presented")
-            }
+            self.present(activityController, animated: true)
         }))
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
-            print("cancel")
-        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
         self.present(alert, animated: true, completion: nil)
     }

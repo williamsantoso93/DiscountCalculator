@@ -12,13 +12,13 @@ class CreateReceiptViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
-    var debtsData = [DebtData](){ // Keranjang Data Buku dari Server
+    var debtsData = [DebtData]() { // Keranjang Data Buku dari Server
         didSet{
-            DispatchQueue.main.async {
-                self.tableViewParticipant.reloadData()
-                super.updateViewConstraints()
-                self.heightTableViewParticipant?.constant = self.tableViewParticipant.contentSize.height
-            }
+//            DispatchQueue.main.async {
+//                self.tableViewParticipant.reloadData()
+//                super.updateViewConstraints()
+//                self.heightTableViewParticipant?.constant = self.tableViewParticipant.contentSize.height
+//            }
         }
     }
     
@@ -33,7 +33,23 @@ class CreateReceiptViewController: UIViewController {
     
     @IBOutlet weak var tableViewParticipant: UITableView!
     @IBOutlet weak var tableViewAdditionalPrice: UITableView!
+    
+    @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var dateTextField: UITextField!
+    @IBOutlet weak var paidByTextField: UITextField!
+    
+    var receipt = Receipt()
+    var peoples: [People] = []{ // Keranjang Data Buku dari Server
+        didSet{
+            DispatchQueue.main.async {
+                self.tableViewParticipant.reloadData()
+                super.updateViewConstraints()
+                self.heightTableViewParticipant?.constant = self.tableViewParticipant.contentSize.height
+            }
+        }
+    }
+    
+    var date = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +70,8 @@ class CreateReceiptViewController: UIViewController {
     }
     
     @objc func datePickerValueChange(sender: UIDatePicker) {
-        dateTextField.text = dateToString(date: sender.date)
+        date = sender.date
+        dateTextField.text = dateToString(date: date)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -71,16 +88,24 @@ class CreateReceiptViewController: UIViewController {
 //        performSegue(withIdentifier: "AddPriceSegue", sender: self)
     }
     
-    @IBAction func processDebts(_ sender: Any) {
+    @IBAction func spiltButtonDidTap(_ sender: Any) {
 //        performSegue(withIdentifier: "DetailPriceSegue", sender: self)
+        receipt.title = titleTextField.text ?? "No Title"
+        receipt.date = date
+        receipt.paidBy = paidByTextField.text ?? "Me"
+        receipt.peoples = peoples
         performSegue(withIdentifier: "ResultPriceSegue", sender: self)
     }
     
     @IBAction func addCredit(_ sender: Any) {
-        let testData = DebtData()
-        testData.name = "Aji"
-        testData.price = "10000"
-        debtsData.append(testData)
+//        let testData = DebtData()
+//        testData.name = "Aji"
+//        testData.price = "10000"
+//        debtsData.append(testData)
+        let people = People()
+        people.name = "No Name"
+        people.price = 0
+        peoples.append(people)
     }
     
     // MARK: - Navigation
@@ -89,79 +114,105 @@ class CreateReceiptViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "AddPriceSegue" {
-            let controller = segue.destination as! AddPriceViewController
-            controller.delegate = self
-        }
+//        if segue.identifier == "AddPriceSegue" {
+//            let controller = segue.destination as! AddPriceViewController
+//            controller.delegate = self
+//        }
+//        if segue.identifier == "DetailPriceSegue" {
+//            let controller = segue.destination as! DebtsProcessViewController
+//            controller.delegate = self
+//        }
         if segue.identifier == "ResultPriceSegue" {
             let controller = segue.destination as! ResultPriceViewController
+            controller.receipt = self.receipt
 //            controller.debtsData = self.debtsData
 //            controller.priceOngkirPerPerson = self.priceOngkirPerPerson
         }
         
-        if segue.identifier == "DetailPriceSegue" {
-            let controller = segue.destination as! DebtsProcessViewController
-            controller.delegate = self
-        }
     }
 
 }
 
-extension CreateReceiptViewController:UITableViewDataSource {
+extension CreateReceiptViewController: UITableViewDataSource, UITextFieldDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return debtsData.count
+        return peoples.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CreditTableViewCell", for: indexPath) as! CreditTableViewCell
+//        cell.label.text = "\(indexPath.row + 1)"
+        cell.nameTextField.delegate =  self
+        cell.nameTextField.tag = indexPath.row
+        cell.nameTextField.placeholder = "Name"
+        //        cell.nameTexfField.setBottomBorder()
+        cell.nameTextField.addDoneButtonOnKeyboard()
+        
+        cell.priceTextField.delegate =  self
+        cell.priceTextField.tag = indexPath.row
+        cell.priceTextField.placeholder = "Price"
+        //        cell.priceTextField.setBottomBorder()
+        cell.priceTextField.addDoneButtonOnKeyboard()
 //        let debts = debtsData[indexPath.row]
 //        cell.nameLabel.text = debts.name
 //        cell.priceLabel.text = debts.price
         return cell
     }
-}
-
-extension CreateReceiptViewController: AddPriceViewControllerDelegate{
-    func addValue(name: String, price: String) {
-        var data = DebtData.init()
-        data.name = name
-        data.price = price
-        debtsData.append(data)
-        tableViewParticipant.reloadData()
-    }
-}
-
-extension CreateReceiptViewController: DebtsProcessViewControllerDelegate {
-    func processDebts(deliveryFee: String?, discount: String?, tax: String?) {
-        self.discount = Double(discount!)
-        self.ongkir = Double(deliveryFee!)
-        self.pajak = Double(tax!)
-        countDiscount()
-        performSegue(withIdentifier: "ResultPriceSegue", sender: self)
-    }
     
-    func countDiscount() {
-        var totalPrice: Double = 0
-        for data in debtsData {
-            totalPrice += Double(data.price!)!
-        }
-        
-        let persenDiscount = (discount ?? 0) / totalPrice
-        let persenPajak = (pajak!) / totalPrice
-        priceOngkirPerPerson = ongkir! / Double(debtsData.count)
-        
-        for var data in debtsData {
-            let priceDiscount = Double(data.price!)! * persenDiscount
-            let priceAfterDiscount = Double(data.price!)! - priceDiscount
-            let pricePajak = Double(data.price!)! * persenPajak
-            let priceAfterDiscountPajak = priceAfterDiscount + pricePajak
-            let priceAfterDiscountPajakOngkir = priceAfterDiscountPajak + priceOngkirPerPerson
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField.placeholder == "Name" {
+            let indexOf = textField.tag
             
-            data.priceDiscount = priceDiscount
-            data.priceAfterDiscount = priceAfterDiscount
-            data.pricePajak = pricePajak
-            data.priceAfterDiscountPajakOngkir = priceAfterDiscountPajakOngkir
+            peoples[indexOf].name = textField.text!
+        } else if textField.placeholder == "Price" {
+            let indexOf = textField.tag
+            
+            let price: Double = Double(textField.text!) ?? 0
+            peoples[indexOf].price = price
         }
     }
 }
 
+//extension CreateReceiptViewController: AddPriceViewControllerDelegate{
+//    func addValue(name: String, price: String) {
+//        var data = DebtData.init()
+//        data.name = name
+//        data.price = price
+//        debtsData.append(data)
+//        tableViewParticipant.reloadData()
+//    }
+//}
+//
+//extension CreateReceiptViewController: DebtsProcessViewControllerDelegate {
+//    func processDebts(deliveryFee: String?, discount: String?, tax: String?) {
+//        self.discount = Double(discount!)
+//        self.ongkir = Double(deliveryFee!)
+//        self.pajak = Double(tax!)
+//        countDiscount()
+//        performSegue(withIdentifier: "ResultPriceSegue", sender: self)
+//    }
+//
+//    func countDiscount() {
+//        var totalPrice: Double = 0
+//        for data in debtsData {
+//            totalPrice += Double(data.price!)!
+//        }
+//
+//        let persenDiscount = (discount ?? 0) / totalPrice
+//        let persenPajak = (pajak!) / totalPrice
+//        priceOngkirPerPerson = ongkir! / Double(debtsData.count)
+//
+//        for var data in debtsData {
+//            let priceDiscount = Double(data.price!)! * persenDiscount
+//            let priceAfterDiscount = Double(data.price!)! - priceDiscount
+//            let pricePajak = Double(data.price!)! * persenPajak
+//            let priceAfterDiscountPajak = priceAfterDiscount + pricePajak
+//            let priceAfterDiscountPajakOngkir = priceAfterDiscountPajak + priceOngkirPerPerson
+//
+//            data.priceDiscount = priceDiscount
+//            data.priceAfterDiscount = priceAfterDiscount
+//            data.pricePajak = pricePajak
+//            data.priceAfterDiscountPajakOngkir = priceAfterDiscountPajakOngkir
+//        }
+//    }
+//}
+//

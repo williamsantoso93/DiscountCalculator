@@ -55,7 +55,7 @@
                                         <rect key="frame" x="16" y="204" width="382" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" textContentType="name"/>
                                     </textField>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Nkw-oC-eev">
                                         <rect key="frame" x="0.0" y="242" width="414" height="67"/>
@@ -86,10 +86,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="24h-Tx-2af">
-                                        <rect key="frame" x="184" y="459" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                        <rect key="frame" x="191.5" y="459" width="31" height="30"/>
+                                        <state key="normal" title="Split"/>
                                         <connections>
-                                            <action selector="processDebts:" destination="MYd-22-vk6" eventType="touchUpInside" id="20t-am-zYr"/>
+                                            <action selector="spiltButtonDidTap:" destination="MYd-22-vk6" eventType="touchUpInside" id="20t-am-zYr"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="84n-Mu-O8e">
@@ -154,9 +154,11 @@
                         <outlet property="dateTextField" destination="MxT-gY-FMW" id="v7c-6l-E91"/>
                         <outlet property="heightTableViewAdditionalPrice" destination="R3W-UY-OWZ" id="vOn-sB-6tv"/>
                         <outlet property="heightTableViewParticipant" destination="K5r-zt-8ky" id="Sla-3i-Bwi"/>
+                        <outlet property="paidByTextField" destination="G2T-IK-TUG" id="UoX-Xa-qLH"/>
                         <outlet property="scrollView" destination="vk9-Tn-TD9" id="tbb-pV-aQ3"/>
                         <outlet property="tableViewAdditionalPrice" destination="Y4F-9K-9Jq" id="oGm-f7-Mbu"/>
                         <outlet property="tableViewParticipant" destination="Nkw-oC-eev" id="9W7-Qx-lJR"/>
+                        <outlet property="titleTextField" destination="dXI-YV-fdP" id="37q-gD-xRn"/>
                         <segue destination="Ref-sl-7Au" kind="show" identifier="ResultPriceSegue" id="PjF-t2-5C5"/>
                     </connections>
                 </viewController>
@@ -172,7 +174,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QRb-sj-LXv">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QRb-sj-LXv">
                                 <rect key="frame" x="0.0" y="140" width="414" height="722"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
@@ -269,6 +271,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="label" destination="23Z-cM-0ci" id="iOv-PA-dUp"/>
                         <outlet property="tableView" destination="KuU-Ni-JSs" id="YXl-eW-9vf"/>
                         <segue destination="0Lt-ds-FqQ" kind="presentation" identifier="Detail" modalPresentationStyle="overFullScreen" id="THF-OJ-g6f"/>
                     </connections>
@@ -299,30 +302,34 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aUk-Zz-grR">
-                                        <rect key="frame" x="35" y="37" width="34" height="21"/>
+                                        <rect key="frame" x="35" y="37" width="191" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7S-n8-keJ">
-                                        <rect key="frame" x="35" y="66" width="36" height="21"/>
+                                        <rect key="frame" x="35" y="66" width="209" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Paid by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cUs-Wg-LkH">
-                                        <rect key="frame" x="35" y="102" width="56" height="21"/>
+                                        <rect key="frame" x="35" y="102" width="221" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sF9-Ic-SCP">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sF9-Ic-SCP">
                                         <rect key="frame" x="0.0" y="131" width="414" height="169"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="0Lt-ds-FqQ" id="Yq8-Ec-SaU"/>
+                                            <outlet property="delegate" destination="0Lt-ds-FqQ" id="Vmn-EM-iW2"/>
+                                        </connections>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="io3-uq-zER">
                                         <rect key="frame" x="35" y="316" width="38" height="21"/>
@@ -364,6 +371,13 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Detail" id="QSu-VA-mme"/>
+                    <connections>
+                        <outlet property="dateLabel" destination="p7S-n8-keJ" id="1OL-br-dOt"/>
+                        <outlet property="paidByLabel" destination="cUs-Wg-LkH" id="hVa-A2-PeZ"/>
+                        <outlet property="tableView" destination="sF9-Ic-SCP" id="M2k-hV-tI4"/>
+                        <outlet property="titleLabel" destination="aUk-Zz-grR" id="I6O-Vu-cHv"/>
+                        <outlet property="totalPriceLabel" destination="kPW-qX-vdr" id="YbH-eK-KqU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CVJ-dn-D1l" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="J1z-6B-ojc">

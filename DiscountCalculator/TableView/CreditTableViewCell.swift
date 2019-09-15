@@ -9,9 +9,9 @@
 import UIKit
 
 class CreditTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
+    
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var priceTextField: UITextField!
     
     override func awakeFromNib() {
         super.awakeFromNib()
