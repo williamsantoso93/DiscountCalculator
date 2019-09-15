@@ -92,7 +92,8 @@ class ResultViewController: UIViewController {
     }
     
     @IBAction func doneButtonDidTap(_ sender: Any) {
-        self.navigationController?.popToRootViewController(animated: true)
+//        self.navigationController?.popToRootViewController(animated: true)
+        performSegue(withIdentifier: "Detail", sender: self)
     }
 }
 

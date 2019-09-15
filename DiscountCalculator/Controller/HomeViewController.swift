@@ -31,14 +31,14 @@ class HomeViewController: UIViewController {
 
     
     @IBAction func addList(_ sender: Any) {
-//        performSegue(withIdentifier: "CreateReceipt", sender: self)
-        let receipt = Receipt()
-        
-        receipt.title = "hello"
-        receipt.date = dateToString(date: Date())
-        receipt.paidBy = "me"
-        receipt.totalPrice = 1000000
-        receipts.append(receipt)
+        performSegue(withIdentifier: "CreateReceipt", sender: self)
+//        let receipt = Receipt()
+//
+//        receipt.title = "hello"
+//        receipt.date = dateToString(date: Date())
+//        receipt.paidBy = "me"
+//        receipt.totalPrice = 1000000
+//        receipts.append(receipt)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

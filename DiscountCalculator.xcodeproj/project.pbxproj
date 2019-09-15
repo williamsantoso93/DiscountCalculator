@@ -54,7 +54,7 @@
 		7A3568B2232DFB5C00924E34 /* InputDataTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputDataTableViewCell.swift; sourceTree = "<group>"; };
 		7A3568B3232DFB5C00924E34 /* OtherDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherDataViewController.swift; sourceTree = "<group>"; };
 		7A3568BB232DFBDC00924E34 /* AddPriceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPriceViewController.swift; sourceTree = "<group>"; };
-		7A3568BD232DFC2D00924E34 /* ResultPriceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultPriceViewController.swift; sourceTree = "<group>"; };
+		7A3568BD232DFC2D00924E34 /* ResultPriceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultPriceViewController.swift; path = ../Backup/ResultPriceViewController.swift; sourceTree = "<group>"; };
 		7A3568BF232DFDE300924E34 /* DetailResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailResultTableViewCell.swift; sourceTree = "<group>"; };
 		7A3568C0232DFDE300924E34 /* DetailResultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailResultTableViewCell.xib; sourceTree = "<group>"; };
 		7A87F7722322A9FF0011C6EF /* DiscountCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiscountCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,7 +100,7 @@
 				7A3568B2232DFB5C00924E34 /* InputDataTableViewCell.swift */,
 				7A3568B3232DFB5C00924E34 /* OtherDataViewController.swift */,
 				7A3568BB232DFBDC00924E34 /* AddPriceViewController.swift */,
-				7A3568BD232DFC2D00924E34 /* ResultPriceViewController.swift */,
+				7A01AE7123249F300023A281 /* ResultViewController.swift */,
 			);
 			name = Backup;
 			path = DiscountCalculator/Backup;
@@ -145,7 +145,7 @@
 			children = (
 				7A203BCF232A5D000090AD3D /* HomeViewController.swift */,
 				7A3568A8232DECB900924E34 /* CreateReceiptViewController.swift */,
-				7A01AE7123249F300023A281 /* ResultViewController.swift */,
+				7A3568BD232DFC2D00924E34 /* ResultPriceViewController.swift */,
 				7A3568AA232DF92300924E34 /* DetailResultViewController.swift */,
 			);
 			path = Controller;

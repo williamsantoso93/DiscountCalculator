@@ -72,7 +72,8 @@ class CreateReceiptViewController: UIViewController {
     }
     
     @IBAction func processDebts(_ sender: Any) {
-        performSegue(withIdentifier: "DetailPriceSegue", sender: self)
+//        performSegue(withIdentifier: "DetailPriceSegue", sender: self)
+        performSegue(withIdentifier: "ResultPriceSegue", sender: self)
     }
     
     @IBAction func addCredit(_ sender: Any) {
@@ -94,8 +95,8 @@ class CreateReceiptViewController: UIViewController {
         }
         if segue.identifier == "ResultPriceSegue" {
             let controller = segue.destination as! ResultPriceViewController
-            controller.debtsData = self.debtsData
-            controller.priceOngkirPerPerson = self.priceOngkirPerPerson
+//            controller.debtsData = self.debtsData
+//            controller.priceOngkirPerPerson = self.priceOngkirPerPerson
         }
         
         if segue.identifier == "DetailPriceSegue" {
