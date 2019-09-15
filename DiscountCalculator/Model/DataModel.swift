@@ -35,5 +35,5 @@ class Receipt {
     var paidBy: String?
     var peopleData: [People] = []
     var additionalPrice: [AdditonalPrice] = []
-    var priceTotal: Double = 0
+    var totalPrice: Double = 0
 }

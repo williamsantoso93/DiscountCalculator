@@ -10,6 +10,10 @@ import UIKit
 
 class ListReceiptTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var receiptTitleLabel: UILabel!
+    @IBOutlet weak var receiptDateLabel: UILabel!
+    @IBOutlet weak var receiptTotalPriceLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

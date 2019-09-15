@@ -47,3 +47,13 @@ extension UITextField {
         self.resignFirstResponder()
     }
 }
+
+
+func dateToString(date: Date) -> String {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .short
+    formatter.timeStyle = .none
+    formatter.dateFormat = "dd/MM/yyyy"
+    let dateString: String = formatter.string(from: date)
+    return dateString
+}

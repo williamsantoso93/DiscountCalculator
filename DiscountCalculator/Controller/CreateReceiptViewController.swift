@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ReceiptViewController: UIViewController {
+class CreateReceiptViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -47,20 +47,20 @@ class ReceiptViewController: UIViewController {
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
         datePicker.locale = NSLocale(localeIdentifier: "en_UK") as Locale
-        datePicker.addTarget(self, action: #selector(ReceiptViewController.datePickerValueChange(sender:)), for: .valueChanged)
+        datePicker.addTarget(self, action: #selector(CreateReceiptViewController.datePickerValueChange(sender:)), for: .valueChanged)
         dateTextField.inputView = datePicker
         dateTextField.addDoneButtonOnKeyboard()
     }
     
-    func dateToString(date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .short
-        formatter.timeStyle = .none
-        formatter.dateFormat = "dd/MM/yyyy"
-        let dateString: String = formatter.string(from: date)
-        return dateString
-    }
-    
+//    func dateToString(date: Date) -> String {
+//        let formatter = DateFormatter()
+//        formatter.dateStyle = .short
+//        formatter.timeStyle = .none
+//        formatter.dateFormat = "dd/MM/yyyy"
+//        let dateString: String = formatter.string(from: date)
+//        return dateString
+//    }
+//
     @objc func datePickerValueChange(sender: UIDatePicker) {
         dateTextField.text = dateToString(date: sender.date)
     }
@@ -114,7 +114,7 @@ class ReceiptViewController: UIViewController {
 
 }
 
-extension ReceiptViewController:UITableViewDataSource {
+extension CreateReceiptViewController:UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return debtsData.count
     }
@@ -128,7 +128,7 @@ extension ReceiptViewController:UITableViewDataSource {
     }
 }
 
-extension ReceiptViewController:AddPriceViewControllerDelegate{
+extension CreateReceiptViewController:AddPriceViewControllerDelegate{
     func addValue(name: String, price: String) {
         var data = DebtData.init()
         data.name = name
@@ -138,7 +138,7 @@ extension ReceiptViewController:AddPriceViewControllerDelegate{
     }
 }
 
-extension ReceiptViewController:DebtsProcessViewControllerDelegate {
+extension CreateReceiptViewController:DebtsProcessViewControllerDelegate {
     func processDebts(deliveryFee: String?, discount: String?, tax: String?) {
         self.discount = Double(discount!)
         self.ongkir = Double(deliveryFee!)

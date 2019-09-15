@@ -12,7 +12,13 @@ class HomeViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var receipt: [Receipt] = []
+    var receipts: [Receipt] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +41,15 @@ class HomeViewController: UIViewController {
 
     
     @IBAction func addList(_ sender: Any) {
-        performSegue(withIdentifier: "List", sender: self)
+//        performSegue(withIdentifier: "CreateReceipt", sender: self)
+        let receipt = Receipt()
+        
+        receipt.title = "hello"
+        receipt.date = dateToString(date: Date())
+        receipt.paidBy = "me"
+        receipt.totalPrice = 1000000
+        receipts.append(receipt)
+//        tableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -43,26 +57,42 @@ class HomeViewController: UIViewController {
 //            let controller = segue.destination as! DebtsProcessViewController
 //        }
     }
+    let emptyLabel = UILabel()
 }
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.receipt.count == 0 {
-            let emptyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height))
+        if self.receipts.count == 0 {
+            emptyLabel.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height)
             emptyLabel.text = "No Data"
             emptyLabel.textAlignment = NSTextAlignment.center
+//            self.tableView.addSubview(emptyLabel)
             self.tableView.backgroundView = emptyLabel
-            self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-            return 0
+//            self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         } else {
-            return self.receipt.count
+//            tableView.willRemoveSubview(emptyLabel)
+            self.tableView.backgroundView = nil
+//            emptyLabel.removeFromSuperview()
         }
+        return self.receipts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListReceiptTableViewCell", for: indexPath) as! ListReceiptTableViewCell
+        cell.receiptTitleLabel.text = receipts[indexPath.row].title
+        cell.receiptDateLabel.text = receipts[indexPath.row].date
+        cell.receiptTotalPriceLabel.text = ("\(receipts[indexPath.row].totalPrice)")
         return cell
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            receipts.remove(at: indexPath.row)
+//            tableView.reloadData()
+        }
+    }
 }
