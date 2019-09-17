@@ -18,6 +18,10 @@ class ResultPriceViewController: UIViewController {
     var text: String = "Hello World"
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var totalPriceLabel: UIView!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var paidByLabel: UILabel!
     
     @IBOutlet weak var label: UILabel!
     
@@ -28,13 +32,20 @@ class ResultPriceViewController: UIViewController {
         super.viewDidLoad()
         tableView.register(UINib.init(nibName: "ResultTableViewCell", bundle: nil), forCellReuseIdentifier: "ResultTableViewCell")
         tableView.tableFooterView = UIView.init(frame: .zero)
-        // Do any additional setup after loading the view.
         
-        label.text = """
-        \(receipt.title)
-        \(dateToString(date: receipt.date))
-        Paid by : \(receipt.paidBy)
-        """
+//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
+
+        // Do any additional setup after loading the view.
+        titleLabel.text = receipt.title
+        dateLabel.text = dateToString(date: receipt.date)
+        paidByLabel.text = receipt.paidBy
+//        label.text = """
+//        \(receipt.title)
+//        \(dateToString(date: receipt.date))
+//        Paid by : \(receipt.paidBy)
+//        """
     }
     
     /*
@@ -66,6 +77,10 @@ class ResultPriceViewController: UIViewController {
 extension ResultPriceViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        return debtsData.count
+        return 1
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return receipt.peoples.count
     }
     

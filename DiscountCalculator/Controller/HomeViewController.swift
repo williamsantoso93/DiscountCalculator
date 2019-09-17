@@ -51,10 +51,10 @@ class HomeViewController: UIViewController {
         //        if segue.identifier == "DetailPriceSegue" {
         //            let controller = segue.destination as! DebtsProcessViewController
         //        }
-        if segue.identifier == "CreateReceipt" {
-            let controller = segue.destination as! CreateReceiptViewController
-            
-        }
+//        if segue.identifier == "CreateReceipt" {
+//            let controller = segue.destination as! CreateReceiptViewController
+//
+//        }
     }
     let emptyLabel = UILabel()
 }
@@ -63,7 +63,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.receipts.count == 0 {
             emptyLabel.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height)
-            emptyLabel.text = "No Data"
+            emptyLabel.text = "Upps … there is no split counts yet"
             emptyLabel.textAlignment = NSTextAlignment.center
             self.tableView.backgroundView = emptyLabel
         } else {

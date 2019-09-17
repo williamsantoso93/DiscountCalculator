@@ -83,9 +83,13 @@ class CreateReceiptViewController: UIViewController {
         self.heightTableViewParticipant?.constant = self.tableViewParticipant.contentSize.height
     }
     
-    @IBAction func addDebts(_ sender: Any) {
-        scrollView.contentOffset.y =  scrollView.contentOffset.y  + 10
-//        performSegue(withIdentifier: "AddPriceSegue", sender: self)
+    @IBAction func saveButtonDidTap(_ sender: Any) {
+//        scrollView.contentOffset.y =  scrollView.contentOffset.y  + 10
+        receipt.title = titleTextField.text ?? "No Title"
+        receipt.date = date
+        receipt.paidBy = paidByTextField.text ?? "Me"
+        receipt.peoples = peoples
+        performSegue(withIdentifier: "ResultPriceSegue", sender: self)
     }
     
     @IBAction func spiltButtonDidTap(_ sender: Any) {
@@ -108,6 +112,9 @@ class CreateReceiptViewController: UIViewController {
         peoples.append(people)
     }
     
+    @IBAction func cancelTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

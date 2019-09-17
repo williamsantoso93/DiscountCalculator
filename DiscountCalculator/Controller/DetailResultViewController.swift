@@ -16,6 +16,11 @@ class DetailResultViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var totalPriceLabel: UILabel!
     
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var dateLabel2: UILabel!
+    @IBOutlet weak var paidBy: UILabel!
+    
     var receipt = Receipt()
     var indexOf = Int()
     var people = People()
@@ -26,14 +31,20 @@ class DetailResultViewController: UIViewController {
         
         tableView.register(UINib.init(nibName: "DetailResultTableViewCell", bundle: nil), forCellReuseIdentifier: "DetailResultTableViewCell")
         tableView.tableFooterView = UIView.init(frame: .zero)
+     self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
         
         // Do any additional setup after loading the view.
+        
+        people = receipt.peoples[indexOf]
         
         titleLabel.text = receipt.title
         dateLabel.text = dateToString(date: receipt.date)
         paidByLabel.text = receipt.paidBy
-        people = receipt.peoples[indexOf]
         additonalPrices = receipt.additionalPrices
+        
+        nameLabel.text = people.name
+        dateLabel2.text = dateToString(date: receipt.date)
+        paidBy.text = receipt.paidBy
     }
     
     var text: String = "Hello World"
