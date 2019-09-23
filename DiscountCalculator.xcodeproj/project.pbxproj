@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7A01AE7223249F300023A281 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01AE7123249F300023A281 /* ResultViewController.swift */; };
 		7A01AE742324A02D0023A281 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01AE732324A02D0023A281 /* ResultTableViewCell.swift */; };
 		7A203BC22328C84F0090AD3D /* PeopleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A203BC02328C84F0090AD3D /* PeopleTableViewCell.swift */; };
 		7A203BC32328C84F0090AD3D /* PeopleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A203BC12328C84F0090AD3D /* PeopleTableViewCell.xib */; };
@@ -40,7 +39,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7A01AE7123249F300023A281 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		7A01AE732324A02D0023A281 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
 		7A203BC02328C84F0090AD3D /* PeopleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleTableViewCell.swift; sourceTree = "<group>"; };
 		7A203BC12328C84F0090AD3D /* PeopleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PeopleTableViewCell.xib; sourceTree = "<group>"; };
@@ -104,7 +102,6 @@
 				7A3568B2232DFB5C00924E34 /* InputDataTableViewCell.swift */,
 				7A3568B3232DFB5C00924E34 /* OtherDataViewController.swift */,
 				7A3568BB232DFBDC00924E34 /* AddPriceViewController.swift */,
-				7A01AE7123249F300023A281 /* ResultViewController.swift */,
 			);
 			name = Backup;
 			path = DiscountCalculator/Backup;
@@ -265,7 +262,6 @@
 				7A3568B7232DFB5C00924E34 /* DebtsProcessViewController.swift in Sources */,
 				7A3568B9232DFB5C00924E34 /* InputDataTableViewCell.swift in Sources */,
 				7A3568A9232DECB900924E34 /* CreateReceiptViewController.swift in Sources */,
-				7A01AE7223249F300023A281 /* ResultViewController.swift in Sources */,
 				7A3568B4232DFB5C00924E34 /* InputDataViewController.swift in Sources */,
 				7A3568B6232DFB5C00924E34 /* InputPersonViewController.swift in Sources */,
 				7A87F7762322A9FF0011C6EF /* AppDelegate.swift in Sources */,
