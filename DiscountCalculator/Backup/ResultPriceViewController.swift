@@ -71,15 +71,8 @@ class ResultPriceViewController: UIViewController {
     
     func getFee(type: String, additionalFees: [AdditionalFee]) -> Double {
         for additionalFee in additionalFees {
-            switch type {
-            case "Discount":
+            if type == additionalFee.type {
                 return additionalFee.price
-            case "Tax":
-                return additionalFee.price
-            case "Delivery Fee":
-                return additionalFee.price
-            default:
-                return 0
             }
         }
         return 0
