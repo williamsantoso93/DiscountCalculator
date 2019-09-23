@@ -24,7 +24,7 @@ class DetailResultViewController: UIViewController {
     var receipt = Receipt()
     var indexOf = Int()
     var people = People()
-    var additonalPrices: [AdditonalPrice] = []
+    var additonalPrices: [AdditionalFee] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +43,7 @@ class DetailResultViewController: UIViewController {
         additonalPrices = receipt.additionalPrices
         
         nameLabel.text = people.name
+        priceLabel.text = "\(people.price)"
         dateLabel2.text = dateToString(date: receipt.date)
         paidBy.text = receipt.paidBy
     }

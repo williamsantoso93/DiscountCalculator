@@ -27,8 +27,7 @@ extension UITextField {
         }
     }
     
-    func addDoneButtonOnKeyboard()
-    {
+    func addDoneButtonOnKeyboard() {
         let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
         doneToolbar.barStyle = .default
         
@@ -42,8 +41,7 @@ extension UITextField {
         self.inputAccessoryView = doneToolbar
     }
     
-    @objc func doneButtonAction()
-    {
+    @objc func doneButtonAction() {
         self.resignFirstResponder()
     }
 }
@@ -56,4 +54,10 @@ func dateToString(date: Date) -> String {
     formatter.dateFormat = "dd/MM/yyyy"
     let dateString: String = formatter.string(from: date)
     return dateString
+}
+
+extension UIView {
+    func rounded() {
+        self.layer.cornerRadius = 8
+    }
 }

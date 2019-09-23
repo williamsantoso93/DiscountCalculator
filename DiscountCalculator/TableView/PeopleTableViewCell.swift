@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreditTableViewCell: UITableViewCell {
+class PeopleTableViewCell: UITableViewCell {
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var priceTextField: UITextField!

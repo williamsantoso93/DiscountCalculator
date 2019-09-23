@@ -13,7 +13,8 @@ protocol ResultTableViewCellDelegate {
 }
 
 class ResultTableViewCell: UITableViewCell {
-
+    
+    @IBOutlet weak var backView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     
@@ -22,6 +23,8 @@ class ResultTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        backView.rounded()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

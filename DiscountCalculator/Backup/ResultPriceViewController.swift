@@ -11,21 +11,19 @@ import UIKit
 class ResultPriceViewController: UIViewController {
     
     var debtsData = [DebtData]()
-    var discount: Double?
-    var ongkir = Double()
-    var pajak = Double()
-    var priceOngkirPerPerson = Double()
     var text: String = "Hello World"
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var totalPriceLabel: UIView!
+    @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var paidByLabel: UILabel!
     
     @IBOutlet weak var label: UILabel!
     
     var receipt = Receipt()
+    var peoplesTotalPrice: [People] = []
+    var pricesAfterDiscountTaxDeliveryFee: [Double] = []
     var indexOf = Int()
     
     override func viewDidLoad() {
@@ -33,44 +31,96 @@ class ResultPriceViewController: UIViewController {
         tableView.register(UINib.init(nibName: "ResultTableViewCell", bundle: nil), forCellReuseIdentifier: "ResultTableViewCell")
         tableView.tableFooterView = UIView.init(frame: .zero)
         
-//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-//        self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
-
+        
+        let peoples = receipt.peoples
+        let additionalFees = receipt.additionalPrices
+        
         // Do any additional setup after loading the view.
         titleLabel.text = receipt.title
+        let totalPrice: Double = countTotalPrice(peoples: peoples)
+        let totalPriceString = String(format: "%.0f", totalPrice)
+        totalPriceLabel.text = "Rp. \(totalPriceString)"
         dateLabel.text = dateToString(date: receipt.date)
-        paidByLabel.text = receipt.paidBy
-//        label.text = """
-//        \(receipt.title)
-//        \(dateToString(date: receipt.date))
-//        Paid by : \(receipt.paidBy)
-//        """
+        paidByLabel.text = "Paid by : \(receipt.paidBy)"
+        
+        pricesAfterDiscountTaxDeliveryFee = countDiscount(peoples: peoples, additionalFees: additionalFees)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     @IBAction func doneButtonDidTap(_ sender: Any) {
 //        performSegue(withIdentifier: "Detail", sender: self)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //        if segue.identifier == "DetailPriceSegue" {
-        //            let controller = segue.destination as! DebtsProcessViewController
-        //        }
         if segue.identifier == "Detail" {
             let controller = segue.destination as! DetailResultViewController
             controller.receipt = self.receipt
             controller.indexOf = self.indexOf
         }
+    }
+    
+    func countTotalPrice(peoples: [People]) -> Double {
+        var totalPrice: Double = 0
+        for people in peoples {
+            totalPrice += people.price
+        }
+        
+        return totalPrice
+    }
+    
+    func getFee(type: String, additionalFees: [AdditionalFee]) -> Double {
+        for additionalFee in additionalFees {
+            switch type {
+            case "Discount":
+                return additionalFee.price
+            case "Tax":
+                return additionalFee.price
+            case "Delivery Fee":
+                return additionalFee.price
+            default:
+                return 0
+            }
+        }
+        return 0
+    }
+    
+    func countDiscount(peoples: [People], additionalFees: [AdditionalFee]) -> [Double] {
+        let totalPrice: Double = countTotalPrice(peoples: peoples)
+        
+        let discount: Double = getFee(type: "Discount", additionalFees: additionalFees)
+        let tax: Double = getFee(type: "Tax", additionalFees: additionalFees)
+        let deliveryFee: Double = getFee(type: "Delivery Fee", additionalFees: additionalFees)
+        
+        print("\(totalPrice) \(discount) \(tax) \(deliveryFee) ")
+        
+        var priceDeliveryFeePerPerson = Double()
+        
+        let persenDiscount = discount / totalPrice
+
+        let persenPajak = tax / totalPrice
+
+        priceDeliveryFeePerPerson = deliveryFee / Double(peoples.count)
+
+        var pricesAfterDiscountTaxDeliveryFee: [Double] = []
+
+        for people in peoples {
+            let price = people.price
+            let priceDiscount = price * persenDiscount
+            let priceAfterDiscount = price - priceDiscount
+
+            let priceTax = price * persenPajak
+            let priceAfterDiscountTax = priceAfterDiscount + priceTax
+
+            let priceAfterDiscountTaxDeliveryFee = priceAfterDiscountTax + priceDeliveryFeePerPerson
+
+//            pricesDiscount[index] = priceDiscount
+//            pricesPajak[index] = pricePajak
+//            pricesAfterDiscount[index] = priceAfterDiscount
+            pricesAfterDiscountTaxDeliveryFee.append(priceAfterDiscountTaxDeliveryFee)
+        }
+        
+        return pricesAfterDiscountTaxDeliveryFee
     }
 }
 
@@ -92,10 +142,10 @@ extension ResultPriceViewController: UITableViewDataSource, UITableViewDelegate{
 //        let pricePajak: String = String(format: "%.0f", data.pricePajak)
 //        let priceOngkirPerPersonText: String = String(format: "%.0f", priceOngkirPerPerson)
 //        let priceAfterDiscountPajakOngkir: String = String(format: "%.0f", data.priceAfterDiscountPajakOngkir)
-        let priceText: String = String(format: "%.0f", receipt.peoples[indexPath.row].price)
+        let priceText: String = String(format: "%.0f", pricesAfterDiscountTaxDeliveryFee[indexPath.row])
         
         cell.nameLabel.text = receipt.peoples[indexPath.row].name
-        cell.priceLabel.text = priceText
+        cell.priceLabel.text = "Rp. \(priceText)"
         cell.delegate = self
 //        cell.accessoryType = .detailButton
 //        cell.namePriceLabel.text = """

@@ -92,8 +92,8 @@ class ResultViewController: UIViewController {
     }
     
     @IBAction func doneButtonDidTap(_ sender: Any) {
-//        self.navigationController?.popToRootViewController(animated: true)
-        performSegue(withIdentifier: "Detail", sender: self)
+        self.navigationController?.popToRootViewController(animated: true)
+//        performSegue(withIdentifier: "Detail", sender: self)
     }
 }
 
@@ -104,26 +104,6 @@ extension ResultViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ResultTableViewCell
-//        let price: String = String(format: "%.0f", prices[indexPath.row])
-//        let priceDiscount: String = String(format: "%.0f", pricesDiscount[indexPath.row])
-//        let pricePajak: String = String(format: "%.0f", pricesPajak[indexPath.row])
-//        let priceOngkirPerPersonText: String = String(format: "%.0f", priceOngkirPerPerson)
-//        let priceAfterDiscountPajakOngkir: String = String(format: "%.0f", pricesAfterDiscountPajakOngkir[indexPath.row])
-//
-//        cell.namePriceLabel.text = """
-//        Name :
-//        \(names[indexPath.row])
-//        Price :
-//        \(price)
-//        Price Discount :
-//        - \(priceDiscount)
-//        Price Tax :
-//        \(pricePajak)
-//        Price Delivery Fee :
-//        \(priceOngkirPerPersonText)
-//        Price after Discount + Tax + Delivery Fee :
-//        \(priceAfterDiscountPajakOngkir)
-//        """
         
         
         return cell

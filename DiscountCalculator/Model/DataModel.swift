@@ -27,9 +27,10 @@ struct priceType {
 class People {
     var name: String = "No Name"
     var price: Double = 0
+    var status: String = "Not Paid"
 }
 
-class AdditonalPrice {
+class AdditionalFee {
 //    var priceDiscount: Double = 0
 //    var pricePajak: Double = 0
 //    var priceOngkir: Double = 0
@@ -38,11 +39,17 @@ class AdditonalPrice {
     var price: Double = 0
 }
 
+//class PeopleSummary {
+//    var peoples: [People] = []
+//    var additionalPrices: [AdditionalPrice] = []
+//}
+
 class Receipt {
     var title: String = "No Title"
     var date: Date = Date()
     var paidBy: String = "Me"
     var peoples: [People] = []
-    var additionalPrices: [AdditonalPrice] = []
+    var additionalPrices: [AdditionalFee] = []
+//    var peopleSummaries: [PeopleSummary] = []
     var totalPrice: Double = 0
 }
