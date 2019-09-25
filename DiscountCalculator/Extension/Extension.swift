@@ -47,6 +47,12 @@ extension UITextField {
 }
 
 
+extension UIView {
+    func rounded() {
+        self.layer.cornerRadius = 8
+    }
+}
+
 func dateToString(date: Date) -> String {
     let formatter = DateFormatter()
     formatter.dateStyle = .short
@@ -56,8 +62,11 @@ func dateToString(date: Date) -> String {
     return dateString
 }
 
-extension UIView {
-    func rounded() {
-        self.layer.cornerRadius = 8
+func getFee(type: String, receipt: Receipt) -> Double {
+    for additionalFee in receipt.additionalPrices {
+        if type == additionalFee.type {
+            return additionalFee.price
+        }
     }
+    return 0
 }

@@ -67,6 +67,21 @@ class CreateReceiptViewController: UIViewController {
         datePicker.addTarget(self, action: #selector(CreateReceiptViewController.datePickerValueChange(sender:)), for: .valueChanged)
         dateTextField.inputView = datePicker
         dateTextField.addDoneButtonOnKeyboard()
+        
+        let pickerAdditionalFeeData: [String] = ["Discount", "Tax", "Delivery Fee" ]
+        
+        for type in pickerAdditionalFeeData {
+            let additionalPrice = AdditionalFee()
+            additionalPrice.type = type
+            additionalPrice.price = 0
+            additionalPrices.append(additionalPrice)
+        }
+        
+        let people = People()
+        people.name = "No Name"
+        people.price = 0
+        people.status = "Not Paid"
+        peoples.append(people)
     }
     
     @objc func datePickerValueChange(sender: UIDatePicker) {
@@ -155,6 +170,9 @@ extension CreateReceiptViewController: UITableViewDataSource, UITextFieldDelegat
             
             cell.typeTextField.delegate =  self
             cell.typeTextField.tag = indexPath.row
+            if additionalPrices[indexPath.row].type != nil {
+                cell.typeTextField.text = additionalPrices[indexPath.row].type
+            }
             cell.typeTextField.placeholder = "Type"
             //        cell.nameTexfField.setBottomBorder()
             cell.typeTextField.addDoneButtonOnKeyboard()

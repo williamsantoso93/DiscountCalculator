@@ -36,7 +36,7 @@
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <textInputTraits key="textInputTraits" textContentType="name"/>
                                     </textField>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Nkw-oC-eev">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Nkw-oC-eev">
                                         <rect key="frame" x="0.0" y="197" width="414" height="67"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -48,7 +48,7 @@
                                             <outlet property="delegate" destination="MYd-22-vk6" id="WPb-q4-bsC"/>
                                         </connections>
                                     </tableView>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Y4F-9K-9Jq">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Y4F-9K-9Jq">
                                         <rect key="frame" x="0.0" y="361" width="414" height="67"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -160,18 +160,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lbV-ue-NPU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3026.0869565217395" y="1417.6339285714284"/>
+            <point key="canvasLocation" x="2116" y="1418"/>
         </scene>
         <!--Easy Way to Count-->
         <scene sceneID="bb5-TX-EWg">
             <objects>
                 <viewController id="QJ8-Wm-Ebo" customClass="HomeViewController" customModule="DiscountCalculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kTh-Yp-Lv7">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="756"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QRb-sj-LXv">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="722"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="QJ8-Wm-Ebo" id="RcO-lK-tzg"/>
@@ -188,7 +188,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bRk-5i-2Eq"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Easy Way to Count" largeTitleDisplayMode="never" id="bK7-Me-FX5">
+                    <navigationItem key="navigationItem" title="Easy Way to Count" largeTitleDisplayMode="always" id="bK7-Me-FX5">
                         <barButtonItem key="backBarButtonItem" title="This Count" id="w33-LX-h7v"/>
                         <barButtonItem key="leftBarButtonItem" style="done" id="oJF-xi-gx2">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bZc-ra-2vU">
@@ -206,8 +206,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="QRb-sj-LXv" id="Z8N-lg-nrM"/>
-                        <segue destination="wqy-Z1-lbA" kind="presentation" identifier="CreateReceipt" modalPresentationStyle="fullScreen" id="HTa-1D-Kab"/>
                         <segue destination="Ref-sl-7Au" kind="show" identifier="ResultPrice" id="IRu-aN-tTu"/>
+                        <segue destination="MYd-22-vk6" kind="show" identifier="CreateReceipt" id="23l-ZB-mfI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RbT-N9-zsw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -316,6 +316,10 @@
                                         </view>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="Ref-sl-7Au" id="Rj8-nS-ti3"/>
+                                    <outlet property="delegate" destination="Ref-sl-7Au" id="FJi-hi-6cj"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -348,6 +352,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="collectionView" destination="Hpo-CU-G90" id="kgQ-MT-iPh"/>
                         <outlet property="dateLabel" destination="2nQ-0U-Q8z" id="03O-X2-AnL"/>
                         <outlet property="paidByLabel" destination="7So-I0-Lc1" id="ni3-sM-dnS"/>
                         <outlet property="tableView" destination="KuU-Ni-JSs" id="YXl-eW-9vf"/>
@@ -487,7 +492,7 @@
                                     <constraint firstItem="mdE-hB-Eep" firstAttribute="leading" secondItem="9WI-1B-gbZ" secondAttribute="leading" id="y7i-6n-Sft"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EkD-9q-Chd">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EkD-9q-Chd">
                                 <rect key="frame" x="0.0" y="190.5" width="414" height="583.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="scrollIndicatorInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
@@ -547,26 +552,6 @@
                 </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3050.7246376811595" y="2139.5089285714284"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="d4k-5j-bXE">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wqy-Z1-lbA" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="3Gz-Ki-COa">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" red="1" green="0.74509803919999995" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="MYd-22-vk6" kind="relationship" relationship="rootViewController" id="KQy-m0-10a"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lbe-iT-13b" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2115.9420289855075" y="1417.6339285714284"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
