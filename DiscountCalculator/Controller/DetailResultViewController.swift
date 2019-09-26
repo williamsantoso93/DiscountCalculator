@@ -26,6 +26,8 @@ class DetailResultViewController: UIViewController {
     var priceAfterDiscountPerPerson = Double()
     var additonalPrices: [AdditionalFee] = []
     
+    let titleSection = ["Detail", "Total"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -141,17 +143,24 @@ class DetailResultViewController: UIViewController {
 
 
 extension DetailResultViewController: UITableViewDataSource {
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return 2
-//    }
-//    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return titleSection.count
+    }
+    
 //    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-//        return ["Detail", "Total"]
+//        return titleSection
 //    }
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return titleSection[section]
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return additonalPrices.count
+        if section == 0 {
+            return additonalPrices.count - 1
+        } else {
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -169,12 +178,20 @@ extension DetailResultViewController: UITableViewDataSource {
 //            cell.priceLabel.text = priceText
 //        }
         
-        let additionalPrice = additonalPrices[indexPath.row]
         
-        cell.typeLabel.text = additionalPrice.type
-        let totalPriceString = String(format: "%.0f", additionalPrice.price)
-        cell.priceLabel.text = "Rp. \(totalPriceString)"
-        
+        if indexPath.section == 0 {
+            let additionalPrice = additonalPrices[indexPath.row]
+            
+            cell.typeLabel.text = additionalPrice.type
+            let totalPriceString = String(format: "%.0f", additionalPrice.price)
+            cell.priceLabel.text = "Rp. \(totalPriceString)"
+        } else if indexPath.section == 1 {
+            let additionalPrice = additonalPrices[4]
+            
+            cell.typeLabel.text = additionalPrice.type
+            let totalPriceString = String(format: "%.0f", additionalPrice.price)
+            cell.priceLabel.text = "Rp. \(totalPriceString)"
+        }
         return cell
     }
     

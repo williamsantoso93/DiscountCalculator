@@ -130,16 +130,6 @@
                         <viewLayoutGuide key="safeArea" id="UBC-OG-JF5"/>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="OkN-6O-aO0">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" style="plain" id="BL4-AZ-B2c">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="tYu-Zu-Uxf">
-                                <rect key="frame" x="20" y="7" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Cancel"/>
-                                <connections>
-                                    <action selector="cancelTapped:" destination="MYd-22-vk6" eventType="touchUpInside" id="0IM-1d-815"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="Zdd-9u-Xld">
                             <connections>
                                 <action selector="saveButtonDidTap:" destination="MYd-22-vk6" id="Jy2-F5-cFs"/>
