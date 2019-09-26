@@ -42,7 +42,9 @@ class ResultPriceViewController: UIViewController {
         titleLabel.text = receipt.title
         receipt.totalPrice = countTotalPrice(receipt: receipt)
         
-        let totalPricePlusAdditonalPricesString = String(format: "%.0f", countTotalPricePlusAdditonalPrices(receipt: receipt))
+//        let totalPricePlusAdditonalPricesString = String(format: "%.0f", countTotalPricePlusAdditonalPrices(receipt: receipt).formattedWithSeparator)
+        
+        let totalPricePlusAdditonalPricesString = Int(countTotalPricePlusAdditonalPrices(receipt: receipt)).formattedWithSeparator
         totalPriceLabel.text = "Rp. \(totalPricePlusAdditonalPricesString)"
         
         dateLabel.text = dateToString(date: receipt.date)
@@ -140,7 +142,7 @@ extension ResultPriceViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ResultTableViewCell") as! ResultTableViewCell
-        let priceText: String = String(format: "%.0f", pricesAfterDiscountTaxDeliveryFee[indexPath.row])
+        let priceText: String = String(format: "%.0f", pricesAfterDiscountTaxDeliveryFee[indexPath.row].formattedWithSeparator)
         
         cell.nameLabel.text = receipt.peoples[indexPath.row].name
         cell.priceLabel.text = "Rp. \(priceText)"
@@ -223,7 +225,8 @@ extension ResultPriceViewController: UICollectionViewDataSource, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ResultCollectionViewCell", for: indexPath) as! ResultCollectionViewCell
-        let priceText: String = String(format: "%.0f", pricesAfterDiscountTaxDeliveryFee[indexPath.row])
+//        let priceText: String = String(format: "%.0f", pricesAfterDiscountTaxDeliveryFee[indexPath.row])
+        let priceText = Int(pricesAfterDiscountTaxDeliveryFee[indexPath.row]).formattedWithSeparator
         
         cell.nameLabel.text = receipt.peoples[indexPath.row].name
         cell.priceLabel.text = "Rp. \(priceText)"

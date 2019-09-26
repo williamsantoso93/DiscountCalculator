@@ -45,11 +45,12 @@ class DetailResultViewController: UIViewController {
 //        additonalPrices = receipt.additionalPrices
         
         nameLabel.text = receipt.peoples[indexOf].name
-        let priceString = String(format: "%.0f", priceAfterDiscountPerPerson)
+//        let priceString = String(format: "%.0f", priceAfterDiscountPerPerson)
+        let priceString = Int(priceAfterDiscountPerPerson).formattedWithSeparator
         priceLabel.text = "Rp. \(priceString)"
         
         dateLabel2.text = dateToString(date: receipt.date)
-        paidByLabel.text = "Paid by : \(receipt.paidBy)"
+        paidBy.text = "Paid by : \(receipt.paidBy)"
         
         for detailPerPerson in countDetailsFullPerPerson(receipt: receipt) {
             let detail = detailPerPerson
@@ -183,13 +184,14 @@ extension DetailResultViewController: UITableViewDataSource {
             let additionalPrice = additonalPrices[indexPath.row]
             
             cell.typeLabel.text = additionalPrice.type
-            let totalPriceString = String(format: "%.0f", additionalPrice.price)
+//            let totalPriceString = String(format: "%.0f", additionalPrice.price)
+            let totalPriceString = Int(additionalPrice.price).formattedWithSeparator
             cell.priceLabel.text = "Rp. \(totalPriceString)"
         } else if indexPath.section == 1 {
             let additionalPrice = additonalPrices[4]
             
             cell.typeLabel.text = additionalPrice.type
-            let totalPriceString = String(format: "%.0f", additionalPrice.price)
+            let totalPriceString = Int(additionalPrice.price).formattedWithSeparator
             cell.priceLabel.text = "Rp. \(totalPriceString)"
         }
         return cell

@@ -67,7 +67,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="24h-Tx-2af">
-                                        <rect key="frame" x="142.5" y="436" width="129" height="44"/>
+                                        <rect key="frame" x="20" y="436" width="374" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="pec-LD-ERQ"/>
                                         </constraints>
@@ -76,7 +76,7 @@
                                             <action selector="addAdditonalFee:" destination="MYd-22-vk6" eventType="touchUpInside" id="20t-am-zYr"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="84n-Mu-O8e">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="84n-Mu-O8e">
                                         <rect key="frame" x="20" y="272" width="374" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="fZv-Qn-kcr"/>
@@ -104,12 +104,14 @@
                                     <constraint firstItem="Nkw-oC-eev" firstAttribute="leading" secondItem="vk9-Tn-TD9" secondAttribute="leading" id="ZHO-BF-sPT"/>
                                     <constraint firstItem="24h-Tx-2af" firstAttribute="top" secondItem="Y4F-9K-9Jq" secondAttribute="bottom" constant="8" id="ZtH-g6-3RY"/>
                                     <constraint firstItem="nhw-9h-7Mp" firstAttribute="top" secondItem="Y4F-9K-9Jq" secondAttribute="bottom" constant="8" id="a85-2G-KAI"/>
+                                    <constraint firstItem="24h-Tx-2af" firstAttribute="leading" secondItem="84n-Mu-O8e" secondAttribute="leading" id="aNJ-fG-GpN"/>
                                     <constraint firstAttribute="trailing" secondItem="dXI-YV-fdP" secondAttribute="trailing" constant="20" id="dvK-ks-cHN"/>
                                     <constraint firstItem="84n-Mu-O8e" firstAttribute="leading" secondItem="vk9-Tn-TD9" secondAttribute="leading" constant="20" id="mc2-7c-cas"/>
                                     <constraint firstItem="24h-Tx-2af" firstAttribute="centerX" secondItem="vk9-Tn-TD9" secondAttribute="centerX" id="mqX-MX-FhZ"/>
                                     <constraint firstItem="G2T-IK-TUG" firstAttribute="top" secondItem="MxT-gY-FMW" secondAttribute="bottom" constant="30" id="obq-Vs-4c1"/>
                                     <constraint firstItem="Y4F-9K-9Jq" firstAttribute="centerX" secondItem="vk9-Tn-TD9" secondAttribute="centerX" id="piH-kL-kii"/>
                                     <constraint firstItem="MxT-gY-FMW" firstAttribute="leading" secondItem="dXI-YV-fdP" secondAttribute="leading" id="r2D-ta-5NH"/>
+                                    <constraint firstItem="24h-Tx-2af" firstAttribute="trailing" secondItem="84n-Mu-O8e" secondAttribute="trailing" id="zL7-2T-ZUD"/>
                                     <constraint firstItem="Nkw-oC-eev" firstAttribute="top" secondItem="G2T-IK-TUG" secondAttribute="bottom" constant="44" id="zuQ-gh-ecc"/>
                                 </constraints>
                                 <variation key="default">

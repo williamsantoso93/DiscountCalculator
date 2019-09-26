@@ -137,6 +137,23 @@ class CreateReceiptViewController: UIViewController {
 }
 
 extension CreateReceiptViewController: UITableViewDataSource, UITextFieldDelegate {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+//            objects.remove(at: indexPath.row)
+            
+            if tableView == tableViewPeople {
+                peoples.remove(at: indexPath.row)
+            } else {
+                additionalPrices.remove(at: indexPath.row)
+            }
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var count: Int = 0
         if tableView == tableViewPeople {
