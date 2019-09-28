@@ -9,19 +9,24 @@
 import UIKit
 
 class DetailResultViewController: UIViewController {
-
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var paidByLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var totalPriceLabel: UILabel!
+    @IBOutlet weak var heightTableView: NSLayoutConstraint!
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var dateLabel2: UILabel!
     @IBOutlet weak var paidBy: UILabel!
     
-    var receipt = Receipt()
+    var receipt = Receipt() {
+        didSet{
+            DispatchQueue.main.async {
+//                self.tableView.reloadData()
+                super.updateViewConstraints()
+                self.heightTableView?.constant = self.tableView.contentSize.height
+            }
+        }
+    }
+    
     var indexOf = Int()
     var priceAfterDiscountPerPerson = Double()
     var additonalPrices: [AdditionalFee] = []
@@ -33,19 +38,11 @@ class DetailResultViewController: UIViewController {
         
         tableView.register(UINib.init(nibName: "DetailResultTableViewCell", bundle: nil), forCellReuseIdentifier: "DetailResultTableViewCell")
         tableView.tableFooterView = UIView.init(frame: .zero)
-     self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
+//        self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
         
         // Do any additional setup after loading the view.
         
-//        people = receipt.peoples[indexOf]
-        
-        titleLabel.text = receipt.title
-        dateLabel.text = dateToString(date: receipt.date)
-//        paidByLabel.text = receipt.paidBy
-//        additonalPrices = receipt.additionalPrices
-        
         nameLabel.text = receipt.peoples[indexOf].name
-//        let priceString = String(format: "%.0f", priceAfterDiscountPerPerson)
         let priceString = Int(priceAfterDiscountPerPerson).formattedWithSeparator
         priceLabel.text = "Rp. \(priceString)"
         
@@ -56,6 +53,11 @@ class DetailResultViewController: UIViewController {
             let detail = detailPerPerson
             additonalPrices.append(detail)
         }
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.updateViewConstraints()
+        self.heightTableView?.constant = self.tableView.contentSize.height
     }
     
     func countDetailsFullPerPerson(receipt: Receipt) -> [AdditionalFee] {
@@ -110,34 +112,31 @@ class DetailResultViewController: UIViewController {
         return detailsPerPerson
     }
     
-    var text: String = "Hello World"
-    
-    @IBAction func swipeDown(_ sender: Any) {
-        dismiss(animated: true) {
-            
-        }
-    }
-    
-    @IBAction func tapView(_ sender: Any) {
-        dismiss(animated: true) {
-            
-        }
-    }
+    var shareText: String = "Hello World"
     
     @IBAction func shareButtonDidTap(_ sender: Any) {
         
-        let activityController = UIActivityViewController(activityItems: [text], applicationActivities: nil)
+        let priceText = Int(receipt.peoples[indexOf].price).formattedWithSeparator
+        
+        shareText = """
+        Hi, \(receipt.peoples[indexOf].name)
+        You have bought\(receipt.title), Rp. \(priceText)
+        Paid by : \(receipt.paidBy)
+        Thank you
+        """
+        
+        let activityController = UIActivityViewController(activityItems: [shareText], applicationActivities: nil)
         activityController.popoverPresentationController?.sourceView = self.view
         
         activityController.completionWithItemsHandler = { (nil, completed, _, error) in
             if completed {
-                print("completed")
+//                print("completed")
             } else {
-                print("cancled")
+//                print("cancled")
             }
         }
         present(activityController, animated: true) {
-            print("presented")
+//            print("presented")
         }
     }
 }
@@ -147,10 +146,6 @@ extension DetailResultViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return titleSection.count
     }
-    
-//    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-//        return titleSection
-//    }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return titleSection[section]
@@ -167,24 +162,10 @@ extension DetailResultViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DetailResultTableViewCell", for: indexPath) as! DetailResultTableViewCell
         
-//        if indexPath.row == 0 {
-//            let priceText: String = String(format: "%.0f", people.price)
-//
-//            cell.typeLabel.text = people.name
-//            cell.priceLabel.text = priceText
-//        } else {
-//            let priceText: String = String(format: "%.0f", additonalPrices[indexPath.row].price)
-//
-//            cell.typeLabel.text = additonalPrices[indexPath.row].type
-//            cell.priceLabel.text = priceText
-//        }
-        
-        
         if indexPath.section == 0 {
             let additionalPrice = additonalPrices[indexPath.row]
             
             cell.typeLabel.text = additionalPrice.type
-//            let totalPriceString = String(format: "%.0f", additionalPrice.price)
             let totalPriceString = Int(additionalPrice.price).formattedWithSeparator
             cell.priceLabel.text = "Rp. \(totalPriceString)"
         } else if indexPath.section == 1 {
@@ -196,6 +177,4 @@ extension DetailResultViewController: UITableViewDataSource {
         }
         return cell
     }
-    
-    
 }

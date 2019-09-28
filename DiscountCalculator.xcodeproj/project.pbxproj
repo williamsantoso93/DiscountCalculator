@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7A01AE742324A02D0023A281 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01AE732324A02D0023A281 /* ResultTableViewCell.swift */; };
 		7A203BC22328C84F0090AD3D /* PeopleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A203BC02328C84F0090AD3D /* PeopleTableViewCell.swift */; };
 		7A203BC32328C84F0090AD3D /* PeopleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A203BC12328C84F0090AD3D /* PeopleTableViewCell.xib */; };
 		7A203BC82328C8E60090AD3D /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A203BC72328C8E60090AD3D /* DataModel.swift */; };
@@ -29,11 +28,9 @@
 		7A87F7912322B47A0011C6EF /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A87F7902322B47A0011C6EF /* Extension.swift */; };
 		7AC2641D232B73A70037989D /* ListReceiptTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2641B232B73A70037989D /* ListReceiptTableViewCell.swift */; };
 		7AC2641E232B73A70037989D /* ListReceiptTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AC2641C232B73A70037989D /* ListReceiptTableViewCell.xib */; };
-		7AC26420232B75000037989D /* ResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AC2641F232B75000037989D /* ResultTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7A01AE732324A02D0023A281 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
 		7A203BC02328C84F0090AD3D /* PeopleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleTableViewCell.swift; sourceTree = "<group>"; };
 		7A203BC12328C84F0090AD3D /* PeopleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PeopleTableViewCell.xib; sourceTree = "<group>"; };
 		7A203BC72328C8E60090AD3D /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
@@ -57,7 +54,6 @@
 		7A87F7902322B47A0011C6EF /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		7AC2641B232B73A70037989D /* ListReceiptTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListReceiptTableViewCell.swift; sourceTree = "<group>"; };
 		7AC2641C232B73A70037989D /* ListReceiptTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListReceiptTableViewCell.xib; sourceTree = "<group>"; };
-		7AC2641F232B75000037989D /* ResultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,8 +136,6 @@
 				7A203BC12328C84F0090AD3D /* PeopleTableViewCell.xib */,
 				7A508AB82337824000BF029D /* AdditionalFeeTableViewCell.swift */,
 				7A508AB92337824000BF029D /* AdditionalFeeTableViewCell.xib */,
-				7A01AE732324A02D0023A281 /* ResultTableViewCell.swift */,
-				7AC2641F232B75000037989D /* ResultTableViewCell.xib */,
 				7A3568BF232DFDE300924E34 /* DetailResultTableViewCell.swift */,
 				7A3568C0232DFDE300924E34 /* DetailResultTableViewCell.xib */,
 				7A2EA385233937B900A87548 /* ResultCollectionViewCell.swift */,
@@ -211,7 +205,6 @@
 				7A87F7832322AA000011C6EF /* LaunchScreen.storyboard in Resources */,
 				7A87F7802322AA000011C6EF /* Assets.xcassets in Resources */,
 				7A508ABB2337824000BF029D /* AdditionalFeeTableViewCell.xib in Resources */,
-				7AC26420232B75000037989D /* ResultTableViewCell.xib in Resources */,
 				7A2EA388233937B900A87548 /* ResultCollectionViewCell.xib in Resources */,
 				7A3568C2232DFDE300924E34 /* DetailResultTableViewCell.xib in Resources */,
 				7A203BC32328C84F0090AD3D /* PeopleTableViewCell.xib in Resources */,
@@ -233,7 +226,6 @@
 				7A3568A9232DECB900924E34 /* CreateReceiptViewController.swift in Sources */,
 				7A87F7762322A9FF0011C6EF /* AppDelegate.swift in Sources */,
 				7A203BC82328C8E60090AD3D /* DataModel.swift in Sources */,
-				7A01AE742324A02D0023A281 /* ResultTableViewCell.swift in Sources */,
 				7A3568C1232DFDE300924E34 /* DetailResultTableViewCell.swift in Sources */,
 				7A87F77E2322A9FF0011C6EF /* DiscountCalculator.xcdatamodeld in Sources */,
 				7A203BC22328C84F0090AD3D /* PeopleTableViewCell.swift in Sources */,

@@ -11,6 +11,10 @@ import UIKit
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var emptyDataView: UIView!
+    @IBOutlet weak var splitButton: UIButton!
+    
+    
     
     var receipts: [Receipt] = [] {
         didSet {
@@ -29,6 +33,7 @@ class HomeViewController: UIViewController {
         tableView.tableFooterView = UIView.init(frame: .zero)
         
         // Do any additional setup after loading the view.
+        splitButton.rounded()
     }
     var a: Double = 0
     
@@ -48,24 +53,18 @@ class HomeViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //        if segue.identifier == "DetailPriceSegue" {
-        //            let controller = segue.destination as! DebtsProcessViewController
-        //        }
-//        if segue.identifier == "CreateReceipt" {
-//            let controller = segue.destination as! CreateReceiptViewController
-//
-//        }
     }
-    let emptyLabel = UILabel()
+    
+    @IBAction func splitButtonTapped(_ sender: Any) {
+        performSegue(withIdentifier: "CreateReceipt", sender: self)
+    }
 }
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.receipts.count == 0 {
-            emptyLabel.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height)
-            emptyLabel.text = "Upps … there is no split counts yet"
-            emptyLabel.textAlignment = NSTextAlignment.center
-            self.tableView.backgroundView = emptyLabel
+            emptyDataView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height)
+            self.tableView.backgroundView = emptyDataView
         } else {
             self.tableView.backgroundView = nil
         }

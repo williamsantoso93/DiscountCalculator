@@ -100,12 +100,24 @@ class CreateReceiptViewController: UIViewController {
     }
     
     @IBAction func saveButtonDidTap(_ sender: Any) {
+        self.resignFirstResponder()
         receipt.title = titleTextField.text ?? "No Title"
         receipt.date = date
         receipt.paidBy = paidByTextField.text ?? "Me"
         receipt.peoples = peoples
         receipt.additionalPrices = additionalPrices
-        performSegue(withIdentifier: "ResultPriceSegue", sender: self)
+        
+        var error = false
+        
+        for peoplePrice in receipt.peoples {
+            if peoplePrice.price == 0 {
+                error = true
+            }
+        }
+        
+        if !error {
+            performSegue(withIdentifier: "ResultPriceSegue", sender: self)
+        }
     }
     
     @IBAction func addAdditonalFee(_ sender: Any) {
@@ -139,8 +151,6 @@ class CreateReceiptViewController: UIViewController {
 extension CreateReceiptViewController: UITableViewDataSource, UITextFieldDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-//            objects.remove(at: indexPath.row)
-            
             if tableView == tableViewPeople {
                 peoples.remove(at: indexPath.row)
             } else {
@@ -226,3 +236,5 @@ extension CreateReceiptViewController: UITableViewDataSource, UITextFieldDelegat
         }
     }
 }
+
+

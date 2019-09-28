@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ResultCollectionViewCellDelegate {
-    func moreActionCollection()
+    func moreActionCollection(sender: UIButton)
 }
 
 class ResultCollectionViewCell: UICollectionViewCell {
@@ -17,6 +17,7 @@ class ResultCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var moreButton: UIButton!
     
     var delegate: ResultCollectionViewCellDelegate?
     
@@ -27,7 +28,7 @@ class ResultCollectionViewCell: UICollectionViewCell {
         backView.rounded()
     }
 
-    @IBAction func moreButtonDidTap(_ sender: Any) {
-        delegate?.moreActionCollection()
+    @IBAction func moreButtonDidTap(_ sender: UIButton) {
+        delegate?.moreActionCollection(sender: sender)
     }
 }
