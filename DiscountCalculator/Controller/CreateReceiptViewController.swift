@@ -15,11 +15,6 @@ class CreateReceiptViewController: UIViewController {
     @IBOutlet weak var heightTableViewPeople: NSLayoutConstraint!
     @IBOutlet weak var heightTableViewAdditionalPrice: NSLayoutConstraint!
     
-    var discount: Double?
-    var ongkir: Double?
-    var pajak: Double?
-    var priceOngkirPerPerson = Double()
-    
     @IBOutlet weak var tableViewPeople: UITableView!
     @IBOutlet weak var tableViewAdditionalPrice: UITableView!
     
@@ -58,6 +53,7 @@ class CreateReceiptViewController: UIViewController {
 //        heightTableViewAdditionalPrice.constant = tableViewPeople.contentSize.height
         
         // Do any additional setup after loading the view.
+        hideKeyboardWhenTappedAround()
         
         dateTextField.text = dateToString(date: Date())
         
@@ -82,7 +78,35 @@ class CreateReceiptViewController: UIViewController {
         people.price = 0
         people.status = "Not Paid"
         peoples.append(people)
+        
+        originScrollViewSize = scrollView.frame.size
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        
+    }
+    var originScrollViewSize = CGSize()
+    
+    @objc func keyboardWillChange(notification: Notification) {
+        
+        guard let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+            return
+        }
+        
+        if notification.name == UIResponder.keyboardWillShowNotification {
+            scrollView.frame.size = CGSize(width: originScrollViewSize.width, height: (originScrollViewSize.height - keyboardRect.height))
+
+        } else {
+            scrollView.frame.size = originScrollViewSize
+        }
+    }
+
     
     @objc func datePickerValueChange(sender: UIDatePicker) {
         date = sender.date
@@ -90,6 +114,16 @@ class CreateReceiptViewController: UIViewController {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
         view.endEditing(true)
     }
     
@@ -101,6 +135,8 @@ class CreateReceiptViewController: UIViewController {
     
     @IBAction func saveButtonDidTap(_ sender: Any) {
         self.resignFirstResponder()
+        self.view.endEditing(true)
+        
         receipt.title = titleTextField.text ?? "No Title"
         receipt.date = date
         receipt.paidBy = paidByTextField.text ?? "Me"

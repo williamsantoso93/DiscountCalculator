@@ -129,7 +129,7 @@ extension ResultPriceViewController: ResultCollectionViewCellDelegate {
         
         shareText = """
         Hi, \(receipt.peoples[sender.tag].name)
-        You have bought\(receipt.title), Rp. \(priceText)
+        You have bought \(receipt.title), Rp. \(priceText)
         Paid by : \(receipt.paidBy)
         Thank you
         """

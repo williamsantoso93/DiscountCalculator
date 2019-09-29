@@ -120,7 +120,7 @@ class DetailResultViewController: UIViewController {
         
         shareText = """
         Hi, \(receipt.peoples[indexOf].name)
-        You have bought\(receipt.title), Rp. \(priceText)
+        You have bought \(receipt.title), Rp. \(priceText)
         Paid by : \(receipt.paidBy)
         Thank you
         """
