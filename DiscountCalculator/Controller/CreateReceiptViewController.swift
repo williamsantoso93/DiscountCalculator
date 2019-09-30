@@ -53,9 +53,13 @@ class CreateReceiptViewController: UIViewController {
 //        heightTableViewAdditionalPrice.constant = tableViewPeople.contentSize.height
         
         // Do any additional setup after loading the view.
+        titleTextField.addDoneButtonOnKeyboard()
+        paidByTextField.addDoneButtonOnKeyboard()
+        
         hideKeyboardWhenTappedAround()
         
         dateTextField.text = dateToString(date: Date())
+        dateTextField.textColor = .lightGray
         
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
@@ -76,6 +80,7 @@ class CreateReceiptViewController: UIViewController {
         let people = People()
         people.name = "No Name"
         people.price = 0
+        people.priceAfterDiscount = 0
         people.status = "Not Paid"
         peoples.append(people)
         
@@ -111,6 +116,7 @@ class CreateReceiptViewController: UIViewController {
     @objc func datePickerValueChange(sender: UIDatePicker) {
         date = sender.date
         dateTextField.text = dateToString(date: date)
+        dateTextField.textColor = .black
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -136,8 +142,11 @@ class CreateReceiptViewController: UIViewController {
     @IBAction func saveButtonDidTap(_ sender: Any) {
         self.resignFirstResponder()
         self.view.endEditing(true)
-        
-        receipt.title = titleTextField.text ?? "No Title"
+        if receipt.title != "" {
+            receipt.title = titleTextField.text ?? "No Title"
+        } else {
+            receipt.title = "No Title"
+        }
         receipt.date = date
         receipt.paidBy = paidByTextField.text ?? "Me"
         receipt.peoples = peoples
@@ -167,6 +176,7 @@ class CreateReceiptViewController: UIViewController {
         let people = People()
         people.name = "No Name"
         people.price = 0
+        people.priceAfterDiscount = 0
         people.status = "Not Paid"
         peoples.append(people)
     }

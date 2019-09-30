@@ -44,9 +44,6 @@ class ResultPriceViewController: UIViewController {
         paidByLabel.text = "Paid by : \(receipt.paidBy)"
         
         pricesAfterDiscountTaxDeliveryFee = countDiscount(receipt: receipt)
-        
-        shareText = """
-        """
     }
     
     @IBAction func doneButtonDidTap(_ sender: Any) {
@@ -94,8 +91,6 @@ class ResultPriceViewController: UIViewController {
         let tax: Double = getFee(type: "Tax", receipt: receipt)
         let deliveryFee: Double = getFee(type: "Delivery Fee", receipt: receipt)
         
-//        print("\(totalPrice) \(discount) \(tax) \(deliveryFee) ")
-        
         var priceDeliveryFeePerPerson = Double()
         
         let percentDiscount = discount / totalPrice
@@ -125,10 +120,10 @@ class ResultPriceViewController: UIViewController {
 
 extension ResultPriceViewController: ResultCollectionViewCellDelegate {
     func moreActionCollection(sender: UIButton) {
-        let priceText = Int(receipt.peoples[sender.tag].price).formattedWithSeparator
+        let priceText = Int(receipt.peoples[sender.tag].priceAfterDiscount).formattedWithSeparator
         
         shareText = """
-        Hi, \(receipt.peoples[sender.tag].name)
+        Hi \(receipt.peoples[sender.tag].name),
         You have bought \(receipt.title), Rp. \(priceText)
         Paid by : \(receipt.paidBy)
         Thank you
@@ -168,7 +163,9 @@ extension ResultPriceViewController: UICollectionViewDataSource, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ResultCollectionViewCell", for: indexPath) as! ResultCollectionViewCell
-        let priceText = Int(pricesAfterDiscountTaxDeliveryFee[indexPath.row]).formattedWithSeparator
+        
+        receipt.peoples[indexPath.row].priceAfterDiscount = pricesAfterDiscountTaxDeliveryFee[indexPath.row]
+        let priceText = Int(receipt.peoples[indexPath.row].priceAfterDiscount).formattedWithSeparator
         
         cell.nameLabel.text = receipt.peoples[indexPath.row].name
         cell.priceLabel.text = "Rp. \(priceText)"

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,7 +14,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="55.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iVF-GT-GDH">
@@ -24,27 +22,37 @@
                         <state key="normal" title="-"/>
                     </button>
                     <textField autoresizesSubviews="NO" opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="10000" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="24" translatesAutoresizingMaskIntoConstraints="NO" id="rPs-8n-A1q">
-                        <rect key="frame" x="138" y="19.5" width="162" height="17"/>
+                        <rect key="frame" x="138.5" y="19" width="161.5" height="18.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                     </textField>
                     <textField autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="n9t-Yc-fbq">
-                        <rect key="frame" x="20" y="19.5" width="110" height="17"/>
+                        <rect key="frame" x="20" y="19" width="110" height="18.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="110" id="QsB-h1-Q3F"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="name"/>
                     </textField>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tXh-Bm-5pB">
+                        <rect key="frame" x="134" y="19" width="0.5" height="18.5"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="0.5" id="Vf7-wS-kXf"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="rPs-8n-A1q" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="61p-1v-chh"/>
                     <constraint firstItem="iVF-GT-GDH" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="6aK-f5-DDY"/>
                     <constraint firstItem="n9t-Yc-fbq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Be8-uM-hpg"/>
-                    <constraint firstItem="rPs-8n-A1q" firstAttribute="leading" secondItem="n9t-Yc-fbq" secondAttribute="trailing" constant="8" id="Fhm-7W-Ph6"/>
+                    <constraint firstItem="rPs-8n-A1q" firstAttribute="leading" secondItem="tXh-Bm-5pB" secondAttribute="trailing" constant="4" id="Fhm-7W-Ph6"/>
+                    <constraint firstItem="tXh-Bm-5pB" firstAttribute="centerY" secondItem="rPs-8n-A1q" secondAttribute="centerY" id="JLt-3F-zid"/>
                     <constraint firstAttribute="trailing" secondItem="rPs-8n-A1q" secondAttribute="trailing" constant="20" id="Q2N-tP-qQR"/>
+                    <constraint firstItem="tXh-Bm-5pB" firstAttribute="leading" secondItem="n9t-Yc-fbq" secondAttribute="trailing" constant="4" id="Rpl-sy-2Tp"/>
                     <constraint firstItem="n9t-Yc-fbq" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="bnn-a0-BTB"/>
                     <constraint firstItem="iVF-GT-GDH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="hRz-Bi-Km9"/>
+                    <constraint firstItem="tXh-Bm-5pB" firstAttribute="height" secondItem="n9t-Yc-fbq" secondAttribute="height" id="iaO-S8-MAA"/>
                     <constraint firstItem="n9t-Yc-fbq" firstAttribute="leading" secondItem="iVF-GT-GDH" secondAttribute="trailing" constant="8" id="nc2-r3-hhT"/>
                 </constraints>
                 <variation key="default">

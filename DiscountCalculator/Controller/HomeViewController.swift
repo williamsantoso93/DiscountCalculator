@@ -34,6 +34,33 @@ class HomeViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         splitButton.rounded()
+//        if #available(iOS 13.0, *) {
+//            let navBarAppearance = UINavigationBarAppearance()
+////            navBarAppearance.configureWithOpaqueBackground()
+//            navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.black]
+//            navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.black]
+//            navBarAppearance.backgroundColor = UIColor(red: 1, green: 0.75, blue: 0.18, alpha: 1)
+//            UINavigationBar.appearance().barTintColor = UIColor(red: 1, green: 0.75, blue: 0.18, alpha: 1)
+//
+//            UINavigationBar.appearance().standardAppearance = navBarAppearance
+//            UINavigationBar.appearance().compactAppearance = navBarAppearance
+//            UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
+//        }
+        if #available(iOS 13.0, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.backgroundColor = UIColor(red: 1, green: 0.75, blue: 0.18, alpha: 1)
+            appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
+            appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.black]
+
+            UINavigationBar.appearance().tintColor = UIColor(red: 1, green: 0.75, blue: 0.18, alpha: 1)
+            UINavigationBar.appearance().standardAppearance = appearance
+            UINavigationBar.appearance().compactAppearance = appearance
+            UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        } else {
+            UINavigationBar.appearance().tintColor = .black
+            UINavigationBar.appearance().barTintColor = UIColor(red: 1, green: 0.75, blue: 0.18, alpha: 1)
+            UINavigationBar.appearance().isTranslucent = false
+        }
     }
     var a: Double = 0
     

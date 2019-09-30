@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,36 +14,46 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type" adjustsFontSizeToFit="NO" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="lhe-nl-2au">
-                        <rect key="frame" x="20" y="14.5" width="110" height="15"/>
+                        <rect key="frame" x="20" y="13" width="110" height="18.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="110" id="zlo-wr-zVY"/>
                         </constraints>
-                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                     <textField autoresizesSubviews="NO" opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="10000" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="24" translatesAutoresizingMaskIntoConstraints="NO" id="yE9-6Y-WtG">
-                        <rect key="frame" x="138" y="13.5" width="162" height="17"/>
+                        <rect key="frame" x="138.5" y="13" width="161.5" height="18.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                     </textField>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TSD-oQ-0GD">
+                        <rect key="frame" x="134" y="13" width="0.5" height="18.5"/>
+                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="0.5" id="2e4-v0-1ED"/>
+                        </constraints>
+                    </view>
                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aUR-CE-fRk">
                         <rect key="frame" x="20" y="7" width="30" height="30"/>
                         <state key="normal" title="-"/>
                     </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="yE9-6Y-WtG" firstAttribute="leading" secondItem="TSD-oQ-0GD" secondAttribute="trailing" constant="4" id="52X-bx-SBk"/>
+                    <constraint firstItem="TSD-oQ-0GD" firstAttribute="height" secondItem="lhe-nl-2au" secondAttribute="height" id="5TL-eK-rsH"/>
                     <constraint firstItem="aUR-CE-fRk" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="8ER-Cj-Q72"/>
                     <constraint firstItem="aUR-CE-fRk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="J39-wR-ozb"/>
                     <constraint firstAttribute="trailing" secondItem="yE9-6Y-WtG" secondAttribute="trailing" constant="20" id="QVK-cM-CjA"/>
                     <constraint firstItem="lhe-nl-2au" firstAttribute="leading" secondItem="aUR-CE-fRk" secondAttribute="trailing" constant="8" id="S6D-zV-PZc"/>
-                    <constraint firstItem="yE9-6Y-WtG" firstAttribute="leading" secondItem="lhe-nl-2au" secondAttribute="trailing" constant="8" id="dIi-43-HCM"/>
+                    <constraint firstItem="TSD-oQ-0GD" firstAttribute="leading" secondItem="lhe-nl-2au" secondAttribute="trailing" constant="4" id="dIi-43-HCM"/>
                     <constraint firstItem="lhe-nl-2au" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="fdi-cU-fir"/>
                     <constraint firstItem="yE9-6Y-WtG" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="gal-y9-kX7"/>
                     <constraint firstItem="lhe-nl-2au" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="oB3-gw-gt4"/>
+                    <constraint firstItem="TSD-oQ-0GD" firstAttribute="centerY" secondItem="lhe-nl-2au" secondAttribute="centerY" id="yEA-5j-eSW"/>
                 </constraints>
                 <variation key="default">
                     <mask key="subviews">

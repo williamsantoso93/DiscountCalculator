@@ -116,10 +116,10 @@ class DetailResultViewController: UIViewController {
     
     @IBAction func shareButtonDidTap(_ sender: Any) {
         
-        let priceText = Int(receipt.peoples[indexOf].price).formattedWithSeparator
+        let priceText = Int(receipt.peoples[indexOf].priceAfterDiscount).formattedWithSeparator
         
         shareText = """
-        Hi, \(receipt.peoples[indexOf].name)
+        Hi \(receipt.peoples[indexOf].name),
         You have bought \(receipt.title), Rp. \(priceText)
         Paid by : \(receipt.paidBy)
         Thank you
