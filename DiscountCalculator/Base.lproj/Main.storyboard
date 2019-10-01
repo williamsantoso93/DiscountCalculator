@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9xN-Ik-hgx">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9xN-Ik-hgx">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -197,13 +198,8 @@
                             <constraint firstItem="QRb-sj-LXv" firstAttribute="top" secondItem="bRk-5i-2Eq" secondAttribute="top" id="xlv-S3-86u"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bRk-5i-2Eq"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="QRb-sj-LXv"/>
-                            </mask>
-                        </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Easy Way to Count" largeTitleDisplayMode="always" id="bK7-Me-FX5">
+                    <navigationItem key="navigationItem" title="Easy Way to Count" id="bK7-Me-FX5">
                         <barButtonItem key="backBarButtonItem" title="This Count" id="w33-LX-h7v"/>
                         <barButtonItem key="leftBarButtonItem" style="done" id="oJF-xi-gx2">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bZc-ra-2vU">
@@ -563,6 +559,6 @@
         <image name="Illustration" width="280" height="259"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="PjF-t2-5C5"/>
+        <segue reference="IRu-aN-tTu"/>
     </inferredMetricsTieBreakers>
 </document>

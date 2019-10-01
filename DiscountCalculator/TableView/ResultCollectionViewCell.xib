@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -45,7 +44,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.74509803919999995" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.96241861581802368" green="0.75331735610961914" blue="0.31359988451004028" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Ld3-dx-6Ay" secondAttribute="bottom" constant="20" id="0xt-sS-9A7"/>
                             <constraint firstItem="7p1-aA-kaS" firstAttribute="leading" secondItem="4c5-uM-3xt" secondAttribute="leading" id="Bdq-y4-Gp4"/>

@@ -46,20 +46,25 @@ class HomeViewController: UIViewController {
 //            UINavigationBar.appearance().compactAppearance = navBarAppearance
 //            UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
 //        }
+//        if #available(iOS 13.0, *) {
+//            let appearance = UINavigationBar.appearance()()
+//            appearance.backgroundColor = UIColor(red: 1, green: 0.75, blue: 0.18, alpha: 1)
+//            appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
+//            appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.black]
+//
+//            UINavigationBar.appearance().tintColor = UIColor(red: 1, green: 0.75, blue: 0.18, alpha: 1)
+//            UINavigationBar.appearance().standardAppearance = appearance
+//            UINavigationBar.appearance().compactAppearance = appearance
+//            UINavigationBar.appearance().scrollEdgeAppearance = appearance
+//        } else {
+//            UINavigationBar.appearance().tintColor = .black
+//            UINavigationBar.appearance().barTintColor = UIColor(red: 1, green: 0.75, blue: 0.18, alpha: 1)
+//            UINavigationBar.appearance().isTranslucent = false
+//        }
         if #available(iOS 13.0, *) {
-            let appearance = UINavigationBarAppearance()
-            appearance.backgroundColor = UIColor(red: 1, green: 0.75, blue: 0.18, alpha: 1)
-            appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
-            appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.black]
-
-            UINavigationBar.appearance().tintColor = UIColor(red: 1, green: 0.75, blue: 0.18, alpha: 1)
-            UINavigationBar.appearance().standardAppearance = appearance
-            UINavigationBar.appearance().compactAppearance = appearance
-            UINavigationBar.appearance().scrollEdgeAppearance = appearance
+            navigationItem.largeTitleDisplayMode = .never
         } else {
-            UINavigationBar.appearance().tintColor = .black
-            UINavigationBar.appearance().barTintColor = UIColor(red: 1, green: 0.75, blue: 0.18, alpha: 1)
-            UINavigationBar.appearance().isTranslucent = false
+            navigationItem.largeTitleDisplayMode = .always
         }
     }
     var a: Double = 0
