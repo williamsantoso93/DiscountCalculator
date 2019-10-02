@@ -54,12 +54,15 @@ class CreateReceiptViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         titleTextField.addDoneButtonOnKeyboard()
+        titleTextField.setBottomBorder()
         paidByTextField.addDoneButtonOnKeyboard()
+        paidByTextField.setBottomBorder()
         
         hideKeyboardWhenTappedAround()
         
         dateTextField.text = dateToString(date: Date())
         dateTextField.textColor = .lightGray
+        dateTextField.setBottomBorder()
         
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
@@ -173,12 +176,13 @@ class CreateReceiptViewController: UIViewController {
     }
     
     @IBAction func addPeople(_ sender: Any) {
-        let people = People()
-        people.name = "No Name"
-        people.price = 0
-        people.priceAfterDiscount = 0
-        people.status = "Not Paid"
-        peoples.append(people)
+//        let people = People()
+//        people.name = "No Name"
+//        people.price = 0
+//        people.priceAfterDiscount = 0
+//        people.status = "Not Paid"
+//        peoples.append(people)
+        performSegue(withIdentifier: "AddDetail", sender: self)
     }
     
     @IBAction func cancelTapped(_ sender: Any) {

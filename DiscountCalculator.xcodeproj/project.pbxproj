@@ -18,6 +18,7 @@
 		7A3568AB232DF92300924E34 /* DetailResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3568AA232DF92300924E34 /* DetailResultViewController.swift */; };
 		7A3568C1232DFDE300924E34 /* DetailResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3568BF232DFDE300924E34 /* DetailResultTableViewCell.swift */; };
 		7A3568C2232DFDE300924E34 /* DetailResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A3568C0232DFDE300924E34 /* DetailResultTableViewCell.xib */; };
+		7A4E758D2344FD8600AA29AD /* AddDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4E758C2344FD8600AA29AD /* AddDetailViewController.swift */; };
 		7A508ABA2337824000BF029D /* AdditionalFeeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A508AB82337824000BF029D /* AdditionalFeeTableViewCell.swift */; };
 		7A508ABB2337824000BF029D /* AdditionalFeeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A508AB92337824000BF029D /* AdditionalFeeTableViewCell.xib */; };
 		7A87F7762322A9FF0011C6EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A87F7752322A9FF0011C6EF /* AppDelegate.swift */; };
@@ -28,6 +29,8 @@
 		7A87F7912322B47A0011C6EF /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A87F7902322B47A0011C6EF /* Extension.swift */; };
 		7AC2641D232B73A70037989D /* ListReceiptTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2641B232B73A70037989D /* ListReceiptTableViewCell.swift */; };
 		7AC2641E232B73A70037989D /* ListReceiptTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AC2641C232B73A70037989D /* ListReceiptTableViewCell.xib */; };
+		7ADB37452344FFFF001664C4 /* AddDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADB37432344FFFF001664C4 /* AddDetailTableViewCell.swift */; };
+		7ADB37462344FFFF001664C4 /* AddDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ADB37442344FFFF001664C4 /* AddDetailTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +45,7 @@
 		7A3568AA232DF92300924E34 /* DetailResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailResultViewController.swift; sourceTree = "<group>"; };
 		7A3568BF232DFDE300924E34 /* DetailResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailResultTableViewCell.swift; sourceTree = "<group>"; };
 		7A3568C0232DFDE300924E34 /* DetailResultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailResultTableViewCell.xib; sourceTree = "<group>"; };
+		7A4E758C2344FD8600AA29AD /* AddDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDetailViewController.swift; sourceTree = "<group>"; };
 		7A508AB82337824000BF029D /* AdditionalFeeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalFeeTableViewCell.swift; sourceTree = "<group>"; };
 		7A508AB92337824000BF029D /* AdditionalFeeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdditionalFeeTableViewCell.xib; sourceTree = "<group>"; };
 		7A87F7722322A9FF0011C6EF /* DiscountCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiscountCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,6 +58,8 @@
 		7A87F7902322B47A0011C6EF /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		7AC2641B232B73A70037989D /* ListReceiptTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListReceiptTableViewCell.swift; sourceTree = "<group>"; };
 		7AC2641C232B73A70037989D /* ListReceiptTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListReceiptTableViewCell.xib; sourceTree = "<group>"; };
+		7ADB37432344FFFF001664C4 /* AddDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDetailTableViewCell.swift; sourceTree = "<group>"; };
+		7ADB37442344FFFF001664C4 /* AddDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddDetailTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				7A203BCF232A5D000090AD3D /* HomeViewController.swift */,
+				7A4E758C2344FD8600AA29AD /* AddDetailViewController.swift */,
 				7A3568A8232DECB900924E34 /* CreateReceiptViewController.swift */,
 				7A2EA3832339371700A87548 /* ResultPriceViewController.swift */,
 				7A3568AA232DF92300924E34 /* DetailResultViewController.swift */,
@@ -140,6 +147,8 @@
 				7A3568C0232DFDE300924E34 /* DetailResultTableViewCell.xib */,
 				7A2EA385233937B900A87548 /* ResultCollectionViewCell.swift */,
 				7A2EA386233937B900A87548 /* ResultCollectionViewCell.xib */,
+				7ADB37432344FFFF001664C4 /* AddDetailTableViewCell.swift */,
+				7ADB37442344FFFF001664C4 /* AddDetailTableViewCell.xib */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -209,6 +218,7 @@
 				7A3568C2232DFDE300924E34 /* DetailResultTableViewCell.xib in Resources */,
 				7A203BC32328C84F0090AD3D /* PeopleTableViewCell.xib in Resources */,
 				7AC2641E232B73A70037989D /* ListReceiptTableViewCell.xib in Resources */,
+				7ADB37462344FFFF001664C4 /* AddDetailTableViewCell.xib in Resources */,
 				7A87F77B2322A9FF0011C6EF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -226,11 +236,13 @@
 				7A3568A9232DECB900924E34 /* CreateReceiptViewController.swift in Sources */,
 				7A87F7762322A9FF0011C6EF /* AppDelegate.swift in Sources */,
 				7A203BC82328C8E60090AD3D /* DataModel.swift in Sources */,
+				7ADB37452344FFFF001664C4 /* AddDetailTableViewCell.swift in Sources */,
 				7A3568C1232DFDE300924E34 /* DetailResultTableViewCell.swift in Sources */,
 				7A87F77E2322A9FF0011C6EF /* DiscountCalculator.xcdatamodeld in Sources */,
 				7A203BC22328C84F0090AD3D /* PeopleTableViewCell.swift in Sources */,
 				7A2EA3842339371700A87548 /* ResultPriceViewController.swift in Sources */,
 				7A2EA387233937B900A87548 /* ResultCollectionViewCell.swift in Sources */,
+				7A4E758D2344FD8600AA29AD /* AddDetailViewController.swift in Sources */,
 				7A508ABA2337824000BF029D /* AdditionalFeeTableViewCell.swift in Sources */,
 				7AC2641D232B73A70037989D /* ListReceiptTableViewCell.swift in Sources */,
 			);
