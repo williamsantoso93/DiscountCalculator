@@ -16,7 +16,7 @@ class AddDetailViewController: UIViewController {
     
     @IBOutlet weak var heightTableView: NSLayoutConstraint!
     
-    var peoples: [People] = []{
+    var items: [Item] = []{
         didSet{
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -26,18 +26,40 @@ class AddDetailViewController: UIViewController {
         }
     }
     
+    var people = People()
+    
+    var delegate: CreateReceiptReceiveData?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.register(UINib.init(nibName: "AddDetailTableViewCell", bundle: nil), forCellReuseIdentifier: "AddDetailTableViewCell")
         // Do any additional setup after loading the view.
         
-        let people = People()
+        nameTextField.addDoneButtonOnKeyboard()
+        nameTextField.setBottomBorder()
+        
+        hideKeyboardWhenTappedAround()
+        
         people.name = "No Name"
-        people.price = 0
+        people.personTotalPrice = 0
         people.priceAfterDiscount = 0
-        people.status = "Not Paid"
-        peoples.append(people)
+        people.status = .notPaid
+        addDetailButtonDidTap(self)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     override func viewWillLayoutSubviews() {
@@ -46,28 +68,53 @@ class AddDetailViewController: UIViewController {
     }
     
     @IBAction func addDetailButtonDidTap(_ sender: Any) {
-        let people = People()
-        people.name = "No Name"
-        people.price = 0
-        people.priceAfterDiscount = 0
-        people.status = "Not Paid"
-        peoples.append(people)
+        let item = Item()
+        item.itemName = "No item name"
+        item.qty = 0
+        item.price = 0
+        items.append(item)
         self.tableView.reloadData()
     }
     
     @IBAction func addButtonDidTap(_ sender: Any) {
-        dismiss(animated: true) {
-            
+        dismissKeyboard()
+        
+        if people.name != "" {
+            people.name = nameTextField.text ?? "No Title"
+        } else {
+            people.name = "No Title"
+        }
+        people.items = items
+        
+        var error = false
+        
+        for item in items {
+            if item.price == 0 {
+                error = true
+            }
+        }
+        
+        if !error {
+            if let navController = self.navigationController {
+                self.delegate?.pass(people: people)
+                navController.popViewController(animated: true)
+            }
         }
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+    }
+    
     @IBAction func cancelButtonDidTap(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        if let navController = self.navigationController {
+            navController.popViewController(animated: true)
+        }
     }
     
 }
 
-extension AddDetailViewController: UITableViewDelegate, UITableViewDataSource {
+extension AddDetailViewController: UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
@@ -75,19 +122,55 @@ extension AddDetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            peoples.remove(at: indexPath.row)
+            items.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return peoples.count
+        return items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AddDetailTableViewCell", for: indexPath) as! AddDetailTableViewCell
+        cell.itemTextField.delegate =  self
+        cell.itemTextField.tag = indexPath.row
+        cell.itemTextField.placeholder = "Item"
+        //        cell.itemTextField.setBottomBorder()
+        cell.itemTextField.addDoneButtonOnKeyboard()
+        
+        cell.qtyTextField.delegate =  self
+        cell.qtyTextField.tag = indexPath.row
+        cell.qtyTextField.placeholder = "Qty"
+        //        cell.qtyTextField.setBottomBorder()
+        cell.qtyTextField.addDoneButtonOnKeyboard()
+        
+        cell.priceTextField.delegate =  self
+        cell.priceTextField.tag = indexPath.row
+        cell.priceTextField.placeholder = "Price"
+        //        cell.priceTextField.setBottomBorder()
+        cell.priceTextField.addDoneButtonOnKeyboard()
+        
         
         return cell
     }
     
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField.placeholder == "Item" {
+            let indexOf = textField.tag
+            
+            items[indexOf].itemName = textField.text!
+        } else if textField.placeholder == "Qty" {
+            let indexOf = textField.tag
+            
+            let qty: Double = Double(textField.text!) ?? 0
+            items[indexOf].qty = qty
+        } else if textField.placeholder == "Price" {
+            let indexOf = textField.tag
+            
+            let price: Double = Double(textField.text!) ?? 0
+            items[indexOf].price = price
+        }
+    }
 }

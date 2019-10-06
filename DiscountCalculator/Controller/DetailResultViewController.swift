@@ -30,12 +30,14 @@ class DetailResultViewController: UIViewController {
     var indexOf = Int()
     var priceAfterDiscountPerPerson = Double()
     var additonalPrices: [AdditionalFee] = []
+    var items: [Item] = []
     
-    let titleSection = ["Detail", "Total"]
+    let titleSection = ["Detail Item", "Detail", "Total"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.register(UINib.init(nibName: "PeopleDetailTableViewCell", bundle: nil), forCellReuseIdentifier: "PeopleDetailTableViewCell")
         tableView.register(UINib.init(nibName: "DetailResultTableViewCell", bundle: nil), forCellReuseIdentifier: "DetailResultTableViewCell")
         tableView.tableFooterView = UIView.init(frame: .zero)
 //        self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
@@ -48,6 +50,7 @@ class DetailResultViewController: UIViewController {
         
         dateLabel2.text = dateToString(date: receipt.date)
         paidBy.text = "Paid by : \(receipt.paidBy)"
+        items = receipt.peoples[indexOf].items
         
         for detailPerPerson in countDetailsFullPerPerson(receipt: receipt) {
             let detail = detailPerPerson
@@ -75,7 +78,7 @@ class DetailResultViewController: UIViewController {
         
         var detailsPerPerson: [AdditionalFee] = []
         
-        let price = receipt.peoples[indexOf].price
+        let price = receipt.peoples[indexOf].personTotalPrice
         let priceDiscountPerPerson = price * percentDiscount
         let priceAfterDiscountPerPerson = price - priceDiscountPerPerson
         
@@ -85,7 +88,7 @@ class DetailResultViewController: UIViewController {
         let priceAfterDiscountTaxDeliveryFee = priceAfterDiscountTax + priceDeliveryFeePerPerson
         
         let detailPerPerson = AdditionalFee()
-        detailPerPerson.type = "Price"
+        detailPerPerson.type = "Subtotal Price"
         detailPerPerson.price = price
         detailsPerPerson.append(detailPerPerson)
         
@@ -153,6 +156,8 @@ extension DetailResultViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
+            return items.count
+        }else if section == 1 {
             return additonalPrices.count - 1
         } else {
             return 1
@@ -160,21 +165,39 @@ extension DetailResultViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DetailResultTableViewCell", for: indexPath) as! DetailResultTableViewCell
-        
         if indexPath.section == 0 {
+            let cellItem = tableView.dequeueReusableCell(withIdentifier: "PeopleDetailTableViewCell", for: indexPath) as! PeopleDetailTableViewCell
+            let item = items[indexPath.row]
+            
+            cellItem.itemLabel.text = item.itemName
+            cellItem.qtyLabel.text = "\(item.qty)"
+            let priceString = Int(item.price * item.qty).formattedWithSeparator
+            cellItem.priceLabel.text = "Rp. \(priceString)"
+            
+            return cellItem
+        } else if indexPath.section == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DetailResultTableViewCell", for: indexPath) as! DetailResultTableViewCell
             let additionalPrice = additonalPrices[indexPath.row]
             
             cell.typeLabel.text = additionalPrice.type
-            let totalPriceString = Int(additionalPrice.price).formattedWithSeparator
-            cell.priceLabel.text = "Rp. \(totalPriceString)"
-        } else if indexPath.section == 1 {
+            if additionalPrice.price != 0 {
+                let totalPriceString = Int(additionalPrice.price).formattedWithSeparator
+                cell.priceLabel.text = "Rp. \(totalPriceString)"
+            } else {
+                cell.priceLabel.text = "-"
+            }
+            
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DetailResultTableViewCell", for: indexPath) as! DetailResultTableViewCell
             let additionalPrice = additonalPrices[4]
             
             cell.typeLabel.text = additionalPrice.type
             let totalPriceString = Int(additionalPrice.price).formattedWithSeparator
             cell.priceLabel.text = "Rp. \(totalPriceString)"
+            
+            return cell
         }
-        return cell
+//        return cell
     }
 }

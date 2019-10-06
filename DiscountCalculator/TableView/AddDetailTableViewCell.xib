@@ -19,14 +19,14 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Di-eq-KYp">
-                        <rect key="frame" x="124" y="19.5" width="0.5" height="17"/>
+                        <rect key="frame" x="129" y="19.5" width="0.5" height="17"/>
                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="0.5" id="Uum-eB-OQE"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1qo-5P-IvQ">
-                        <rect key="frame" x="207.5" y="19.5" width="0.5" height="17"/>
+                        <rect key="frame" x="222.5" y="19.5" width="0.5" height="17"/>
                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="0.5" id="Jms-dN-Xy1"/>
@@ -39,42 +39,46 @@
                         </constraints>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                     </textField>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Qty" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l09-HK-Vpe">
-                        <rect key="frame" x="128.5" y="19.5" width="75" height="17"/>
+                        <rect key="frame" x="138.5" y="19.5" width="75" height="17"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="75" id="DsN-aI-Nhn"/>
                         </constraints>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits"/>
+                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                     </textField>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KBE-py-79C">
-                        <rect key="frame" x="212" y="19.5" width="182" height="17"/>
+                        <rect key="frame" x="232" y="19.5" width="162" height="17"/>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits"/>
+                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                     </textField>
                 </subviews>
                 <constraints>
                     <constraint firstItem="mnT-Ek-zcl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="BY4-Ge-hLO"/>
                     <constraint firstAttribute="trailing" secondItem="KBE-py-79C" secondAttribute="trailing" constant="20" id="DOZ-WM-EC1"/>
                     <constraint firstItem="KBE-py-79C" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="E7e-Gr-5Hs"/>
-                    <constraint firstItem="KBE-py-79C" firstAttribute="leading" secondItem="1qo-5P-IvQ" secondAttribute="trailing" constant="4" id="LK6-W3-Tlw"/>
+                    <constraint firstItem="KBE-py-79C" firstAttribute="leading" secondItem="1qo-5P-IvQ" secondAttribute="trailing" constant="9" id="LK6-W3-Tlw"/>
                     <constraint firstItem="mnT-Ek-zcl" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Vyp-0r-96y"/>
-                    <constraint firstItem="l09-HK-Vpe" firstAttribute="leading" secondItem="4Di-eq-KYp" secondAttribute="trailing" constant="4" id="YfV-Ne-ce3"/>
+                    <constraint firstItem="l09-HK-Vpe" firstAttribute="leading" secondItem="4Di-eq-KYp" secondAttribute="trailing" constant="9" id="YfV-Ne-ce3"/>
                     <constraint firstItem="4Di-eq-KYp" firstAttribute="height" secondItem="mnT-Ek-zcl" secondAttribute="height" id="Yry-f3-o2k"/>
                     <constraint firstItem="1qo-5P-IvQ" firstAttribute="height" secondItem="mnT-Ek-zcl" secondAttribute="height" id="ZmD-Hu-5Rd"/>
-                    <constraint firstItem="1qo-5P-IvQ" firstAttribute="leading" secondItem="l09-HK-Vpe" secondAttribute="trailing" constant="4" id="aQv-FW-nbZ"/>
-                    <constraint firstItem="l09-HK-Vpe" firstAttribute="leading" secondItem="4Di-eq-KYp" secondAttribute="trailing" constant="4" id="bUH-jg-IxH"/>
-                    <constraint firstItem="4Di-eq-KYp" firstAttribute="leading" secondItem="mnT-Ek-zcl" secondAttribute="trailing" constant="4" id="dcT-89-iDs"/>
+                    <constraint firstItem="1qo-5P-IvQ" firstAttribute="leading" secondItem="l09-HK-Vpe" secondAttribute="trailing" constant="9" id="aQv-FW-nbZ"/>
+                    <constraint firstItem="4Di-eq-KYp" firstAttribute="leading" secondItem="mnT-Ek-zcl" secondAttribute="trailing" constant="9" id="dcT-89-iDs"/>
                     <constraint firstItem="l09-HK-Vpe" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ppa-ee-sdk"/>
                     <constraint firstItem="1qo-5P-IvQ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="t9E-aW-rG7"/>
                     <constraint firstItem="4Di-eq-KYp" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="xaN-3x-7bp"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="itemTextField" destination="mnT-Ek-zcl" id="KDw-Sj-M3I"/>
+                <outlet property="priceTextField" destination="KBE-py-79C" id="s98-GU-cO2"/>
+                <outlet property="qtyTextField" destination="l09-HK-Vpe" id="Pmj-wk-Asa"/>
+            </connections>
             <point key="canvasLocation" x="47.826086956521742" y="34.821428571428569"/>
         </tableViewCell>
     </objects>

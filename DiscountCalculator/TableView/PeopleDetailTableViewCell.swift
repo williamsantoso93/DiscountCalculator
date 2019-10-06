@@ -1,17 +1,17 @@
 //
-//  AddDetailTableViewCell.swift
+//  PeopleDetailTableViewCell.swift
 //  DiscountCalculator
 //
-//  Created by William Santoso on 02/10/19.
+//  Created by William Santoso on 06/10/19.
 //  Copyright © 2019 William Santoso. All rights reserved.
 //
 
 import UIKit
 
-class AddDetailTableViewCell: UITableViewCell {
-    @IBOutlet weak var itemTextField: UITextField!
-    @IBOutlet weak var qtyTextField: UITextField!
-    @IBOutlet weak var priceTextField: UITextField!
+class PeopleDetailTableViewCell: UITableViewCell {
+    @IBOutlet weak var itemLabel: UILabel!
+    @IBOutlet weak var qtyLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,5 +23,5 @@ class AddDetailTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
 }

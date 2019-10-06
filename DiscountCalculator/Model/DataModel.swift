@@ -17,17 +17,29 @@ class DebtData {
     var priceAfterDiscountPajakOngkir : Double = 0
 }
 
-struct priceType {
-    var discountPrice: String = "Discount"
-    var taxPrice: String = "Tax"
-    var deliveryFee: String = "Delivery Fee"
+enum priceType: String {
+    case discountPrice = "Discount"
+    case taxPrice = "Tax"
+    case deliveryFee = "Delivery Fee"
+}
+
+class Item {
+    var itemName: String = "No name item"
+    var qty: Double = 0
+    var price: Double = 0
+}
+
+enum Status: String {
+    case paid = "Paid"
+    case notPaid = "Not Paid"
 }
 
 class People {
     var name: String = "No Name"
-    var price: Double = 0
+    var items: [Item] = []
+    var personTotalPrice: Double = 0
     var priceAfterDiscount: Double = 0
-    var status: String = "Not Paid"
+    var status: Status = .notPaid
 }
 
 class AdditionalFee {

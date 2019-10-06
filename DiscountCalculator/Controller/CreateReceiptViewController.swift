@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol CreateReceiptReceiveData {
+    func pass(people: People)  //data: string is an example parameter
+}
+
 class CreateReceiptViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
@@ -45,9 +49,11 @@ class CreateReceiptViewController: UIViewController {
     
     var date = Date()
     
+    let pickerAdditionalFeeData: [String] = ["Discount", "Tax", "Delivery Fee" ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableViewPeople.register(UINib.init(nibName: "PeopleTableViewCell", bundle: nil), forCellReuseIdentifier: "PeopleTableViewCell")
+        tableViewPeople.register(UINib.init(nibName: "PeopleDetailTableViewCell", bundle: nil), forCellReuseIdentifier: "PeopleDetailTableViewCell")
         tableViewAdditionalPrice.register(UINib.init(nibName: "AdditionalFeeTableViewCell", bundle: nil), forCellReuseIdentifier: "AdditionalFeeTableViewCell")
 //        heightTableViewParticipant.constant = tableViewParticipant.contentSize.height
 //        heightTableViewAdditionalPrice.constant = tableViewPeople.contentSize.height
@@ -71,8 +77,6 @@ class CreateReceiptViewController: UIViewController {
         dateTextField.inputView = datePicker
         dateTextField.addDoneButtonOnKeyboard()
         
-        let pickerAdditionalFeeData: [String] = ["Discount", "Tax", "Delivery Fee" ]
-        
         for type in pickerAdditionalFeeData {
             let additionalPrice = AdditionalFee()
             additionalPrice.type = type
@@ -80,12 +84,12 @@ class CreateReceiptViewController: UIViewController {
             additionalPrices.append(additionalPrice)
         }
         
-        let people = People()
-        people.name = "No Name"
-        people.price = 0
-        people.priceAfterDiscount = 0
-        people.status = "Not Paid"
-        peoples.append(people)
+//        let people = People()
+//        people.name = "No Name"
+//        people.personTotalPrice = 0
+//        people.priceAfterDiscount = 0
+//        people.status = .notPaid
+//        peoples.append(people)
         
         originScrollViewSize = scrollView.frame.size
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -142,6 +146,39 @@ class CreateReceiptViewController: UIViewController {
         self.heightTableViewAdditionalPrice?.constant = self.tableViewAdditionalPrice.contentSize.height
     }
     
+    func sumUpAddtionalFee(additionalFees: [AdditionalFee]) -> [AdditionalFee] {
+        var additionalSummaryPrices: [AdditionalFee] = []
+        
+        for type in pickerAdditionalFeeData {
+            var tempPrice: Double = 0
+            
+            for additionaPrice in additionalPrices {
+                if additionaPrice.type == type {
+                    tempPrice += additionaPrice.price
+                }
+            }
+            
+            let additionalSummaryPrice = AdditionalFee()
+            additionalSummaryPrice.type = type
+            additionalSummaryPrice.price = tempPrice
+            
+            additionalSummaryPrices.append(additionalSummaryPrice)
+        }
+        
+        return additionalSummaryPrices
+    }
+    
+    
+    func countTotalPrice(items: [Item]) -> Double {
+        var totalPrice: Double = 0
+        
+        for item in items {
+            totalPrice += item.price * item.qty
+        }
+        
+        return totalPrice
+    }
+    
     @IBAction func saveButtonDidTap(_ sender: Any) {
         self.resignFirstResponder()
         self.view.endEditing(true)
@@ -152,13 +189,19 @@ class CreateReceiptViewController: UIViewController {
         }
         receipt.date = date
         receipt.paidBy = paidByTextField.text ?? "Me"
+        
+        for indexOf in 0 ... (peoples.count - 1) {
+            peoples[indexOf].personTotalPrice = countTotalPrice(items: peoples[indexOf].items)
+        }
+        
         receipt.peoples = peoples
-        receipt.additionalPrices = additionalPrices
+        
+        receipt.additionalPrices = sumUpAddtionalFee(additionalFees: additionalPrices)
         
         var error = false
         
         for peoplePrice in receipt.peoples {
-            if peoplePrice.price == 0 {
+            if peoplePrice.personTotalPrice == 0 {
                 error = true
             }
         }
@@ -178,9 +221,32 @@ class CreateReceiptViewController: UIViewController {
     @IBAction func addPeople(_ sender: Any) {
 //        let people = People()
 //        people.name = "No Name"
-//        people.price = 0
+//
+//        let item = Item()
+//        item.itemName = "item"
+//        item.qty = 1
+//        item.price = 10000
+//        people.items.append(item)
+//
+//        let item2 = Item()
+//        item2.itemName = "item 2"
+//        item2.qty = 2
+//        item2.price = 15000
+//        people.items.append(item2)
+//
+//        people.items.append(item)
+//        people.items.append(item2)
+//        people.items.append(item)
+//        people.items.append(item2)
+//
+//        var tempPrice: Double = 0
+//        for peopleItem in people.items {
+//            tempPrice += peopleItem.price
+//        }
+//
+//        people.personTotalPrice = tempPrice
 //        people.priceAfterDiscount = 0
-//        people.status = "Not Paid"
+//        people.status = .notPaid
 //        peoples.append(people)
         performSegue(withIdentifier: "AddDetail", sender: self)
     }
@@ -194,52 +260,68 @@ class CreateReceiptViewController: UIViewController {
         if segue.identifier == "ResultPriceSegue" {
             let controller = segue.destination as! ResultPriceViewController
             controller.receipt = self.receipt
+            controller.delagete = self as? HomeReceiveData
+        }
+        if segue.identifier == "AddDetail" {
+            let controller = segue.destination as! AddDetailViewController
+            controller.delegate = self
         }
     }
 }
 
-extension CreateReceiptViewController: UITableViewDataSource, UITextFieldDelegate {
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            if tableView == tableViewPeople {
-                peoples.remove(at: indexPath.row)
-            } else {
-                additionalPrices.remove(at: indexPath.row)
-            }
-            tableView.deleteRows(at: [indexPath], with: .fade)
+extension CreateReceiptViewController: CreateReceiptReceiveData {
+    func pass(people: People) { //conforms to protocol
+        // implement your own implementation
+        peoples.append(people)
+    }
+}
+
+extension CreateReceiptViewController: UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        if tableView == tableViewPeople {
+            return peoples.count
         }
+        return 1
     }
     
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if tableView == tableViewPeople {
+            return peoples[section].name
+        }
+        return nil
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var count: Int = 0
         if tableView == tableViewPeople {
-            count = peoples.count
+            return peoples[section].items.count
         } else if tableView == tableViewAdditionalPrice {
             count = additionalPrices.count
         }
         return count
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if tableView == tableViewPeople {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "PeopleTableViewCell", for: indexPath) as! PeopleTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PeopleDetailTableViewCell", for: indexPath) as! PeopleDetailTableViewCell
             
-            cell.nameTextField.delegate =  self
-            cell.nameTextField.tag = indexPath.row
-            cell.nameTextField.placeholder = "Name"
-            //        cell.nameTexfField.setBottomBorder()
-            cell.nameTextField.addDoneButtonOnKeyboard()
+//            cell.nameTextField.delegate =  self
+//            cell.nameTextField.tag = indexPath.row
+//            cell.nameTextField.placeholder = "Name"
+//            //        cell.nameTexfField.setBottomBorder()
+//            cell.nameTextField.addDoneButtonOnKeyboard()
+//
+//            cell.priceTextField.delegate =  self
+//            cell.priceTextField.tag = indexPath.row
+//            cell.priceTextField.placeholder = "Price"
+//            //        cell.priceTextField.setBottomBorder()
+//            cell.priceTextField.addDoneButtonOnKeyboard()
             
-            cell.priceTextField.delegate =  self
-            cell.priceTextField.tag = indexPath.row
-            cell.priceTextField.placeholder = "Price"
-            //        cell.priceTextField.setBottomBorder()
-            cell.priceTextField.addDoneButtonOnKeyboard()
+            cell.itemLabel.text = peoples[indexPath.section].items[indexPath.row].itemName
+            cell.qtyLabel.text = "\(peoples[indexPath.section].items[indexPath.row].qty)"
+            let priceString = Int(peoples[indexPath.section].items[indexPath.row].price).formattedWithSeparator
+            cell.priceLabel.text = "Rp. \(priceString)"
+            
             
             return cell
         } else {
@@ -264,6 +346,23 @@ extension CreateReceiptViewController: UITableViewDataSource, UITextFieldDelegat
         }
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            if tableView == tableViewPeople {
+//                peoples.remove(at: indexPath.row)
+                peoples[indexPath.section].items.remove(at: indexPath.row)
+            } else {
+                additionalPrices.remove(at: indexPath.row)
+            }
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField.placeholder == "Name" {
             let indexOf = textField.tag
@@ -273,7 +372,7 @@ extension CreateReceiptViewController: UITableViewDataSource, UITextFieldDelegat
             let indexOf = textField.tag
             
             let price: Double = Double(textField.text!) ?? 0
-            peoples[indexOf].price = price
+            peoples[indexOf].personTotalPrice = price
         } else if textField.placeholder == "Type" {
             let indexOf = textField.tag
             

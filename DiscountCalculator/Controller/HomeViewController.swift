@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol HomeReceiveData {
+    func pass(receipt:  Receipt)
+}
+
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
@@ -85,10 +89,17 @@ class HomeViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
     }
     
     @IBAction func splitButtonTapped(_ sender: Any) {
         performSegue(withIdentifier: "CreateReceipt", sender: self)
+    }
+}
+
+extension HomeViewController: HomeReceiveData {
+    func pass(receipt: Receipt) {
+        receipts.append(receipt)
     }
 }
 

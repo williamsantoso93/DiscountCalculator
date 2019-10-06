@@ -24,6 +24,8 @@ class ResultPriceViewController: UIViewController {
     var priceAfterDiscountPerPerson = Double()
     var indexOf = Int()
     
+    var delagete: HomeReceiveData?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,7 +48,12 @@ class ResultPriceViewController: UIViewController {
         pricesAfterDiscountTaxDeliveryFee = countDiscount(receipt: receipt)
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+    }
+    
     @IBAction func doneButtonDidTap(_ sender: Any) {
+        delagete?.pass(receipt: receipt)
         self.navigationController?.popToRootViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
@@ -63,7 +70,7 @@ class ResultPriceViewController: UIViewController {
     func countTotalPricePlusAdditonalPrices(receipt: Receipt) -> Double {
         var totalPrice: Double = 0
         for people in receipt.peoples {
-            totalPrice += people.price
+            totalPrice += people.personTotalPrice
         }
         
         let discount: Double = getFee(type: "Discount", receipt: receipt)
@@ -78,7 +85,7 @@ class ResultPriceViewController: UIViewController {
     func countTotalPrice(receipt: Receipt) -> Double {
         var totalPrice: Double = 0
         for people in receipt.peoples {
-            totalPrice += people.price
+            totalPrice += people.personTotalPrice
         }
         
         return totalPrice
@@ -102,7 +109,7 @@ class ResultPriceViewController: UIViewController {
         var pricesAfterDiscountTaxDeliveryFee: [Double] = []
         
         for people in receipt.peoples {
-            let price = people.price
+            let price = people.personTotalPrice
             let priceDiscount = price * percentDiscount
             let priceAfterDiscount = price - priceDiscount
             
