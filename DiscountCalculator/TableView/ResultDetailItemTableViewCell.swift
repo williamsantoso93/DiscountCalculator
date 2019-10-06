@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PeopleDetailTableViewCell: UITableViewCell {
+class ResultDetailItemTableViewCell: UITableViewCell {
     @IBOutlet weak var itemLabel: UILabel!
     @IBOutlet weak var qtyLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!

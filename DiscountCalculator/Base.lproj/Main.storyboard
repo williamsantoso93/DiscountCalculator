@@ -29,7 +29,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dXI-YV-fdP">
                                                 <rect key="frame" x="20" y="20" width="374" height="21"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MxT-gY-FMW">
                                                 <rect key="frame" x="20" y="71" width="374" height="21"/>
@@ -39,7 +39,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Paid by" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G2T-IK-TUG">
                                                 <rect key="frame" x="20" y="122" width="374" height="21"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                <textInputTraits key="textInputTraits" textContentType="name"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="name"/>
                                             </textField>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Nkw-oC-eev">
                                                 <rect key="frame" x="0.0" y="187" width="414" height="67"/>
@@ -160,7 +160,7 @@
                         <outlet property="tableViewPeople" destination="Nkw-oC-eev" id="9W7-Qx-lJR"/>
                         <outlet property="titleTextField" destination="dXI-YV-fdP" id="37q-gD-xRn"/>
                         <segue destination="Ref-sl-7Au" kind="show" identifier="ResultPriceSegue" id="PjF-t2-5C5"/>
-                        <segue destination="Ifz-HP-3B6" kind="show" identifier="AddDetail" id="Q8t-vC-AwM"/>
+                        <segue destination="Ifz-HP-3B6" kind="push" identifier="AddDetail" id="Q8t-vC-AwM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lbV-ue-NPU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -188,7 +188,7 @@
                                                 <rect key="frame" x="20" y="20" width="374" height="21"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="name"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7S6-rx-kT8">
                                                 <rect key="frame" x="20" y="168" width="128" height="44"/>
@@ -260,7 +260,7 @@
                                 <action selector="cancelButtonDidTap:" destination="Ifz-HP-3B6" id="wGV-W0-9NL"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="s63-kd-zqP">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="s63-kd-zqP">
                             <connections>
                                 <action selector="addButtonDidTap:" destination="Ifz-HP-3B6" id="0H5-FE-4go"/>
                             </connections>
@@ -686,6 +686,6 @@
         <image name="Illustration" width="280" height="259"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IRu-aN-tTu"/>
+        <segue reference="PjF-t2-5C5"/>
     </inferredMetricsTieBreakers>
 </document>

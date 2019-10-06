@@ -11,8 +11,8 @@
 		7A203BC32328C84F0090AD3D /* PeopleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A203BC12328C84F0090AD3D /* PeopleTableViewCell.xib */; };
 		7A203BC82328C8E60090AD3D /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A203BC72328C8E60090AD3D /* DataModel.swift */; };
 		7A203BD0232A5D000090AD3D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A203BCF232A5D000090AD3D /* HomeViewController.swift */; };
-		7A2D5ABD2349782200B71222 /* PeopleDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2D5ABC2349782200B71222 /* PeopleDetailTableViewCell.swift */; };
-		7A2D5ABF2349786200B71222 /* PeopleDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A2D5ABE2349786200B71222 /* PeopleDetailTableViewCell.xib */; };
+		7A2D5ABD2349782200B71222 /* ResultDetailItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2D5ABC2349782200B71222 /* ResultDetailItemTableViewCell.swift */; };
+		7A2D5ABF2349786200B71222 /* ResultDetailItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A2D5ABE2349786200B71222 /* ResultDetailItemTableViewCell.xib */; };
 		7A2EA3842339371700A87548 /* ResultPriceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2EA3832339371700A87548 /* ResultPriceViewController.swift */; };
 		7A2EA387233937B900A87548 /* ResultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2EA385233937B900A87548 /* ResultCollectionViewCell.swift */; };
 		7A2EA388233937B900A87548 /* ResultCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A2EA386233937B900A87548 /* ResultCollectionViewCell.xib */; };
@@ -40,8 +40,8 @@
 		7A203BC12328C84F0090AD3D /* PeopleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PeopleTableViewCell.xib; sourceTree = "<group>"; };
 		7A203BC72328C8E60090AD3D /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		7A203BCF232A5D000090AD3D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		7A2D5ABC2349782200B71222 /* PeopleDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleDetailTableViewCell.swift; sourceTree = "<group>"; };
-		7A2D5ABE2349786200B71222 /* PeopleDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PeopleDetailTableViewCell.xib; sourceTree = "<group>"; };
+		7A2D5ABC2349782200B71222 /* ResultDetailItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDetailItemTableViewCell.swift; sourceTree = "<group>"; };
+		7A2D5ABE2349786200B71222 /* ResultDetailItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultDetailItemTableViewCell.xib; sourceTree = "<group>"; };
 		7A2EA3832339371700A87548 /* ResultPriceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultPriceViewController.swift; sourceTree = "<group>"; };
 		7A2EA385233937B900A87548 /* ResultCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCollectionViewCell.swift; sourceTree = "<group>"; };
 		7A2EA386233937B900A87548 /* ResultCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -145,16 +145,16 @@
 				7AC2641C232B73A70037989D /* ListReceiptTableViewCell.xib */,
 				7A203BC02328C84F0090AD3D /* PeopleTableViewCell.swift */,
 				7A203BC12328C84F0090AD3D /* PeopleTableViewCell.xib */,
-				7A2D5ABC2349782200B71222 /* PeopleDetailTableViewCell.swift */,
-				7A2D5ABE2349786200B71222 /* PeopleDetailTableViewCell.xib */,
+				7ADB37432344FFFF001664C4 /* AddDetailTableViewCell.swift */,
+				7ADB37442344FFFF001664C4 /* AddDetailTableViewCell.xib */,
 				7A508AB82337824000BF029D /* AdditionalFeeTableViewCell.swift */,
 				7A508AB92337824000BF029D /* AdditionalFeeTableViewCell.xib */,
 				7A3568BF232DFDE300924E34 /* DetailResultTableViewCell.swift */,
 				7A3568C0232DFDE300924E34 /* DetailResultTableViewCell.xib */,
 				7A2EA385233937B900A87548 /* ResultCollectionViewCell.swift */,
 				7A2EA386233937B900A87548 /* ResultCollectionViewCell.xib */,
-				7ADB37432344FFFF001664C4 /* AddDetailTableViewCell.swift */,
-				7ADB37442344FFFF001664C4 /* AddDetailTableViewCell.xib */,
+				7A2D5ABC2349782200B71222 /* ResultDetailItemTableViewCell.swift */,
+				7A2D5ABE2349786200B71222 /* ResultDetailItemTableViewCell.xib */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -222,7 +222,7 @@
 				7A508ABB2337824000BF029D /* AdditionalFeeTableViewCell.xib in Resources */,
 				7A2EA388233937B900A87548 /* ResultCollectionViewCell.xib in Resources */,
 				7A3568C2232DFDE300924E34 /* DetailResultTableViewCell.xib in Resources */,
-				7A2D5ABF2349786200B71222 /* PeopleDetailTableViewCell.xib in Resources */,
+				7A2D5ABF2349786200B71222 /* ResultDetailItemTableViewCell.xib in Resources */,
 				7A203BC32328C84F0090AD3D /* PeopleTableViewCell.xib in Resources */,
 				7AC2641E232B73A70037989D /* ListReceiptTableViewCell.xib in Resources */,
 				7ADB37462344FFFF001664C4 /* AddDetailTableViewCell.xib in Resources */,
@@ -242,7 +242,7 @@
 				7A203BD0232A5D000090AD3D /* HomeViewController.swift in Sources */,
 				7A3568A9232DECB900924E34 /* CreateReceiptViewController.swift in Sources */,
 				7A87F7762322A9FF0011C6EF /* AppDelegate.swift in Sources */,
-				7A2D5ABD2349782200B71222 /* PeopleDetailTableViewCell.swift in Sources */,
+				7A2D5ABD2349782200B71222 /* ResultDetailItemTableViewCell.swift in Sources */,
 				7A203BC82328C8E60090AD3D /* DataModel.swift in Sources */,
 				7ADB37452344FFFF001664C4 /* AddDetailTableViewCell.swift in Sources */,
 				7A3568C1232DFDE300924E34 /* DetailResultTableViewCell.swift in Sources */,

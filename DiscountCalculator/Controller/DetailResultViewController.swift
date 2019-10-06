@@ -37,7 +37,7 @@ class DetailResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.register(UINib.init(nibName: "PeopleDetailTableViewCell", bundle: nil), forCellReuseIdentifier: "PeopleDetailTableViewCell")
+        tableView.register(UINib.init(nibName: "ResultDetailItemTableViewCell", bundle: nil), forCellReuseIdentifier: "ResultDetailItemTableViewCell")
         tableView.register(UINib.init(nibName: "DetailResultTableViewCell", bundle: nil), forCellReuseIdentifier: "DetailResultTableViewCell")
         tableView.tableFooterView = UIView.init(frame: .zero)
 //        self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
@@ -166,11 +166,12 @@ extension DetailResultViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cellItem = tableView.dequeueReusableCell(withIdentifier: "PeopleDetailTableViewCell", for: indexPath) as! PeopleDetailTableViewCell
+            let cellItem = tableView.dequeueReusableCell(withIdentifier: "ResultDetailItemTableViewCell", for: indexPath) as! ResultDetailItemTableViewCell
             let item = items[indexPath.row]
             
             cellItem.itemLabel.text = item.itemName
-            cellItem.qtyLabel.text = "\(item.qty)"
+            let qtyString = Int(item.qty).formattedWithSeparator
+            cellItem.qtyLabel.text = qtyString
             let priceString = Int(item.price * item.qty).formattedWithSeparator
             cellItem.priceLabel.text = "Rp. \(priceString)"
             

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CreateReceiptReceiveData {
-    func pass(people: People)  //data: string is an example parameter
+    func pass(people: People, indexOf: Int)  //data: string is an example parameter
 }
 
 class CreateReceiptViewController: UIViewController {
@@ -30,6 +30,12 @@ class CreateReceiptViewController: UIViewController {
     var peoples: [People] = []{
         didSet{
             DispatchQueue.main.async {
+                if self.peoples.count > 0 {
+                    for indexOf in 0 ... (self.peoples.count - 1) {
+                        self.peoples[indexOf].personTotalPrice = self.countTotalPrice(items: self.peoples[indexOf].items)
+                    }
+                }
+                
                 self.tableViewPeople.reloadData()
                 super.updateViewConstraints()
                 self.heightTableViewPeople?.constant = self.tableViewPeople.contentSize.height
@@ -47,13 +53,17 @@ class CreateReceiptViewController: UIViewController {
         }
     }
     
+    var isEdit: Bool = false
+    var editedPeople = People()
+    var indexOf = Int()
+    
     var date = Date()
     
     let pickerAdditionalFeeData: [String] = ["Discount", "Tax", "Delivery Fee" ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableViewPeople.register(UINib.init(nibName: "PeopleDetailTableViewCell", bundle: nil), forCellReuseIdentifier: "PeopleDetailTableViewCell")
+        tableViewPeople.register(UINib.init(nibName: "PeopleTableViewCell", bundle: nil), forCellReuseIdentifier: "PeopleTableViewCell")
         tableViewAdditionalPrice.register(UINib.init(nibName: "AdditionalFeeTableViewCell", bundle: nil), forCellReuseIdentifier: "AdditionalFeeTableViewCell")
 //        heightTableViewParticipant.constant = tableViewParticipant.contentSize.height
 //        heightTableViewAdditionalPrice.constant = tableViewPeople.contentSize.height
@@ -190,9 +200,9 @@ class CreateReceiptViewController: UIViewController {
         receipt.date = date
         receipt.paidBy = paidByTextField.text ?? "Me"
         
-        for indexOf in 0 ... (peoples.count - 1) {
-            peoples[indexOf].personTotalPrice = countTotalPrice(items: peoples[indexOf].items)
-        }
+//        for indexOf in 0 ... (peoples.count - 1) {
+//            peoples[indexOf].personTotalPrice = countTotalPrice(items: peoples[indexOf].items)
+//        }
         
         receipt.peoples = peoples
         
@@ -265,62 +275,82 @@ class CreateReceiptViewController: UIViewController {
         if segue.identifier == "AddDetail" {
             let controller = segue.destination as! AddDetailViewController
             controller.delegate = self
+            controller.isEdit = isEdit
+            controller.indexOf = indexOf
+            if isEdit {
+                controller.editedPeople = editedPeople
+                
+            }
         }
     }
 }
 
 extension CreateReceiptViewController: CreateReceiptReceiveData {
-    func pass(people: People) { //conforms to protocol
+    func pass(people: People, indexOf: Int) { //conforms to protocol
         // implement your own implementation
-        peoples.append(people)
+        if !isEdit {
+            peoples.append(people)
+        } else {
+            peoples[indexOf] = people
+            isEdit = false
+        }
     }
 }
 
 extension CreateReceiptViewController: UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        if tableView == tableViewPeople {
-            return peoples.count
-        }
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if tableView == tableViewPeople {
-            return peoples[section].name
-        }
-        return nil
-    }
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        if tableView == tableViewPeople {
+//            return peoples.count
+//        }
+//        return 1
+//    }
+//
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        if tableView == tableViewPeople {
+//            return peoples[section].name
+//        }
+//        return nil
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var count: Int = 0
         if tableView == tableViewPeople {
-            return peoples[section].items.count
+            return peoples.count
         } else if tableView == tableViewAdditionalPrice {
             count = additionalPrices.count
         }
         return count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if tableView == tableViewPeople {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "PeopleDetailTableViewCell", for: indexPath) as! PeopleDetailTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PeopleTableViewCell", for: indexPath) as! PeopleTableViewCell
             
-//            cell.nameTextField.delegate =  self
-//            cell.nameTextField.tag = indexPath.row
-//            cell.nameTextField.placeholder = "Name"
-//            //        cell.nameTexfField.setBottomBorder()
-//            cell.nameTextField.addDoneButtonOnKeyboard()
-//
-//            cell.priceTextField.delegate =  self
-//            cell.priceTextField.tag = indexPath.row
-//            cell.priceTextField.placeholder = "Price"
-//            //        cell.priceTextField.setBottomBorder()
-//            cell.priceTextField.addDoneButtonOnKeyboard()
+            cell.nameTextField.delegate =  self
+            cell.nameTextField.tag = indexPath.row
+            cell.nameTextField.placeholder = "Name"
+            cell.nameTextField.text = peoples[indexPath.row].name
+            //        cell.nameTexfField.setBottomBorder()
+            cell.nameTextField.addDoneButtonOnKeyboard()
+
+            cell.priceTextField.delegate =  self
+            cell.priceTextField.tag = indexPath.row
+            cell.priceTextField.placeholder = "Price"
+            let priceString = Int(peoples[indexPath.row].personTotalPrice).formattedWithSeparator
+            cell.priceTextField.text = "Rp. \(priceString)"
+            //        cell.priceTextField.setBottomBorder().name
+            cell.priceTextField.addDoneButtonOnKeyboard()
             
-            cell.itemLabel.text = peoples[indexPath.section].items[indexPath.row].itemName
-            cell.qtyLabel.text = "\(peoples[indexPath.section].items[indexPath.row].qty)"
-            let priceString = Int(peoples[indexPath.section].items[indexPath.row].price).formattedWithSeparator
+            cell.nameLabel.text = peoples[indexPath.row].name
+//            let priceString = Int(peoples[indexPath.row].personTotalPrice).formattedWithSeparator
             cell.priceLabel.text = "Rp. \(priceString)"
+            
+            
+//            cell.itemLabel.text = peoples[indexPath.section].items[indexPath.row].itemName
+//            cell.qtyLabel.text = "\(peoples[indexPath.section].items[indexPath.row].qty)"
+//            let priceString = Int(peoples[indexPath.section].items[indexPath.row].price).formattedWithSeparator
+//            cell.priceLabel.text = "Rp. \(priceString)"
             
             
             return cell
@@ -349,17 +379,50 @@ extension CreateReceiptViewController: UITableViewDataSource, UITableViewDelegat
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             if tableView == tableViewPeople {
-//                peoples.remove(at: indexPath.row)
-                peoples[indexPath.section].items.remove(at: indexPath.row)
+                peoples.remove(at: indexPath.row)
+//                peoples[indexPath.section].items.remove(at: indexPath.row)
             } else {
                 additionalPrices.remove(at: indexPath.row)
             }
             tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            
         }
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        var action: [UITableViewRowAction] = []
+        if tableView == tableViewPeople {
+            
+            let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+                // delete item at indexPath
+                self.peoples.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+            action.append(delete)
+            
+            let edit = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
+                // edit item at indexPath
+                self.editedPeople = self.peoples[indexPath.row]
+                self.isEdit = true
+                self.indexOf = indexPath.row
+                self.performSegue(withIdentifier: "AddDetail", sender: self)
+            }
+            edit.backgroundColor = UIColor.green
+            action.append(edit)
+        } else {
+            let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+                self.additionalPrices.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+            action.append(delete)
+        }
+        
+        return action
     }
     
     
@@ -369,10 +432,10 @@ extension CreateReceiptViewController: UITableViewDataSource, UITableViewDelegat
             
             peoples[indexOf].name = textField.text!
         } else if textField.placeholder == "Price" {
-            let indexOf = textField.tag
-            
-            let price: Double = Double(textField.text!) ?? 0
-            peoples[indexOf].personTotalPrice = price
+//            let indexOf = textField.tag
+//
+//            let price: Double = Double(textField.text!) ?? 0
+//            peoples[indexOf].personTotalPrice = price
         } else if textField.placeholder == "Type" {
             let indexOf = textField.tag
             

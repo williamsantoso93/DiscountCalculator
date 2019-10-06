@@ -22,6 +22,7 @@ class AddDetailViewController: UIViewController {
                 self.tableView.reloadData()
                 super.updateViewConstraints()
                 self.heightTableView?.constant = self.tableView.contentSize.height
+                self.isEdit = false
             }
         }
     }
@@ -29,6 +30,10 @@ class AddDetailViewController: UIViewController {
     var people = People()
     
     var delegate: CreateReceiptReceiveData?
+    
+    var isEdit: Bool?
+    var editedPeople = People()
+    var indexOf = Int()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,12 +45,17 @@ class AddDetailViewController: UIViewController {
         nameTextField.setBottomBorder()
         
         hideKeyboardWhenTappedAround()
-        
-        people.name = "No Name"
-        people.personTotalPrice = 0
-        people.priceAfterDiscount = 0
-        people.status = .notPaid
-        addDetailButtonDidTap(self)
+        if isEdit ?? false {
+            people = editedPeople
+            items = editedPeople.items
+            nameTextField.text = people.name
+        } else {
+            people.name = "No Name"
+            people.personTotalPrice = 0
+            people.priceAfterDiscount = 0
+            people.status = .notPaid
+            addDetailButtonDidTap(self)
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -70,7 +80,7 @@ class AddDetailViewController: UIViewController {
     @IBAction func addDetailButtonDidTap(_ sender: Any) {
         let item = Item()
         item.itemName = "No item name"
-        item.qty = 0
+        item.qty = 1
         item.price = 0
         items.append(item)
         self.tableView.reloadData()
@@ -96,7 +106,7 @@ class AddDetailViewController: UIViewController {
         
         if !error {
             if let navController = self.navigationController {
-                self.delegate?.pass(people: people)
+                self.delegate?.pass(people: people, indexOf: self.indexOf)
                 navController.popViewController(animated: true)
             }
         }
@@ -142,6 +152,7 @@ extension AddDetailViewController: UITableViewDelegate, UITableViewDataSource, U
         cell.qtyTextField.delegate =  self
         cell.qtyTextField.tag = indexPath.row
         cell.qtyTextField.placeholder = "Qty"
+        cell.qtyTextField.text = "1"
         //        cell.qtyTextField.setBottomBorder()
         cell.qtyTextField.addDoneButtonOnKeyboard()
         
@@ -151,7 +162,14 @@ extension AddDetailViewController: UITableViewDelegate, UITableViewDataSource, U
         //        cell.priceTextField.setBottomBorder()
         cell.priceTextField.addDoneButtonOnKeyboard()
         
-        
+        if isEdit ?? false {
+            let item = items[indexPath.row]
+            cell.itemTextField.text = item.itemName
+            let qtyString = Int(item.qty)
+            cell.qtyTextField.text = String(qtyString)
+            let priceString = Int(item.price)
+            cell.priceTextField.text = String(priceString)
+        }
         return cell
     }
     

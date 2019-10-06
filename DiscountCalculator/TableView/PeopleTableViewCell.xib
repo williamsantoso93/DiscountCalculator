@@ -18,6 +18,36 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="55.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="ixS-XU-l5R">
+                        <rect key="frame" x="20" y="15.5" width="280" height="25"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H2w-ws-9gh">
+                                <rect key="frame" x="0.0" y="0.0" width="111.5" height="25"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YeD-27-qBJ">
+                                <rect key="frame" x="120.5" y="0.0" width="0.5" height="25"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="0.5" id="sxe-ZT-C3z"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rA6-4e-UEZ">
+                                <rect key="frame" x="130" y="0.0" width="150" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="eiS-08-hs5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="gEC-7e-ahb"/>
+                        </constraints>
+                    </stackView>
                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iVF-GT-GDH">
                         <rect key="frame" x="20" y="13" width="30" height="30"/>
                         <state key="normal" title="-"/>
@@ -49,22 +79,30 @@
                     <constraint firstItem="n9t-Yc-fbq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Be8-uM-hpg"/>
                     <constraint firstItem="rPs-8n-A1q" firstAttribute="leading" secondItem="tXh-Bm-5pB" secondAttribute="trailing" constant="9" id="Fhm-7W-Ph6"/>
                     <constraint firstItem="tXh-Bm-5pB" firstAttribute="centerY" secondItem="rPs-8n-A1q" secondAttribute="centerY" id="JLt-3F-zid"/>
+                    <constraint firstItem="ixS-XU-l5R" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="JZH-vq-BVT"/>
                     <constraint firstAttribute="trailing" secondItem="rPs-8n-A1q" secondAttribute="trailing" constant="20" id="Q2N-tP-qQR"/>
+                    <constraint firstAttribute="trailing" secondItem="ixS-XU-l5R" secondAttribute="trailing" constant="20" id="QJP-Fo-0oy"/>
                     <constraint firstItem="tXh-Bm-5pB" firstAttribute="leading" secondItem="n9t-Yc-fbq" secondAttribute="trailing" constant="9" id="Rpl-sy-2Tp"/>
                     <constraint firstItem="n9t-Yc-fbq" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="bnn-a0-BTB"/>
                     <constraint firstItem="iVF-GT-GDH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="hRz-Bi-Km9"/>
                     <constraint firstItem="tXh-Bm-5pB" firstAttribute="height" secondItem="n9t-Yc-fbq" secondAttribute="height" id="iaO-S8-MAA"/>
+                    <constraint firstItem="ixS-XU-l5R" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="jdA-D2-oU3"/>
                     <constraint firstItem="n9t-Yc-fbq" firstAttribute="leading" secondItem="iVF-GT-GDH" secondAttribute="trailing" constant="8" id="nc2-r3-hhT"/>
                 </constraints>
                 <variation key="default">
                     <mask key="subviews">
                         <exclude reference="iVF-GT-GDH"/>
+                        <exclude reference="rPs-8n-A1q"/>
+                        <exclude reference="n9t-Yc-fbq"/>
+                        <exclude reference="tXh-Bm-5pB"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="nameLabel" destination="H2w-ws-9gh" id="GFz-NG-RUV"/>
                 <outlet property="nameTextField" destination="n9t-Yc-fbq" id="B2Q-VB-aYl"/>
+                <outlet property="priceLabel" destination="rA6-4e-UEZ" id="15U-b4-1iX"/>
                 <outlet property="priceTextField" destination="rPs-8n-A1q" id="19K-21-6K9"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="156.69642857142856"/>

@@ -18,59 +18,59 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="55.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Di-eq-KYp">
-                        <rect key="frame" x="129" y="19.5" width="0.5" height="17"/>
-                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="ZB1-g4-CfV">
+                        <rect key="frame" x="20" y="15.5" width="374" height="25"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Item" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mnT-Ek-zcl">
+                                <rect key="frame" x="0.0" y="0.0" width="117.5" height="25"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6sD-7O-8d8">
+                                <rect key="frame" x="126.5" y="0.0" width="20" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="obs-2v-N4e"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Qty" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l09-HK-Vpe">
+                                <rect key="frame" x="155.5" y="0.0" width="50" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="Z6a-cx-vvR"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1qo-5P-IvQ">
+                                <rect key="frame" x="214.5" y="0.0" width="0.5" height="25"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="0.5" id="Jms-dN-Xy1"/>
+                                </constraints>
+                            </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KBE-py-79C">
+                                <rect key="frame" x="224" y="0.0" width="150" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="7Uj-t0-Hzy"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                            </textField>
+                        </subviews>
                         <constraints>
-                            <constraint firstAttribute="width" constant="0.5" id="Uum-eB-OQE"/>
+                            <constraint firstAttribute="height" constant="25" id="782-HG-36R"/>
                         </constraints>
-                    </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1qo-5P-IvQ">
-                        <rect key="frame" x="222.5" y="19.5" width="0.5" height="17"/>
-                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="0.5" id="Jms-dN-Xy1"/>
-                        </constraints>
-                    </view>
-                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Item" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mnT-Ek-zcl">
-                        <rect key="frame" x="20" y="19.5" width="100" height="17"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="100" id="khH-ST-Chc"/>
-                        </constraints>
-                        <nil key="textColor"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                    </textField>
-                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Qty" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l09-HK-Vpe">
-                        <rect key="frame" x="138.5" y="19.5" width="75" height="17"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="75" id="DsN-aI-Nhn"/>
-                        </constraints>
-                        <nil key="textColor"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                    </textField>
-                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KBE-py-79C">
-                        <rect key="frame" x="232" y="19.5" width="162" height="17"/>
-                        <nil key="textColor"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                    </textField>
+                    </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="mnT-Ek-zcl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="BY4-Ge-hLO"/>
-                    <constraint firstAttribute="trailing" secondItem="KBE-py-79C" secondAttribute="trailing" constant="20" id="DOZ-WM-EC1"/>
-                    <constraint firstItem="KBE-py-79C" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="E7e-Gr-5Hs"/>
-                    <constraint firstItem="KBE-py-79C" firstAttribute="leading" secondItem="1qo-5P-IvQ" secondAttribute="trailing" constant="9" id="LK6-W3-Tlw"/>
-                    <constraint firstItem="mnT-Ek-zcl" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Vyp-0r-96y"/>
-                    <constraint firstItem="l09-HK-Vpe" firstAttribute="leading" secondItem="4Di-eq-KYp" secondAttribute="trailing" constant="9" id="YfV-Ne-ce3"/>
-                    <constraint firstItem="4Di-eq-KYp" firstAttribute="height" secondItem="mnT-Ek-zcl" secondAttribute="height" id="Yry-f3-o2k"/>
-                    <constraint firstItem="1qo-5P-IvQ" firstAttribute="height" secondItem="mnT-Ek-zcl" secondAttribute="height" id="ZmD-Hu-5Rd"/>
-                    <constraint firstItem="1qo-5P-IvQ" firstAttribute="leading" secondItem="l09-HK-Vpe" secondAttribute="trailing" constant="9" id="aQv-FW-nbZ"/>
-                    <constraint firstItem="4Di-eq-KYp" firstAttribute="leading" secondItem="mnT-Ek-zcl" secondAttribute="trailing" constant="9" id="dcT-89-iDs"/>
-                    <constraint firstItem="l09-HK-Vpe" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ppa-ee-sdk"/>
-                    <constraint firstItem="1qo-5P-IvQ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="t9E-aW-rG7"/>
-                    <constraint firstItem="4Di-eq-KYp" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="xaN-3x-7bp"/>
+                    <constraint firstItem="ZB1-g4-CfV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="6I2-Qe-dJu"/>
+                    <constraint firstItem="ZB1-g4-CfV" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="7zn-z8-guv"/>
+                    <constraint firstAttribute="trailing" secondItem="ZB1-g4-CfV" secondAttribute="trailing" constant="20" id="nb9-K5-e4e"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
