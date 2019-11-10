@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ResultPriceViewController: UIViewController {
     var shareText: String = "Hello World"
@@ -18,11 +19,15 @@ class ResultPriceViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var dataReceipts : [DataReceipt]? //array of receipt
+    
     var receipt = Receipt()
     var peoplesTotalPrice: [People] = []
     var pricesAfterDiscountTaxDeliveryFee: [Double] = []
     var priceAfterDiscountPerPerson = Double()
     var indexOf = Int()
+    var fromHome: Bool = false
     
     var delagete: HomeReceiveData?
     
@@ -53,6 +58,27 @@ class ResultPriceViewController: UIViewController {
     }
     
     @IBAction func doneButtonDidTap(_ sender: Any) {
+        if !fromHome {
+            let encoder = JSONEncoder()
+            
+            do {
+                let data = try encoder.encode(receipt)
+                let encodeReceipt = String(data: data, encoding: .utf8)!
+                let receiptData = DataReceipt(context: self.context)
+
+                receiptData.receipt = encodeReceipt
+
+                dataReceipts?.append(receiptData)
+                do {
+                    try context.save()
+                } catch {
+                    print("error : ", error)
+                }
+            } catch {
+              // Handle error
+            }
+        }
+        
         delagete?.pass(receipt: receipt)
         self.navigationController?.popToRootViewController(animated: true)
         dismiss(animated: true, completion: nil)

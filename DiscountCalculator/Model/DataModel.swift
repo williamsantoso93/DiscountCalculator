@@ -23,7 +23,7 @@ enum priceType: String {
     case deliveryFee = "Delivery Fee"
 }
 
-class Item {
+class Item: Codable {
     var itemName: String = "No name item"
     var qty: Double = 0
     var price: Double = 0
@@ -34,20 +34,21 @@ enum Status: String {
     case notPaid = "Not Paid"
 }
 
-class People {
+class People: Codable {
     var name: String = "No Name"
     var items: [Item] = []
     var personTotalPrice: Double = 0
     var priceAfterDiscount: Double = 0
-    var status: Status = .notPaid
+    //    var status: Status = .notPaid
+    var status: String = "Not Paid"
 }
 
-class AdditionalFee {
+class AdditionalFee: Codable {
     var type: String = "Discount"
     var price: Double = 0
 }
 
-class Receipt {
+class Receipt: Codable {
     var title: String = "No Title"
     var date: Date = Date()
     var paidBy: String = "Me"

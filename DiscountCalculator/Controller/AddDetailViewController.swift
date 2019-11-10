@@ -53,11 +53,11 @@ class AddDetailViewController: UIViewController {
             people.name = "No Name"
             people.personTotalPrice = 0
             people.priceAfterDiscount = 0
-            people.status = .notPaid
+            people.status = "Not Paid"
             addDetailButtonDidTap(self)
         }
     }
-    
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 protocol CreateReceiptReceiveData {
     func pass(people: People, indexOf: Int)  //data: string is an example parameter

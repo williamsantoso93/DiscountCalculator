@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9xN-Ik-hgx">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9xN-Ik-hgx">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -125,7 +124,7 @@
                                     <constraint firstItem="NTL-yK-bPM" firstAttribute="width" secondItem="vk9-Tn-TD9" secondAttribute="width" id="GBD-sI-q30"/>
                                     <constraint firstAttribute="trailing" secondItem="NTL-yK-bPM" secondAttribute="trailing" id="XcO-OZ-IAq"/>
                                     <constraint firstItem="NTL-yK-bPM" firstAttribute="top" secondItem="vk9-Tn-TD9" secondAttribute="top" id="Xrg-tE-n78"/>
-                                    <constraint firstAttribute="bottom" secondItem="NTL-yK-bPM" secondAttribute="bottom" constant="284" id="hbW-4d-7kw"/>
+                                    <constraint firstAttribute="bottom" secondItem="NTL-yK-bPM" secondAttribute="bottom" priority="250" id="hbW-4d-7kw"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -144,7 +143,7 @@
                         <viewLayoutGuide key="safeArea" id="UBC-OG-JF5"/>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="OkN-6O-aO0">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="Zdd-9u-Xld">
+                        <barButtonItem key="rightBarButtonItem" title="Split" id="Zdd-9u-Xld">
                             <connections>
                                 <action selector="saveButtonDidTap:" destination="MYd-22-vk6" id="Jy2-F5-cFs"/>
                             </connections>
@@ -186,7 +185,6 @@
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0fJ-iY-9w7">
                                                 <rect key="frame" x="20" y="20" width="374" height="21"/>
-                                                <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="name"/>
                                             </textField>
@@ -236,7 +234,7 @@
                                     <constraint firstAttribute="trailing" secondItem="Yf3-vs-b3e" secondAttribute="trailing" id="AnG-wr-cLC"/>
                                     <constraint firstItem="Yf3-vs-b3e" firstAttribute="top" secondItem="xzJ-Fg-Zq8" secondAttribute="top" id="lhD-Xx-kcB"/>
                                     <constraint firstItem="Yf3-vs-b3e" firstAttribute="leading" secondItem="xzJ-Fg-Zq8" secondAttribute="leading" id="uBf-0S-cFO"/>
-                                    <constraint firstAttribute="bottom" secondItem="Yf3-vs-b3e" secondAttribute="bottom" constant="556" id="yaX-Gv-SdO"/>
+                                    <constraint firstAttribute="bottom" secondItem="Yf3-vs-b3e" secondAttribute="bottom" priority="250" id="yaX-Gv-SdO"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -260,7 +258,7 @@
                                 <action selector="cancelButtonDidTap:" destination="Ifz-HP-3B6" id="wGV-W0-9NL"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="s63-kd-zqP">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="s63-kd-zqP">
                             <connections>
                                 <action selector="addButtonDidTap:" destination="Ifz-HP-3B6" id="0H5-FE-4go"/>
                             </connections>
@@ -282,14 +280,14 @@
             <objects>
                 <viewController id="QJ8-Wm-Ebo" customClass="HomeViewController" customModule="DiscountCalculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kTh-Yp-Lv7">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="756"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="Xtp-qH-mY5">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="756"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QRb-sj-LXv">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="722"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="QJ8-Wm-Ebo" id="RcO-lK-tzg"/>
@@ -399,8 +397,8 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9xN-Ik-hgx" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" largeTitles="YES" id="G2d-Df-Lht">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="G2d-Df-Lht">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="1" green="0.74509803921568629" blue="0.1803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -634,7 +632,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="EkD-9q-Chd" firstAttribute="top" secondItem="oro-B1-GQQ" secondAttribute="top" id="3ou-Wd-FKt"/>
-                                    <constraint firstAttribute="bottom" secondItem="EkD-9q-Chd" secondAttribute="bottom" constant="318" id="EJ2-eg-THS"/>
+                                    <constraint firstAttribute="bottom" secondItem="EkD-9q-Chd" secondAttribute="bottom" priority="250" id="EJ2-eg-THS"/>
                                     <constraint firstAttribute="trailing" secondItem="EkD-9q-Chd" secondAttribute="trailing" id="hIc-iH-vkr"/>
                                     <constraint firstItem="EkD-9q-Chd" firstAttribute="centerX" secondItem="oro-B1-GQQ" secondAttribute="centerX" id="pac-mz-FJk"/>
                                     <constraint firstItem="EkD-9q-Chd" firstAttribute="leading" secondItem="oro-B1-GQQ" secondAttribute="leading" id="zel-cd-rUc"/>

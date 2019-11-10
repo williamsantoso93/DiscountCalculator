@@ -25,14 +25,15 @@
 		7A508ABB2337824000BF029D /* AdditionalFeeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A508AB92337824000BF029D /* AdditionalFeeTableViewCell.xib */; };
 		7A87F7762322A9FF0011C6EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A87F7752322A9FF0011C6EF /* AppDelegate.swift */; };
 		7A87F77B2322A9FF0011C6EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A87F7792322A9FF0011C6EF /* Main.storyboard */; };
-		7A87F77E2322A9FF0011C6EF /* DiscountCalculator.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7A87F77C2322A9FF0011C6EF /* DiscountCalculator.xcdatamodeld */; };
 		7A87F7802322AA000011C6EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A87F77F2322AA000011C6EF /* Assets.xcassets */; };
 		7A87F7832322AA000011C6EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A87F7812322AA000011C6EF /* LaunchScreen.storyboard */; };
 		7A87F7912322B47A0011C6EF /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A87F7902322B47A0011C6EF /* Extension.swift */; };
+		7AAEFE932359D5310088F3F6 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AAEFE922359D5310088F3F6 /* Storyboard.storyboard */; };
 		7AC2641D232B73A70037989D /* ListReceiptTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2641B232B73A70037989D /* ListReceiptTableViewCell.swift */; };
 		7AC2641E232B73A70037989D /* ListReceiptTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AC2641C232B73A70037989D /* ListReceiptTableViewCell.xib */; };
 		7ADB37452344FFFF001664C4 /* AddDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADB37432344FFFF001664C4 /* AddDetailTableViewCell.swift */; };
 		7ADB37462344FFFF001664C4 /* AddDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ADB37442344FFFF001664C4 /* AddDetailTableViewCell.xib */; };
+		7AF985B5237819A200F1E7F0 /* DiscountCalculator.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 7AF985B4237819A200F1E7F0 /* DiscountCalculator.xcdatamodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,15 +56,17 @@
 		7A87F7722322A9FF0011C6EF /* DiscountCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiscountCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A87F7752322A9FF0011C6EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A87F77A2322A9FF0011C6EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		7A87F77D2322A9FF0011C6EF /* DiscountCalculator.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DiscountCalculator.xcdatamodel; sourceTree = "<group>"; };
 		7A87F77F2322AA000011C6EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A87F7822322AA000011C6EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A87F7842322AA000011C6EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A87F7902322B47A0011C6EF /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		7AAEFE922359D5310088F3F6 /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		7AC2641B232B73A70037989D /* ListReceiptTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListReceiptTableViewCell.swift; sourceTree = "<group>"; };
 		7AC2641C232B73A70037989D /* ListReceiptTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListReceiptTableViewCell.xib; sourceTree = "<group>"; };
 		7ADB37432344FFFF001664C4 /* AddDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDetailTableViewCell.swift; sourceTree = "<group>"; };
 		7ADB37442344FFFF001664C4 /* AddDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddDetailTableViewCell.xib; sourceTree = "<group>"; };
+		7AE77C0B234CE8AB00300E46 /* DiscountCalculator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DiscountCalculator.entitlements; sourceTree = "<group>"; };
+		7AF985B4237819A200F1E7F0 /* DiscountCalculator.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; name = DiscountCalculator.xcdatamodel; path = DiscountCalculator.xcdatamodeld/DiscountCalculator.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,16 +107,18 @@
 		7A87F7742322A9FF0011C6EF /* DiscountCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				7AE77C0B234CE8AB00300E46 /* DiscountCalculator.entitlements */,
 				7A87F7752322A9FF0011C6EF /* AppDelegate.swift */,
 				7A87F78F2322B4620011C6EF /* Extension */,
 				7A203BC62328C8D00090AD3D /* Model */,
 				7A87F794232381830011C6EF /* TableView */,
 				7A87F78E2322B1FC0011C6EF /* Controller */,
 				7A87F7792322A9FF0011C6EF /* Main.storyboard */,
+				7AAEFE922359D5310088F3F6 /* Storyboard.storyboard */,
 				7A87F77F2322AA000011C6EF /* Assets.xcassets */,
 				7A87F7812322AA000011C6EF /* LaunchScreen.storyboard */,
 				7A87F7842322AA000011C6EF /* Info.plist */,
-				7A87F77C2322A9FF0011C6EF /* DiscountCalculator.xcdatamodeld */,
+				7AF985B4237819A200F1E7F0 /* DiscountCalculator.xcdatamodel */,
 			);
 			path = DiscountCalculator;
 			sourceTree = "<group>";
@@ -218,6 +223,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A87F7832322AA000011C6EF /* LaunchScreen.storyboard in Resources */,
+				7AAEFE932359D5310088F3F6 /* Storyboard.storyboard in Resources */,
 				7A87F7802322AA000011C6EF /* Assets.xcassets in Resources */,
 				7A508ABB2337824000BF029D /* AdditionalFeeTableViewCell.xib in Resources */,
 				7A2EA388233937B900A87548 /* ResultCollectionViewCell.xib in Resources */,
@@ -242,11 +248,11 @@
 				7A203BD0232A5D000090AD3D /* HomeViewController.swift in Sources */,
 				7A3568A9232DECB900924E34 /* CreateReceiptViewController.swift in Sources */,
 				7A87F7762322A9FF0011C6EF /* AppDelegate.swift in Sources */,
+				7AF985B5237819A200F1E7F0 /* DiscountCalculator.xcdatamodel in Sources */,
 				7A2D5ABD2349782200B71222 /* ResultDetailItemTableViewCell.swift in Sources */,
 				7A203BC82328C8E60090AD3D /* DataModel.swift in Sources */,
 				7ADB37452344FFFF001664C4 /* AddDetailTableViewCell.swift in Sources */,
 				7A3568C1232DFDE300924E34 /* DetailResultTableViewCell.swift in Sources */,
-				7A87F77E2322A9FF0011C6EF /* DiscountCalculator.xcdatamodeld in Sources */,
 				7A203BC22328C84F0090AD3D /* PeopleTableViewCell.swift in Sources */,
 				7A2EA3842339371700A87548 /* ResultPriceViewController.swift in Sources */,
 				7A2EA387233937B900A87548 /* ResultCollectionViewCell.swift in Sources */,
@@ -398,8 +404,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DiscountCalculator/DiscountCalculator.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = "6 ";
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 497N7524MA;
 				INFOPLIST_FILE = DiscountCalculator/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -409,6 +416,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.williamsantoso.DiscountCalculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -418,8 +426,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DiscountCalculator/DiscountCalculator.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = "6 ";
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 497N7524MA;
 				INFOPLIST_FILE = DiscountCalculator/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -429,6 +438,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.williamsantoso.DiscountCalculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -456,19 +466,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		7A87F77C2322A9FF0011C6EF /* DiscountCalculator.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				7A87F77D2322A9FF0011C6EF /* DiscountCalculator.xcdatamodel */,
-			);
-			currentVersion = 7A87F77D2322A9FF0011C6EF /* DiscountCalculator.xcdatamodel */;
-			path = DiscountCalculator.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 7A87F76A2322A9FF0011C6EF /* Project object */;
 }
