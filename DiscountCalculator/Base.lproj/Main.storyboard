@@ -534,11 +534,18 @@
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="ES7-BG-fkP">
                         <barButtonItem key="backBarButtonItem" title="Edit" id="9Uj-dv-Er4"/>
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="k7S-bp-O8x">
-                            <connections>
-                                <action selector="doneButtonDidTap:" destination="Ref-sl-7Au" id="I6Q-Xa-oqb"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem style="plain" systemItem="done" id="k7S-bp-O8x">
+                                <connections>
+                                    <action selector="doneButtonDidTap:" destination="Ref-sl-7Au" id="I6Q-Xa-oqb"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem style="plain" systemItem="action" id="YU1-fe-708">
+                                <connections>
+                                    <action selector="shareButtonDidTap:" destination="Ref-sl-7Au" id="lwO-K6-5Ko"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="Hpo-CU-G90" id="kgQ-MT-iPh"/>

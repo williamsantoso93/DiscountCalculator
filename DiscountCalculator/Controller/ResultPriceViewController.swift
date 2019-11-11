@@ -57,6 +57,49 @@ class ResultPriceViewController: UIViewController {
         super.viewDidDisappear(animated)
     }
     
+    @IBAction func shareButtonDidTap(_ sender: Any) {
+        let totalPricePlusAdditonalPricesString = Int(countTotalPricePlusAdditonalPrices(receipt: receipt)).formattedWithSeparator
+        shareText = """
+        \(receipt.title)
+        \(dateToString(date: receipt.date))
+        Total : Rp. \(totalPricePlusAdditonalPricesString)
+        Paid by : \(receipt.paidBy)
+        
+        """
+        
+        for people in receipt.peoples {
+            var text = String()
+            let totalPriceString = Int(people.priceAfterDiscount).formattedWithSeparator
+            text = """
+            
+            \(people.name)  -   Rp \(totalPriceString)
+            """
+            
+//            \(people.name), Rp \(totalPriceString), \(people.status)
+            shareText += text
+        }
+        
+        shareText += """
+        
+        
+        Thank You
+        """
+        
+        
+        print(shareText)
+        let activityController = UIActivityViewController(activityItems: [self.shareText], applicationActivities: nil)
+        activityController.popoverPresentationController?.sourceView = self.view
+        
+        activityController.completionWithItemsHandler = { (nil, completed, _, error) in
+            if completed {
+//                    print("completed")
+            } else {
+//                    print("cancled")
+            }
+        }
+        self.present(activityController, animated: true)
+    }
+    
     @IBAction func doneButtonDidTap(_ sender: Any) {
         if !fromHome {
             let encoder = JSONEncoder()
@@ -164,8 +207,9 @@ extension ResultPriceViewController: ResultCollectionViewCellDelegate {
         
         let alert =  UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
-        alert.addAction(UIAlertAction(title: "Mark as Done", style: .default, handler: { (_) in
+        alert.addAction(UIAlertAction(title: "Mark as Paid", style: .default, handler: { (_) in
 //            print("Mark as Done")
+            self.receipt.peoples[sender.tag].status = "Paid"
         }))
         
         alert.addAction(UIAlertAction(title: "Share", style: .default, handler: { (_) in
