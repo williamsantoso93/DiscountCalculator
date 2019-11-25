@@ -111,8 +111,8 @@
 				7A87F7752322A9FF0011C6EF /* AppDelegate.swift */,
 				7A87F78F2322B4620011C6EF /* Extension */,
 				7A203BC62328C8D00090AD3D /* Model */,
-				7A87F794232381830011C6EF /* TableView */,
 				7A87F78E2322B1FC0011C6EF /* Controller */,
+				7A87F794232381830011C6EF /* TableView */,
 				7A87F7792322A9FF0011C6EF /* Main.storyboard */,
 				7AAEFE922359D5310088F3F6 /* Storyboard.storyboard */,
 				7A87F77F2322AA000011C6EF /* Assets.xcassets */,
@@ -406,7 +406,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DiscountCalculator/DiscountCalculator.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 497N7524MA;
 				INFOPLIST_FILE = DiscountCalculator/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -428,7 +428,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DiscountCalculator/DiscountCalculator.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 497N7524MA;
 				INFOPLIST_FILE = DiscountCalculator/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;

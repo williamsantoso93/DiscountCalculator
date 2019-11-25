@@ -43,6 +43,7 @@ class HomeViewController: UIViewController {
         //add refresh control
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
+        refreshControl.backgroundColor =  .white
         tableView.addSubview(refreshControl) // not required when using UITableViewController
 
         
