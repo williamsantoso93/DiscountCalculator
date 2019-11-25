@@ -535,7 +535,7 @@
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="ES7-BG-fkP">
                         <barButtonItem key="backBarButtonItem" title="Edit" id="9Uj-dv-Er4"/>
                         <rightBarButtonItems>
-                            <barButtonItem style="plain" systemItem="done" id="k7S-bp-O8x">
+                            <barButtonItem title="Save" style="plain" id="k7S-bp-O8x">
                                 <connections>
                                     <action selector="doneButtonDidTap:" destination="Ref-sl-7Au" id="I6Q-Xa-oqb"/>
                                 </connections>
@@ -551,6 +551,7 @@
                         <outlet property="collectionView" destination="Hpo-CU-G90" id="kgQ-MT-iPh"/>
                         <outlet property="dateLabel" destination="2nQ-0U-Q8z" id="03O-X2-AnL"/>
                         <outlet property="paidByLabel" destination="7So-I0-Lc1" id="ni3-sM-dnS"/>
+                        <outlet property="saveButton" destination="k7S-bp-O8x" id="6Cf-eN-WD7"/>
                         <outlet property="titleLabel" destination="7Zc-aW-9UQ" id="bbc-Be-Kyl"/>
                         <outlet property="totalPriceLabel" destination="ITc-Rm-HHs" id="OGh-cK-Ijx"/>
                         <segue destination="0Lt-ds-FqQ" kind="show" identifier="Detail" id="THF-OJ-g6f"/>

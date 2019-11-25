@@ -16,6 +16,7 @@ class ResultPriceViewController: UIViewController {
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var paidByLabel: UILabel!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -51,6 +52,12 @@ class ResultPriceViewController: UIViewController {
         paidByLabel.text = "Paid by : \(receipt.paidBy)"
         
         pricesAfterDiscountTaxDeliveryFee = countDiscount(receipt: receipt)
+        
+        if fromHome {
+            saveButton.title = "Done"
+        } else {
+            saveButton.title =  "Save"
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
