@@ -152,14 +152,11 @@ extension AddDetailViewController: UITableViewDelegate, UITableViewDataSource, U
         cell.qtyTextField.delegate =  self
         cell.qtyTextField.tag = indexPath.row
         cell.qtyTextField.placeholder = "Qty"
-//        cell.qtyTextField.text = "1"
-        //        cell.qtyTextField.setBottomBorder()
         cell.qtyTextField.addDoneButtonOnKeyboard()
         
         cell.priceTextField.delegate =  self
         cell.priceTextField.tag = indexPath.row
         cell.priceTextField.placeholder = "Price"
-        //        cell.priceTextField.setBottomBorder()
         cell.priceTextField.addDoneButtonOnKeyboard()
         
         if isEdit ?? false {

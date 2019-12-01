@@ -20,7 +20,6 @@ class DetailResultViewController: UIViewController {
     var receipt = Receipt() {
         didSet{
             DispatchQueue.main.async {
-//                self.tableView.reloadData()
                 super.updateViewConstraints()
                 self.heightTableView?.constant = self.tableView.contentSize.height
             }
@@ -40,7 +39,6 @@ class DetailResultViewController: UIViewController {
         tableView.register(UINib.init(nibName: "ResultDetailItemTableViewCell", bundle: nil), forCellReuseIdentifier: "ResultDetailItemTableViewCell")
         tableView.register(UINib.init(nibName: "DetailResultTableViewCell", bundle: nil), forCellReuseIdentifier: "DetailResultTableViewCell")
         tableView.tableFooterView = UIView.init(frame: .zero)
-//        self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
         
         // Do any additional setup after loading the view.
         

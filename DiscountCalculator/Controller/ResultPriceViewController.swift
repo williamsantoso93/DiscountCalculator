@@ -83,7 +83,6 @@ class ResultPriceViewController: UIViewController {
             \(people.name)  -   Rp \(totalPriceString)
             """
             
-//            \(people.name), Rp \(totalPriceString), \(people.status)
             shareText += text
         }
         
@@ -119,15 +118,12 @@ class ResultPriceViewController: UIViewController {
             do {
                 let data = try encoder.encode(receipt)
                 let encodeReceipt = String(data: data, encoding: .utf8)!
-//                let receiptData = DataReceipt(context: self.context)
-
-//                receiptData.receipt = encodeReceipt
+                
                 let receiptDataObejct = NSManagedObject(entity: dataReceiptEntity, insertInto: context)
                 
                 receiptDataObejct.setValue(lastID, forKey: "id")
                 receiptDataObejct.setValue(encodeReceipt, forKey: "receipt")
-
-//                dataReceipts?.append(receiptData)
+                
                 do {
                     try context.save()
                     userDef.set(lastID, forKey: "lastID")
@@ -138,8 +134,6 @@ class ResultPriceViewController: UIViewController {
               // Handle error
             }
         }
-        
-//        delagete?.pass(receipt: receipt)
         self.navigationController?.popToRootViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }

@@ -65,7 +65,6 @@ class HomeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         loadData()
-        self.receipts = self.receipts.sorted(by: {$0.date > $1.date})
         tableView.reloadData()
         print(UserDefaults.standard.integer(forKey: "lastID"))
     }
@@ -110,13 +109,15 @@ class HomeViewController: UIViewController {
                 
             }
         }
-        
+        self.receipts = self.receipts.sorted(by: {$0.date > $1.date})
     }
     
     func deleteData(id: Int){
+        
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "DataReceipt")
         fetchRequest.predicate = NSPredicate(format: "id = %@", "\(id)")
-       
+        
+        print(id)
         do
         {
            let test = try context.fetch(fetchRequest)
@@ -254,23 +255,13 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-//            receipts.remove(at: indexPath.row)
             
-            let selectedDataReceipt = dataReceipts![indexPath.row]
+            let selectedDataReceipt = dataReceipts![(dataReceipts!.count - 1) - indexPath.row]
             let selectedIdDataReceipt: Int = Int(selectedDataReceipt.id)
             
             deleteData(id: selectedIdDataReceipt)
-//            dataReceipts?.remove(at: indexPath.row)
-//            self.context.delete(<#T##object: NSManagedObject##NSManagedObject#>)
-//            saveData()
-
-//            print(dataReceipts?.count)
-            
             loadData()
             tableView.reloadData()
-//            print(dataReceipts?.count)
-//            tableView.deleteRows(at: [IndexPath(row: indexPath.row, section: indexPath.section)], with: .automatic)
-//            tableView.endUpdates()
         }
     }
 }
