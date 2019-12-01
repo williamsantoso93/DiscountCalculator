@@ -64,8 +64,10 @@ class HomeViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        loadData()
+        self.receipts = self.receipts.sorted(by: {$0.date > $1.date})
         tableView.reloadData()
-        
+        print(UserDefaults.standard.integer(forKey: "lastID"))
     }
 
     @objc func refresh(sender:AnyObject) {
@@ -93,7 +95,7 @@ class HomeViewController: UIViewController {
         let request: NSFetchRequest = DataReceipt.fetchRequest()
         
         do {
-           dataReceipts = try context.fetch(request)
+            dataReceipts = try context.fetch(request)
             
         } catch {
             print("error parah : ", error)
@@ -111,29 +113,29 @@ class HomeViewController: UIViewController {
         
     }
     
-     func deleteData(){
+    func deleteData(id: Int){
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "DataReceipt")
-        fetchRequest.predicate = NSPredicate(format: "username = %@", "Ankur3")
+        fetchRequest.predicate = NSPredicate(format: "id = %@", "\(id)")
        
         do
         {
-            let test = try context.fetch(fetchRequest)
-            
-            let objectToDelete = test[0] as! NSManagedObject
-            context.delete(objectToDelete)
-            
-            do{
-                try context.save()
-            }
-            catch
-            {
-                print(error)
-            }
-            
+           let test = try context.fetch(fetchRequest)
+           
+           let objectToDelete = test[0] as! NSManagedObject
+           context.delete(objectToDelete)
+           
+           do{
+               try context.save()
+           }
+           catch
+           {
+               print(error)
+           }
+           
         }
         catch
         {
-            print(error)
+           print(error)
         }
     }
 
@@ -254,11 +256,19 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         if editingStyle == .delete {
 //            receipts.remove(at: indexPath.row)
             
-            dataReceipts?.remove(at: indexPath.row)
+            let selectedDataReceipt = dataReceipts![indexPath.row]
+            let selectedIdDataReceipt: Int = Int(selectedDataReceipt.id)
+            
+            deleteData(id: selectedIdDataReceipt)
+//            dataReceipts?.remove(at: indexPath.row)
 //            self.context.delete(<#T##object: NSManagedObject##NSManagedObject#>)
-            saveData()
+//            saveData()
+
+//            print(dataReceipts?.count)
             
             loadData()
+            tableView.reloadData()
+//            print(dataReceipts?.count)
 //            tableView.deleteRows(at: [IndexPath(row: indexPath.row, section: indexPath.section)], with: .automatic)
 //            tableView.endUpdates()
         }

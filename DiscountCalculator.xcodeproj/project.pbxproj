@@ -406,7 +406,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DiscountCalculator/DiscountCalculator.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 497N7524MA;
 				INFOPLIST_FILE = DiscountCalculator/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -428,7 +428,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DiscountCalculator/DiscountCalculator.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 497N7524MA;
 				INFOPLIST_FILE = DiscountCalculator/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;

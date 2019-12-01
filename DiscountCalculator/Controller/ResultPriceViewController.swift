@@ -21,6 +21,7 @@ class ResultPriceViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let userDef = UserDefaults.standard
     var dataReceipts : [DataReceipt]? //array of receipt
     
     var receipt = Receipt()
@@ -109,18 +110,27 @@ class ResultPriceViewController: UIViewController {
     
     @IBAction func doneButtonDidTap(_ sender: Any) {
         if !fromHome {
+            let dataReceiptEntity = NSEntityDescription.entity(forEntityName: "DataReceipt", in: context)!
+            var lastID = userDef.integer(forKey: "lastID")
+            lastID += 1
+            
             let encoder = JSONEncoder()
             
             do {
                 let data = try encoder.encode(receipt)
                 let encodeReceipt = String(data: data, encoding: .utf8)!
-                let receiptData = DataReceipt(context: self.context)
+//                let receiptData = DataReceipt(context: self.context)
 
-                receiptData.receipt = encodeReceipt
+//                receiptData.receipt = encodeReceipt
+                let receiptDataObejct = NSManagedObject(entity: dataReceiptEntity, insertInto: context)
+                
+                receiptDataObejct.setValue(lastID, forKey: "id")
+                receiptDataObejct.setValue(encodeReceipt, forKey: "receipt")
 
-                dataReceipts?.append(receiptData)
+//                dataReceipts?.append(receiptData)
                 do {
                     try context.save()
+                    userDef.set(lastID, forKey: "lastID")
                 } catch {
                     print("error : ", error)
                 }
@@ -129,7 +139,7 @@ class ResultPriceViewController: UIViewController {
             }
         }
         
-        delagete?.pass(receipt: receipt)
+//        delagete?.pass(receipt: receipt)
         self.navigationController?.popToRootViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
