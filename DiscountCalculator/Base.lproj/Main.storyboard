@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9xN-Ik-hgx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9xN-Ik-hgx">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -154,6 +154,7 @@
                         <outlet property="heightTableViewAdditionalPrice" destination="R3W-UY-OWZ" id="vOn-sB-6tv"/>
                         <outlet property="heightTableViewPeople" destination="K5r-zt-8ky" id="Sla-3i-Bwi"/>
                         <outlet property="paidByTextField" destination="G2T-IK-TUG" id="UoX-Xa-qLH"/>
+                        <outlet property="receiptView" destination="NTL-yK-bPM" id="Kio-b2-og5"/>
                         <outlet property="scrollView" destination="vk9-Tn-TD9" id="tbb-pV-aQ3"/>
                         <outlet property="tableViewAdditionalPrice" destination="Y4F-9K-9Jq" id="oGm-f7-Mbu"/>
                         <outlet property="tableViewPeople" destination="Nkw-oC-eev" id="9W7-Qx-lJR"/>

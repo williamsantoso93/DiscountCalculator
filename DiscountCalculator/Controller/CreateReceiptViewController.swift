@@ -16,6 +16,7 @@ protocol CreateReceiptReceiveData {
 class CreateReceiptViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var receiptView: UIView!
     
     @IBOutlet weak var heightTableViewPeople: NSLayoutConstraint!
     @IBOutlet weak var heightTableViewAdditionalPrice: NSLayoutConstraint!
@@ -94,9 +95,12 @@ class CreateReceiptViewController: UIViewController {
         }
         
         originScrollViewSize = scrollView.frame.size
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
     deinit {
@@ -105,22 +109,91 @@ class CreateReceiptViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         
     }
-    var originScrollViewSize = CGSize()
     
-    @objc func keyboardWillChange(notification: Notification) {
-        
-        guard let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
-            return
-        }
-        
-        if notification.name == UIResponder.keyboardWillShowNotification {
-            scrollView.frame.size = CGSize(width: originScrollViewSize.width, height: (originScrollViewSize.height - keyboardRect.height))
+    var originScrollViewSize = CGSize()
 
-        } else {
-            scrollView.frame.size = originScrollViewSize
+    @objc func keyboardWillChange(notification: Notification) {
+
+//        guard let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+//            return
+//        }
+//
+//        if notification.name == UIResponder.keyboardWillShowNotification {
+//            scrollView.frame.size = CGSize(width: originScrollViewSize.width, height: (originScrollViewSize.height + keyboardRect.height))
+//
+//        } else {
+//            scrollView.frame.size = originScrollViewSize
+//        }
+
+//        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+//
+//        let keyboardScreenEndFrame = keyboardValue.cgRectValue
+//        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
+//
+//        if notification.name == UIResponder.keyboardWillHideNotification {
+//            scrollView.contentInset = .zero
+//        } else {
+//            scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height - view.safeAreaInsets.bottom, right: 0)
+//        }
+//
+//        scrollView.scrollIndicatorInsets = yourTextView.contentInset
+//
+//        let selectedRange = yourTextView.selectedRange
+//        yourTextView.scrollRangeToVisible(selectedRange)
+    }
+    /*
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+//            if self.view.frame.origin.y == 0 {
+//                self.view.frame.origin.y -= keyboardSize.height
+//            }
+
+//            scrollView.frame.size = CGSize(width: originScrollViewSize.width, height: (originScrollViewSize.height + keyboardSize.height))
+            if self.scrollView.frame.origin.y == 0 {
+                self.scrollView.frame.origin.y -= keyboardSize.height
+                self.scrollView.frame.size = CGSize(width: originScrollViewSize.width, height: (originScrollViewSize.height + keyboardSize.height))
+
+            }
         }
     }
 
+    @objc func keyboardWillHide(notification: NSNotification) {
+        //        if self.view.frame.origin.y != 0 {
+        //            self.view.frame.origin.y = 0
+        //        }
+        if self.scrollView.frame.origin.y != 0 {
+            self.scrollView.frame.origin.y = 0
+        }
+
+//        scrollView.frame.size = originScrollViewSize
+    }*/
+//     @objc func keyboardWillShow(notification:NSNotification){
+//
+//         let userInfo = notification.userInfo!
+//         var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+//         keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+//
+//         var contentInset:UIEdgeInsets = self.scrollView.contentInset
+//         contentInset.bottom = keyboardFrame.size.height + 20
+//         scrollView.contentInset = contentInset
+//     }
+//
+//     @objc func keyboardWillHide(notification:NSNotification){
+//
+//         let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+//         scrollView.contentInset = contentInset
+//     }
+    
+
+    @objc private func keyboardWillShow(notification: NSNotification){
+        guard let keyboardFrame = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        scrollView.contentInset.bottom = view.convert(keyboardFrame.cgRectValue, from: nil).size.height
+    }
+
+    @objc private func keyboardWillHide(notification: NSNotification){
+        scrollView.contentInset.bottom = 0
+    }
     
     @objc func datePickerValueChange(sender: UIDatePicker) {
         date = sender.date
